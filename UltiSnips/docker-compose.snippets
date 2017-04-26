@@ -1,0 +1,295 @@
+priority -50
+
+snippet ve "version ..." w
+version: ${1:2}
+endsnippet
+
+snippet volumes "volumes ..." w
+volumes:
+    - ${1:value}
+endsnippet
+
+snippet volume_ "volume_driver ..." w
+volume_driver: ${1:driver}
+endsnippet
+
+snippet volumes_ "volumes_from ..." w
+volumes_from:
+    - ${1:name}
+endsnippet
+
+snippet exter "1 ..." w
+external: ${1:boolean}
+endsnippet
+
+snippet ser "services ..." w
+services:
+    ${1:name}
+endsnippet
+
+snippet bu "build ..." w
+build:
+    ${1:value}
+endsnippet
+
+snippet conte "context ..." w
+context: ${1:dir}
+endsnippet
+
+snippet com "command ..." w
+command: ${1:command}
+endsnippet
+
+snippet dep "depends_on ..." w
+depends_on:
+    ${1:value}
+endsnippet
+
+snippet env "environment ..." w
+environment:
+    ${1:name}: ${2:value}
+endsnippet
+
+snippet doc "dockerfile ..." w
+dockerfile: ${1:file}
+endsnippet
+
+snippet ar "args ..." w
+args:
+    ${1:name}: ${2:value}
+endsnippet
+
+snippet cap_a "cap_add ..." w
+cap_add:
+    - ${1:value}
+endsnippet
+
+snippet cap_d "cap_drop ..." w
+cap_drop:
+    - ${1:value}
+endsnippet
+
+snippet cgr "cgroup_parent ..." w
+cgroup_parent: ${1:cgroup}
+endsnippet
+
+snippet conta "container_name ..." w
+container_name: ${1:name}
+endsnippet
+
+snippet dev "devices ..." w
+devices:
+    - ${1:value}
+endsnippet
+
+snippet dn "dns ..." w
+dns:
+    - ${1:ip}
+endsnippet
+
+snippet dns_ "dns_search ..." w
+dns_search:
+    - ${1:ip}
+endsnippet
+
+snippet tm "tmpfs ..." w
+tmpfs:
+    - ${1:dir}
+endsnippet
+
+snippet ent "entrypoint ..." w
+entrypoint: ${1:command}
+endsnippet
+
+snippet env_ "env_file ..." w
+env_file:
+    - ${1:file}
+endsnippet
+
+snippet exp "expose ..." w
+expose:
+    - ${1:port}
+endsnippet
+
+snippet exten "extends ..." w
+extends:
+    file: ${1:file}
+    service: ${2:name}
+endsnippet
+
+snippet extr "extra_hosts ..." w
+extra_hosts:
+    - ${1:host}:${2:ip}
+endsnippet
+
+snippet gr "group_add ..." w
+group_add:
+    - ${1:name}
+endsnippet
+
+snippet im "image ..." w
+image: ${1:image}
+endsnippet
+
+snippet la "labels ..." w
+labels:
+    ${1:dns}: ${2:label}
+endsnippet
+
+snippet links "links ..." w
+links:
+    - ${1:name}
+endsnippet
+
+snippet logg "logging ..." w
+logging:
+    driver: ${1:driver}
+    options:
+    	${2:value}
+endsnippet
+
+snippet log_d "log_driver ..." w
+log_driver: ${1:driver}
+endsnippet
+
+snippet log_o "log_opt ..." w
+log_opt:
+    ${1:value}
+endsnippet
+
+snippet net "net ..." w
+net: ${1:value}
+endsnippet
+
+snippet network_ "network_mode ..." w
+network_mode: ${1:value}
+endsnippet
+
+snippet networks "networks ..." w
+networks:
+    - ${1:value}
+endsnippet
+
+snippet ipv4 "ipv4_address ..." w
+ipv4_address: ${1:ip}
+endsnippet
+
+snippet ipv6 "ipv6_address ..." w
+ipv6_address: ${1:ip}
+endsnippet
+
+snippet link_ "link_local_ips ..." w
+link_local_ips:
+    - ${1:ip}
+endsnippet
+
+snippet pi "pid ..." w
+pid: ${1:host}
+endsnippet
+
+snippet po "ports ..." w
+ports:
+    - ${1:value}
+endsnippet
+
+snippet sec "security_opt ..." w
+security_opt:
+    - ${1:value}
+endsnippet
+
+snippet sto "stop_signal ..." w
+stop_signal: ${1:signal}
+endsnippet
+
+snippet ul "ulimits ..." w
+ulimits:
+    ${1:value}
+endsnippet
+
+snippet cpu_s "cpu_shares ..." w
+cpu_shares: ${1:value}
+endsnippet
+
+snippet cpu_q "cpu_quota ..." w
+cpu_quota: ${1:value}
+endsnippet
+
+snippet cpus "cpuset ..." w
+cpuset: ${1:value}
+endsnippet
+
+snippet dom "domainname ..." w
+domainname: ${1:name}
+endsnippet
+
+snippet ho "hostname ..." w
+hostname: ${1:name}
+endsnippet
+
+snippet ipc "ipc ..." w
+ipc: ${1:host}
+endsnippet
+
+snippet mem_ "mem_limit ..." w
+mem_limit: ${1:value}
+endsnippet
+
+snippet mems "memswap_limit ..." w
+memswap_limit: ${1:value}
+endsnippet
+
+snippet pr "privileged ..." w
+privileged: ${1:boolean}
+endsnippet
+
+snippet oom "oom_score_adj ..." w
+oom_score_adj: ${1:value}
+endsnippet
+
+snippet res "restart ..." w
+restart: ${1:value}
+endsnippet
+
+snippet us "user ..." w
+user: ${1:value}
+endsnippet
+
+snippet wo "working_dir ..." w
+working_dir: ${1:dir}
+endsnippet
+
+snippet rea "read_only ..." w
+read_only: ${1:boolean}
+endsnippet
+
+snippet sh "shm_size ..." w
+shm_size: ${1:value}
+endsnippet
+
+snippet std "stdin_open ..." w
+stdin_open: ${1:boolean}
+endsnippet
+
+snippet tt "tty ..." w
+tty: ${1:boolean}
+endsnippet
+
+snippet driver "driver ..." w
+driver: ${1:value}
+endsnippet
+
+snippet driver_ "driver_opts ..." w
+driver_opts:
+    ${1:key}: ${2:value}
+endsnippet
+
+snippet ipa "ipam ..." w
+ipam:
+    ${1:value}
+endsnippet
+
+snippet hc "healthcheck ..." w
+healthcheck:
+    test: ${1:command}
+endsnippet
+
