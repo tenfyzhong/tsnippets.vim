@@ -1,0 +1,58 @@
+priority -50
+
+snippet F "FROM name" bw
+FROM ${1:ubuntu}
+endsnippet
+
+snippet M "MAINTAINER name" bw
+MAINTAINER ${1:name}
+endsnippet
+
+snippet R "RUN command" bw
+RUN ${1:command}
+endsnippet
+
+snippet C "CMD command" bw
+CMD ${1:command}
+endsnippet
+
+snippet CP "COPY src dsc" bw
+COPY ${1:src} ${2:dst}
+endsnippet
+
+snippet EXP "EXPOSE port" bw
+EXPOSE ${1:port}
+endsnippet
+
+snippet E "ENV key value" bw
+ENV ${1:key} ${2:value}
+endsnippet
+
+snippet A "ADD src dst" bw
+ADD ${1:src} ${2:dst}
+endsnippet
+
+snippet ENT "ENTRYPOINT cmd" bw
+ENTRYPOINT ${1:command}
+endsnippet
+
+snippet V "VOLUME path" bw
+VOLUME ["${1:path}"]
+endsnippet
+
+snippet U "USER name" bw
+USER ${1:name}
+endsnippet
+
+snippet W "WORKDIR path" bw
+WORKDIR ${1:path}
+endsnippet
+
+snippet O "ONBUILD ..." bw
+ONBUILD ${1}
+endsnippet
+
+snippet L "LABEL label=value" bw
+LABEL ${1:label}="${2:value}"
+endsnippet
+
