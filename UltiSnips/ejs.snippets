@@ -22,6 +22,7 @@ endsnippet
 
 snippet fori "for...in" w
 <% for ($1 in $2) { %>
+  $3
 <% } %>
 endsnippet
 
@@ -44,5 +45,15 @@ snippet ife "if...else" w
 <% } else { %>
   $3
 <% } %>
+endsnippet
+
+snippet else "else" w
+<% } else { %>
+  $1
+endsnippet
+
+snippet elif "else if" w
+<% } else if ($1) { %>
+  $2
 endsnippet
 
