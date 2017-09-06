@@ -1,0 +1,48 @@
+snippet % "<% %>" w
+<% $1 %>
+endsnippet
+
+snippet - "<%- %>" w
+<%- $1 %>
+endsnippet
+
+snippet = "<%= %>" w
+<%= $1 %>
+endsnippet
+
+snippet # "<%# %>" w
+<%# $1 %>
+endsnippet
+
+snippet for "for" w
+<% for ($1; $2; $3) { %>
+  $4
+<% } %>
+endsnippet
+
+snippet fori "for...in" w
+<% for ($1 in $2) { %>
+<% } %>
+endsnippet
+
+
+snippet while "while" w
+<% while ($1) { %>
+  $2
+<% } %>
+endsnippet
+
+snippet if "if" w
+<% if ($1) { %>
+  $2
+<% } %>
+endsnippet
+
+snippet ife "if...else" w
+<% if ($1) { %>
+  $2
+<% } else { %>
+  $3
+<% } %>
+endsnippet
+
