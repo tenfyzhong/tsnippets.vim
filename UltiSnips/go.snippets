@@ -156,32 +156,28 @@ if err != nil {
 endsnippet
 
 # log
-snippet verbose "log.Verbose" b
+snippet lve "log.Verbose" b
 log.Verbose("$1", $2)
 endsnippet
 
-snippet debug "log.Debug" b
+snippet lde "log.Debug" b
 log.Debug("$1", $2)
 endsnippet
 
-snippet info "log.Info" b
+snippet lin "log.Info" b
 log.Info("$1", $2)
 endsnippet
 
-snippet warn "log.Warn" b
+snippet lwa "log.Warn" b
 log.Warn("$1", $2)
 endsnippet
 
-snippet error "log.Error" b
+snippet ler "log.Error" b
 log.Error("$1", $2)
 endsnippet
 
-snippet fatal "log.Fatal" b
+snippet lfa "log.Fatal" b
 log.Fatal("$1", $2)
-endsnippet
-
-snippet init "log.Init" b
-log.Init("$1", $2)
 endsnippet
 
 # attr
