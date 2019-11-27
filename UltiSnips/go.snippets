@@ -1,11 +1,208 @@
-snippet bson "BSON field"
-\`bson:"${1:displayName}"\`
+# Snippets for Go 
+
+snippet select "Select statement" b
+select {
+case $0:
+default:
+}
 endsnippet
 
-snippet xml "XML field"
-\`xml:"${1:displayName}"\`
+snippet for "For range" b
+for ${1:_}, ${2:item} := range ${3:items} {
+	$0
+}
 endsnippet
 
-snippet yaml "YAML field"
-\`yaml:"${1:displayName}"\`
+snippet fori "For i..n" b
+for i:=${1:0}; i<${2:n}; i++ {
+	$0
+}
+endsnippet
+
+snippet ife "if ... else ..." b
+if ${1:condition} {
+	$2
+} else {
+	$0
+}
+endsnippet
+
+# make
+snippet ms "make slice" w
+make([]${1:string}, ${2:0}, ${3:0})
+endsnippet
+
+snippet mm "make map" w
+make(map[${1:string}]${2:string}, ${3:0})
+endsnippet
+
+# field
+snippet bson "BSON field" w
+\`bson:"${1:`!v substitute(getline('.'), '\W*\(\w*\).*', '\L\1', 'g')`}"\`$0
+endsnippet
+
+snippet xml "XML field" w
+\`xml:"${1:`!v substitute(getline('.'), '\W*\(\w*\).*', '\L\1', 'g')`}"\`$0
+endsnippet
+
+snippet yaml "YAML field" w
+\`yaml:"${1:`!v substitute(getline('.'), '\W*\(\w*\).*', '\L\1', 'g')`}"\`$0
+endsnippet
+
+snippet cql "CQL field" w
+\`cql:"${1:`!v substitute(getline('.'), '\W*\(\w*\).*', '\L\1', 'g')`}"\`$0
+endsnippet
+
+snippet env "env field" w
+\`env:"${1:`!v substitute(getline('.'), '\W*\(\w*\).*', '\L\1', 'g')`}"\`$0
+endsnippet
+
+snippet json "json field" w
+\`json:"${1:`!v substitute(getline('.'), '\W*\(\w*\).*', '\L\1', 'g')`},omitempty"\`$0
+endsnippet
+
+snippet testing "testing parameter" w
+t *testing.T
+endsnippet
+
+############################## fmt ##############################
+snippet fsf "fmt.Sprintf" w
+fmt.Sprintf("$1", $2)
+endsnippet
+
+snippet fpf "fmt.Printf" w
+fmt.Printf("$1\n", $2)
+endsnippet
+
+snippet fef "fmt.Errorf" w
+fmt.Errorf("$1", $2)
+endsnippet
+
+############################## testing ##############################
+snippet funct "testing function" b
+func Test${1:Func}(t *testing.T) {
+	$0
+}
+endsnippet
+
+snippet gomock "gomock.NewController"
+ctrl := gomock.NewController(t)
+defer ctrl.Finish()
+
+
+endsnippet
+
+############################## assert ##############################
+snippet asseq "assert.Equal" b
+assert.Equal(t, ${1:excepted}, ${2:actual}, "$2 == $1")
+endsnippet
+
+snippet assemp "assert.Empty" b
+assert.Empty(t, ${1:object}, "$1 should be empty")
+endsnippet
+
+snippet assnemp "assert.NotEmpty" b
+assert.NotEmpty(t, ${1:object}, "$1 should not be empty")
+endsnippet
+
+snippet asserr "assert.Error" b
+assert.Error(t, ${1:err}, "$1 != nil")
+endsnippet
+
+snippet assnerr "assert.NoError" b
+assert.NoError(t, ${1:err}, "$1 == nil")
+endsnippet
+
+snippet assee "assert.ErrorEqual" b
+assert.EqualError(t, ${1:err}, "${2:errstr}", "$1.Error() == \`$2\`")
+endsnippet
+
+snippet assfe "assert.False" b
+assert.False(t, ${1:value}, "$1 == false")
+endsnippet
+
+snippet asstr "assert.True" b
+assert.True(t, ${1:value}, "$1 == true")
+endsnippet
+
+snippet assnil "assert.Nil" b
+assert.Nil(t, ${1:object}, "$1 == nil")
+endsnippet
+
+snippet assnnil "assert.NotNil" b
+assert.NotNil(t, ${1:object}, "$1 != nil")
+endsnippet
+
+snippet ass0 "assert.Zero" b
+assert.Zero(t, ${1:object})
+endsnippet
+
+snippet assn0 "assert.NotZero" b
+assert.NotZero(t, ${1:object})
+endsnippet
+
+############################## mocket ##############################
+snippet mocket "mocket WithQuery" b
+mocket.Catcher.Reset().NewMock().WithQuery(\`${1:sql}\`).${2:WithReply}(${3:reply})
+endsnippet
+
+############################## gf ##############################
+snippet err "Basic error handling" b
+if err != nil {
+	log.Error("$1 err: %v", err)
+}
+endsnippet
+
+# log
+snippet verbose "log.Verbose" b
+log.Verbose("$1", $2)
+endsnippet
+
+snippet debug "log.Debug" b
+log.Debug("$1", $2)
+endsnippet
+
+snippet info "log.Info" b
+log.Info("$1", $2)
+endsnippet
+
+snippet warn "log.Warn" b
+log.Warn("$1", $2)
+endsnippet
+
+snippet error "log.Error" b
+log.Error("$1", $2)
+endsnippet
+
+snippet fatal "log.Fatal" b
+log.Fatal("$1", $2)
+endsnippet
+
+snippet init "log.Init" b
+log.Init("$1", $2)
+endsnippet
+
+# attr
+snippet attr "stat.SetAttr" b
+stat.SetAttr("${1:tag}", ${2:1})
+endsnippet
+
+snippet durai "stat.SetAttrDura(``, 0)" b
+stat.SetAttrDura("", 0)
+endsnippet
+
+snippet dura "stat.SetAttrDura" b
+stat.SetAttrDura("${1:tag}", ${2:0})
+endsnippet
+
+snippet attre "stat.SetAttr and log.Error"
+stat.SetAttr("${1:tag}", ${2:1})
+log.Error("$1, $3", $4)
+endsnippet
+
+snippet errs "Basic error handling" b
+if err != nil {
+	stat.SetAttr("${1:tag}", ${2:1})
+	log.Error("$1, $3err: %v", err)
+}
 endsnippet
