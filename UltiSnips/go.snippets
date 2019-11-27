@@ -2,8 +2,10 @@
 
 snippet select "Select statement" b
 select {
-case $0:
+case $1:
+	$2
 default:
+	$0
 }
 endsnippet
 
