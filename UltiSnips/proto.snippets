@@ -1,0 +1,78 @@
+snippet syn "syntax" b
+syntax = "proto3";
+endsnippet
+
+snippet syn3 "syntax" b
+syntax = "proto3";
+endsnippet
+
+snippet syn2 "syntax" b
+syntax = "proto3";
+endsnippet
+
+snippet pac "package" b
+package $1;
+endsnippet
+
+snippet opgp "option go_package" b
+option go_package="$1";
+endsnippet
+
+snippet imp "import" b
+import "$1";
+endsnippet
+
+snippet mes "message" b
+message $1
+{
+	$0
+}
+endsnippet
+
+snippet enum "enum" b
+enum $1
+{
+	$0
+}
+endsnippet
+
+snippet service "service" b
+service ${1:Service}
+{
+	$0
+}
+endsnippet
+
+snippet rpc "rpc" b
+rpc ${1:RpcMethod}($1Req) returns ($1Rsp);
+endsnippet
+
+snippet rr "req, rsp" b
+message ${1:Foo}Req
+{
+	$2
+}
+
+message $1Rsp
+{
+	$3
+}
+endsnippet
+
+snippet rrr "req, rsp, rpc" b
+message ${1:Foo}Req
+{
+	$2
+}
+
+message $1Rsp
+{
+	$3
+}
+
+rpc $1($1Req) returns ($1Rsp);
+endsnippet
+
+snippet map "map<key, value>" b
+map<${1:key}, ${2:value}> ${3:field} = ${4:1};
+endsnippet
