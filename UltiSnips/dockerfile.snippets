@@ -4,7 +4,15 @@ snippet F "FROM name" bw
 FROM ${1:ubuntu}
 endsnippet
 
+snippet from "FROM name" bwA
+FROM ${1:ubuntu}
+endsnippet
+
 snippet M "MAINTAINER name" bw
+MAINTAINER ${1:name}
+endsnippet
+
+snippet maintainer "MAINTAINER name" bwA
 MAINTAINER ${1:name}
 endsnippet
 
@@ -12,7 +20,15 @@ snippet R "RUN command" bw
 RUN ${1:command}
 endsnippet
 
+snippet run "RUN command" bwA
+RUN ${1:command}
+endsnippet
+
 snippet C "CMD command" bw
+CMD ${1:command}
+endsnippet
+
+snippet cmd "CMD command" bwA
 CMD ${1:command}
 endsnippet
 
@@ -20,7 +36,15 @@ snippet CP "COPY src dsc" bw
 COPY ${1:src} ${2:dst}
 endsnippet
 
+snippet copy "COPY src dsc" bwA
+COPY ${1:src} ${2:dst}
+endsnippet
+
 snippet EXP "EXPOSE port" bw
+EXPOSE ${1:port}
+endsnippet
+
+snippet expose "EXPOSE port" bwA
 EXPOSE ${1:port}
 endsnippet
 
@@ -28,7 +52,15 @@ snippet E "ENV key value" bw
 ENV ${1:key} ${2:value}
 endsnippet
 
+snippet env "ENV key value" bwA
+ENV ${1:key} ${2:value}
+endsnippet
+
 snippet A "ADD src dst" bw
+ADD ${1:src} ${2:dst}
+endsnippet
+
+snippet add "ADD src dst" bwA
 ADD ${1:src} ${2:dst}
 endsnippet
 
@@ -36,7 +68,15 @@ snippet ENT "ENTRYPOINT cmd" bw
 ENTRYPOINT ${1:command}
 endsnippet
 
+snippet entrypoint "ENTRYPOINT cmd" bwA
+ENTRYPOINT ${1:command}
+endsnippet
+
 snippet V "VOLUME path" bw
+VOLUME ["${1:path}"]
+endsnippet
+
+snippet volume "VOLUME path" bwA
 VOLUME ["${1:path}"]
 endsnippet
 
@@ -44,7 +84,15 @@ snippet U "USER name" bw
 USER ${1:name}
 endsnippet
 
+snippet user "USER name" bwA
+USER ${1:name}
+endsnippet
+
 snippet W "WORKDIR path" bw
+WORKDIR ${1:path}
+endsnippet
+
+snippet workdir "WORKDIR path" bwA
 WORKDIR ${1:path}
 endsnippet
 
@@ -52,7 +100,14 @@ snippet O "ONBUILD ..." bw
 ONBUILD ${1}
 endsnippet
 
+snippet onbuild "ONBUILD ..." bwA
+ONBUILD ${1}
+endsnippet
+
 snippet L "LABEL label=value" bw
 LABEL ${1:label}="${2:value}"
 endsnippet
 
+snippet label "LABEL label=value" bwA
+LABEL ${1:label}="${2:value}"
+endsnippet
