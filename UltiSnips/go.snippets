@@ -1,6 +1,50 @@
 # Snippets for Go 
 
-snippet select "Select statement" b
+snippet : "name := value" b
+${1:name} := ${2:value}
+endsnippet
+
+snippet [] "[]type{}" w
+[]${1:type}{}
+endsnippet
+
+snippet /^imp/ "Import declaration" r
+import (
+	"${1:package}"
+)
+endsnippet
+
+snippet ch "Chan declaration" w
+chan ${1:type}
+endsnippet
+
+snippet st "Struct declaration" b
+type ${1:Struct} struct {
+	${0:${VISUAL}}
+}
+endsnippet
+
+snippet in "Interface declaration" b
+type ${1:Interface} interface {
+	${0:${VISUAL}}
+}
+endsnippet
+
+snippet new "new statement" w
+new(${1:type})
+endsnippet
+
+snippet de "defer statement" w
+defer ${1:func}
+endsnippet
+
+snippet /^init/ "Init function" r
+func init() {
+	$0
+}
+endsnippet
+
+snippet sel "Select statement" b
 select {
 case $1:
 	$2
@@ -9,7 +53,24 @@ default:
 }
 endsnippet
 
-snippet for "For range" b
+snippet swi "Switch statement" b
+switch ${1:expression}${1/(.+)/ /}{
+case$0
+}
+endsnippet
+
+snippet case "Case statement" b
+case $1:
+	$0
+endsnippet
+
+snippet for "For loop" b
+for ${1:condition} {
+	$0
+}
+endsnippet
+
+snippet forr "For range" b
 for ${1:_}, ${2:item} := range ${3:items} {
 	$0
 }
@@ -29,6 +90,14 @@ if ${1:condition} {
 }
 endsnippet
 
+snippet ap "append" b
+$1 = append(${1:slice}, ${2:variable})
+endsnippet
+
+snippet del "delete" b
+delete(${1:map}, ${2:key})
+endsnippet
+
 # make
 snippet ms "make slice" w
 make([]${1:string}, ${2:0}, ${3:0})
@@ -36,6 +105,14 @@ endsnippet
 
 snippet mm "make map" w
 make(map[${1:string}]${2:string}, ${3:0})
+endsnippet
+
+snippet mc "make chan" w
+make(chan ${1:type}, ${2:size})
+endsnippet
+
+snippet mc0 "make unbuffered chan" w
+make(chan ${1:type})
 endsnippet
 
 # field
@@ -202,5 +279,29 @@ snippet errs "Basic error handling" b
 if err != nil {
 	stat.SetAttr("${1:tag}", ${2:1})
 	log.Error("$1, $3err: %v", err)
+}
+endsnippet
+
+snippet /^meth/ "Method" r
+func (${1:receiver} ${2:type}) ${3:name}(${4:params})${5/(.+)/ /}${5:type} {
+	log.Verbose("func $2.$3 begin")
+	${0:${VISUAL}}
+	log.Verbose("func $2.$3 end")
+}
+endsnippet
+
+snippet func "Function" b
+func ${1:name}(${2:params})${3/(.+)/ /}${3:type} {
+	log.Verbose("func $1 begin")
+	${0:${VISUAL}}
+	log.Verbose("func $1 end")
+}
+endsnippet
+
+snippet funch "HTTP handler" b
+func ${1:handler}(${2:w} http.ResponseWriter, ${3:r} *http.Request) {
+	log.Verbose("func $1 begin")
+	${0:${VISUAL}}
+	log.Verbose("func $1 end")
 }
 endsnippet
