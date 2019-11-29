@@ -262,12 +262,17 @@ snippet attr "stat.SetAttr" b
 stat.SetAttr("${1:tag}", ${2:1})
 endsnippet
 
-snippet durai "stat.SetAttrDura(``, 0)" b
-stat.SetAttrDura("", 0)
+snippet attrdb "stat.SetAttrDura begin" b
+${1:begin} := stat.SetAttrDura("", 0)
 endsnippet
 
-snippet dura "stat.SetAttrDura" b
+snippet attrde "stat.SetAttrDura end" b
 stat.SetAttrDura("${1:tag}", ${2:0})
+endsnippet
+
+snippet attrd "stat.SetAttrDura" b
+${1:begin} := stat.SetAttrDura("", 0)
+stat.SetAttrDura("${2:tag}", $1)
 endsnippet
 
 snippet attre "stat.SetAttr and log.Error"
