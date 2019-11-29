@@ -98,6 +98,11 @@ snippet del "delete" b
 delete(${1:map}, ${2:key})
 endsnippet
 
+snippet ctxt "context.WithTimeout" b
+${1:ctx}, ${2:cancel} := context.WithTimeout(context.Background(), ${3:1000}*time.${4:Millisecond})
+defer $2()
+endsnippet
+
 # make
 snippet ms "make slice" w
 make([]${1:string}, ${2:0}, ${3:0})
