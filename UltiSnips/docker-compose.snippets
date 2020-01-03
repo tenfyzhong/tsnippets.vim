@@ -308,3 +308,16 @@ ports:
   - ${1:value}
 endsnippet
 
+snippet ns "new service" b
+${1:name}:
+  image: ${2:image}
+  container_name: $1
+  restart: always
+  ports:
+    - "${3:host_port}:${4:container_port}"
+  volumes:
+    - "${5:host_path}:${6:container_path}"
+  environment:
+    ${7:key}: ${8:value}
+endsnippet
+
