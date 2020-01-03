@@ -78,10 +78,106 @@ func ${1:name}(${2:params})${3/(.+)/ /}${3:type} {
 endsnippet
 
 snippet funch "HTTP handler" b
-func ${1:handler}(${2:w} http.ResponseWriter, ${3:r} *http.Request) {
+func ${1:handler}(w http.ResponseWriter, r *http.Request) {
 	log.Verbose("func $1 begin")
+	stat.SetAttr("${1/\w*/\L$0\E/}.req", 1)
+	begin := stat.SetAttrDura("", 0)
+
+	err := r.ParseForm()
+	if err != nil {
+		log.Debug("parse from failed, err: %v", err)
+		stat.SetAttr("${1/\w*/\L$0\E/}.err.parse_form", 1)
+		w.WriteHeader(http.StatusBadRequest)
+		return
+	}
+
 	${0:${VISUAL}}
-	log.Verbose("func $1 end")
+
+	cost := stat.SetAttrDura("${1/\w*/\L$0\E/}.cost.total", begin)
+	stat.SetAttr("${1/\w*/\L$0\E/}.succ")
+	log.Info("func $1 end, cost: %d", cost)
+}
+endsnippet
+
+snippet funchj "HTTP handler, json" b
+func ${1:handler}(w http.ResponseWriter, r *http.Request) {
+	log.Verbose("func $1 begin")
+	stat.SetAttr("${1/\w*/\L$0\E/}.req", 1)
+	begin := stat.SetAttrDura("", 0)
+
+	err := r.ParseForm()
+	if err != nil {
+		log.Debug("parse from failed, err: %v", err)
+		stat.SetAttr("${1/\w*/\L$0\E/}.err.parse_form", 1)
+		w.WriteHeader(http.StatusBadRequest)
+		return
+	}
+
+	reqBody, err := ioutil.ReadAll(r.Body)
+	if err != nil {
+		log.Debug("read request body, err: %v", err)
+		stat.SetAttr("${1/\w*/\L$0\E/}.err.read_body", 1)
+		w.WriteHeader(http.StatusBadRequest)
+		return
+	}
+	defer r.Body.Close()
+
+	req := &$2{}
+	err = json.Unmarshal(reqBody, req)
+	if err != nil {
+		log.Debug("unmarshal $2, err: %v", err)
+		stat.SetAttr("${1/\w*/\L$0\E/}.err.unmarshal", 1)
+		w.WriteHeader(http.StatusBadRequest)
+		return
+	}
+
+	if !check${1/\w*/\u$0/}Param(req) {
+		log.Debug("bad request, req: %+v", req)
+		stat.SetAttr("${1/\w*/\L$0\E/}.err.param", 1)
+		w.WriteHeader(http.StatusBadRequest)
+		return
+	}
+
+	statusCode, rsp, err := do${1/\w*/\u$0/}(req)
+	if err != nil {
+		log.Error("do$1 err: %v", err)
+		stat.SetAttr("${1/\w*/\L$0\E/}.err.do", 1)
+		w.WriteHeader(http.StatusInternalServerError)
+		return
+	}
+	log.Info("doSign, status: %d, rsp: %v", statusCode, rsp)
+
+	rspBody, err := json.Marshal(rsp)
+	if err != nil {
+		log.Error("marahsl $3, err: %v", err)
+		stat.SetAttr("${1/\w*/\L$0\E/}.err.marshal", 1)
+		w.WriteHeader(http.StatusInternalServerError)
+		return
+	}
+
+	w.WriteHeader(statusCode)
+	_, err = w.Write(rspBody)
+	if err != nil {
+		log.Error("write response, err: %v", err)
+		stat.SetAttr("${1/\w*/\L$0\E/}.err.write", 1)
+		w.WriteHeader(http.StatusInternalServerError)
+		return
+	}
+
+	cost := stat.SetAttrDura("${1/\w*/\L$0\E/}.cost.total", begin)
+	stat.SetAttr("${1/\w*/\L$0\E/}.succ", 1)
+	log.Info("func $1 end, cost: %d", cost)
+}
+
+func check${1/\w*/\u$0/}Param(req *$2) bool {
+	return ${4:false}
+}
+
+func do${1/\w*/\u$0/}(req *${2:Request}) (int, *${3:Response}, error) {
+	log.Verbose("func do$1 begin")
+	${0:${VISUAL}}
+	log.Verbose("func do$1 end")
+	return http.StatusOK, nil, nil
 }
 endsnippet
 
@@ -96,6 +192,8 @@ func (${1:receiver} *${2:type}) $4(ctx context.Context, req *${3:package}.${4:Ha
 	}
 	begin := stat.SetAttrDura("", 0)
 	log.Info("$2.$4 req: %+v", req)
+
+	// process
 	${0:${VISUAL}}
 	cost := stat.SetAttrDura("${4/\w*/\L$0\E/}.cost.total", begin)
 	stat.SetAttr("${4/\w*/\L$0\E/}.succ", 1)
