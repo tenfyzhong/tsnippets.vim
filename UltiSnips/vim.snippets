@@ -1,0 +1,31 @@
+snippet if "if statement" b
+if ${1:expr1}
+	$0
+endif
+endsnippet
+
+snippet ife "if statement" b
+if ${1:expr1}
+	$2
+else
+	$0
+endif
+endsnippet
+
+snippet for "for statement" b
+for ${1:var} in ${2:object}
+	$0
+endfor
+endsnippet
+
+snippet while "while statement" b
+while ${1:expr1} 
+	$0
+endwhile
+endsnippet
+
+snippet try "try statement" b
+try 
+	$0
+endtry
+endsnippet
