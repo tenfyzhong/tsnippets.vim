@@ -187,6 +187,12 @@ defer ctrl.Finish()
 
 endsnippet
 
+snippet httptests "httptest.NewServer" w
+httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+	$0
+}))
+endsnippet
+
 ############################## assert ##############################
 snippet asseq "assert.Equal" b
 assert.Equal(t, ${1:excepted}, ${2:actual}, "$2 == $1")
@@ -241,5 +247,56 @@ snippet mocket "mocket WithQuery" b
 mocket.Catcher.Reset().NewMock().WithQuery(\`${1:sql}\`).${2:WithReply}(${3:reply})
 endsnippet
 
+############################## redigo ##############################
+snippet redigopool "new redisgo pool"
+pool := &redis.Pool{
+	MaxIdle:     ${1:8},
+	IdleTimeout: ${2:300} * ${3:time.Second},
+}
+pool.Dial = func() (redis.Conn, error) {
+	c, err := redis.Dial(
+		"tcp",
+		${4:"127.0.0.1:6379"},
+		redis.DialConnectTimeout(${5:1}*time.Second),
+		redis.DialReadTimeout(${6:1}*time.Second),
+		redis.DialWriteTimeout(${7:1}*time.Second),
+		redis.DialPassword(${8:"password"}),
+		redis.DialDatabase(${9:0}))
+	if err != nil {
+		return nil, err
+	}
+	return c, err
+}
+pool.TestOnBorrow = func(c redis.Conn, t time.Time) error {
+	_, err := c.Do("Ping")
+	return err
+}
+endsnippet
+
+snippet redigodo "redigo do" b
+${1:c} := ${2:pool}.Get()
+defer $1.Close
+${3:data}, ${4:err} := redis.${5:Bytes}($1.Do("${6:GET}", ${7:"foo"}))
+if $4 != nil {
+	$8
+}
+
+$0
+
+endsnippet
+
+snippet redigomulti "redigo MULTI"
+${1:c} := ${2:pool}.Get()
+defer $1.Close
+$1.Send("MULTI")
+${3:data}, ${4:err} := $1.Do("EXEC")
+if $4 != nil {
+	$5
+}
+
+$0
+endsnippet
+
+############################## extends ##############################
 priority 20
 extends gfgo
