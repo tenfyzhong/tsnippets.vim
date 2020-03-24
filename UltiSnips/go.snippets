@@ -160,6 +160,21 @@ snippet testing "testing parameter" w
 t *testing.T
 endsnippet
 
+snippet marshal "Marshal" w
+${1:data}, ${2:err} := ${3:json}.Marshal(${4:st})
+if $2 != nil {
+	$0
+}
+endsnippet
+
+snippet unmarshal "Unmarshal" w
+${1:st} := &${2:Struct}{}
+${3:err} := ${4:json}.Unmarshal(${5:data}, $1)
+if err != nil {
+	$0
+}
+endsnippet
+
 ############################## fmt ##############################
 snippet fsf "fmt.Sprintf" w
 fmt.Sprintf("$1", $2)
