@@ -1,0 +1,72 @@
+priority 10
+
+snippet http "http block" b
+http {
+	include      /etc/nginx/mime.types;
+	default_type application/octet-stream;
+	
+	open_log_file_cache max=1000 inactive=20s min_uses=2 valid=1m;
+
+	access_log        /var/log/nginx/access.log;
+	sendfile          on;
+	charset           UTF-8;
+	keepalive_timeout 65;
+	proxy_cache_path /var/cache/nginx/cache levels=1:2 keys_zone=imgcache:100m inactive=2h max_size=1g;
+
+	ssl_session_cache shared:SSL:100m;
+	ssl_session_timeout 20m;
+
+	gzip            on;
+	gzip_min_length 2048;
+	gzip_types      text/plain application/x-javascript text/css application/xml application/json application/javascript text/javascript;
+	gzip_disable    "MSIE [1-6]\.(?!.*SV1)";
+	gzip_static     on;
+	gzip_proxied    expired no-cache no-store private auth;
+
+	proxy_buffers 128 128k;
+	include /etc/nginx/conf.d/*;
+}
+endsnippet
+
+snippet upstream "upstream block" b
+upstream ${1:Upstream} {
+	server ${2:127.0.0.1:8080};
+
+	keepalive 64;
+	check interval=10000 rise=1 fall=2 timeout=10000 type=tcp;
+}
+endsnippet
+
+snippet server "server block" b
+server {
+	listen ${1:80};
+	server_name ${3:localhost};
+
+	$0
+}
+endsnippet
+
+snippet location "location" b
+location ${1:/} {
+	proxy_connect_timeout 30;
+	proxy_read_timeout    30;
+	proxy_redirect        off;
+	proxy_set_header      Host            $host;
+	proxy_set_header      X-Real-IP       $remote_addr;
+	proxy_set_header      X-Forwarded-For $proxy_add_x_forwarded_for;
+	proxy_set_header      Connection      '';
+	proxy_http_version    1.1;
+
+	proxy_pass http://${2:Upstream};
+}
+endsnippet
+
+snippet ssl "ssl config" b
+listen ${1:443} ssl;
+ssl on;
+ssl_certificate           ${2:/etc/nginx/ssl/domain}.cer;
+ssl_certificate_key       $1.key;
+ssl_protocols             TLSv1 TLSv1.1 TLSv1.2;
+ssl_ciphers               RC4:HIGH:!aNULL:!MD5;
+ssl_prefer_server_ciphers on;
+endsnippet
