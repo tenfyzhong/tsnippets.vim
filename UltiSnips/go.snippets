@@ -195,6 +195,15 @@ func Test${1:Func}(t *testing.T) {
 }
 endsnippet
 
+snippet funcb "benchmark testing function" b
+func Benchmark${1:Func}(b *testing.B) {
+	// b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		$0
+	}
+}
+endsnippet
+
 snippet gomock "gomock.NewController"
 ctrl := gomock.NewController(t)
 defer ctrl.Finish()
