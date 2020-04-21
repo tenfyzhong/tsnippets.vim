@@ -321,6 +321,42 @@ if $4 != nil {
 $0
 endsnippet
 
+############################## gorm ##############################
+snippet gormopen "gorm.Open" b
+${1:db}, err := gorm.Open(${2:"mysql"}, ${3:uri})
+if err != nil {
+	${4}
+}
+db.DB().SetMaxIdleConns(${5:3})
+db.DB().SetMaxOpenConns(${6:10})
+db.DB().SetConnMaxLifetime(${7:3000} * time.Millisecond)
+d.LogMode(false)
+endsnippet
+
+snippet gormtx "gorm transaction" b
+ctx, cancel := context.WithTimeout(context.Background(), ${1:1000} * time.Millisecond)
+defer cancel()
+c := db.BeginTx(ctx, &sql.TxOptions{})
+$0
+
+if c.Error != nil {
+	c.Rollback()
+} else {
+	c.Commit()
+}
+endsnippet
+
+############################## http ##############################
+snippet httpclient "new http chlent" b
+${1:httpClient} := &http.Client{
+	Transport: &http.Transport{
+		MaxIdleConnsPerHost: ${2:100},
+		MaxIdleConns: ${3:10},
+	},
+	Timeout: time.Duration(${4:1000}) * time.Millisecond,
+}
+endsnippet
+
 ############################## extends ##############################
 priority 20
 extends gfgo
