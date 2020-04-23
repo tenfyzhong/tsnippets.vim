@@ -330,7 +330,7 @@ if err != nil {
 db.DB().SetMaxIdleConns(${5:3})
 db.DB().SetMaxOpenConns(${6:10})
 db.DB().SetConnMaxLifetime(${7:3000} * time.Millisecond)
-d.LogMode(false)
+db.LogMode(false)
 endsnippet
 
 snippet gormtx "gorm transaction" b
