@@ -1,24 +1,32 @@
+global !p
+from vimsnippets import get_comment_format
+endglobal
+
 snippet INFO "comment info" b
-// INFO(`whoami`) `date +%Y-%m-%d\ %H:%M` 
-// $0
+`!p snip.rv=get_comment_format()[0]` INFO `!v g:snips_author` `!v strftime('%F %T')`
+`!p snip.rv=get_comment_format()[0]` $0
 endsnippet
 
 snippet TODO "comment todo" b
-// TODO(`whoami`) `date +%Y-%m-%d\ %H:%M` 
-// $0
+`!p snip.rv=get_comment_format()[0]` TODO `!v g:snips_author` `!v strftime('%F %T')`
+`!p snip.rv=get_comment_format()[0]` $0
 endsnippet
 
 snippet BUG "comment bug" b
-// BUG(`whoami`) `date +%Y-%m-%d\ %H:%M` 
-// $0
+`!p snip.rv=get_comment_format()[0]` BUG `!v g:snips_author` `!v strftime('%F %T')`
+`!p snip.rv=get_comment_format()[0]` $0
 endsnippet
 
 snippet ERROR "comment error" b
-// ERROR(`whoami`) `date +%Y-%m-%d\ %H:%M` 
-// $0
+`!p snip.rv=get_comment_format()[0]` ERROR `!v g:snips_author` `!v strftime('%F %T')`
+`!p snip.rv=get_comment_format()[0]` $0
 endsnippet
 
 snippet TEST "comment test" b
-// TEST(`whoami`) `date +%Y-%m-%d\ %H:%M` 
-// $0
+`!p snip.rv=get_comment_format()[0]` TEST `!v g:snips_author` `!v strftime('%F %T')`
+`!p snip.rv=get_comment_format()[0]` $0
+endsnippet
+
+snippet datetime "YYYY-MM-DD hh:mm:ss" w
+`!v strftime('%F %T')`
 endsnippet
