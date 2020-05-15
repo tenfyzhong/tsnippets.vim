@@ -99,6 +99,17 @@ for ${1:i} := range ${2:c} {
 }
 endsnippet
 
+snippet fors "For select" b
+for {
+	select {
+	case ${1:c}:
+		$2
+	default:
+		$0
+	}
+}
+endsnippet
+
 snippet ife "if ... else ..." b
 if ${1:condition} {
 	$2
