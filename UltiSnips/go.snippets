@@ -93,6 +93,12 @@ for i:=${1:0}; i<${2:n}; i++ {
 }
 endsnippet
 
+snippet forc "For chan" b
+for ${1:i} := range ${2:c} {
+	$0
+}
+endsnippet
+
 snippet ife "if ... else ..." b
 if ${1:condition} {
 	$2
