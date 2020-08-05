@@ -113,7 +113,7 @@ func ${1:handler}(w http.ResponseWriter, r *http.Request) {
 	${0:${VISUAL}}
 
 	cost := stat.SetAttrDura("${1/\w*/\L$0\E/}.cost.total", begin)
-	stat.SetAttr("${1/\w*/\L$0\E/}.succ")
+	stat.SetAttr("${1/\w*/\L$0\E/}.succ", 1)
 	log.Info("func $1 end, cost: %d", cost)
 }
 endsnippet
@@ -220,6 +220,29 @@ func (${1:receiver} *${2:type}) $4(ctx context.Context, req *${3:package}.${4:Ha
 	return &$3.$4Rsp{}, nil
 }
 endsnippet
+
+snippet methh "HTTP handler" b
+func (${1:receiver} ${2:type}) ${3:handler}(w http.ResponseWriter, r *http.Request) {
+	log.Verbose("func $1.$3 begin")
+	stat.SetAttr("${3/\w*/\L$0\E/}.req", 1)
+	begin := stat.SetAttrDura("", 0)
+
+	err := r.ParseForm()
+	if err != nil {
+		log.Debug("parse from failed, err: %v", err)
+		stat.SetAttr("${3/\w*/\L$0\E/}.err.parse_form", 1)
+		w.WriteHeader(http.StatusBadRequest)
+		return
+	}
+
+	${0:${VISUAL}}
+
+	cost := stat.SetAttrDura("${3/\w*/\L$0\E/}.cost.total", begin)
+	stat.SetAttr("${3/\w*/\L$0\E/}.succ", 1)
+	log.Info("func $1.$3 end, cost: %d", cost)
+}
+endsnippet
+
 
 snippet methhj "HTTP handler, json" b
 func (${1:receiver} ${2:type}) ${3:handler}(w http.ResponseWriter, r *http.Request) {
