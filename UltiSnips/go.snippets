@@ -173,6 +173,10 @@ snippet json "json field" w
 \`json:"${1:`!v substitute(getline('.'), '\W*\(\w*\).*', '\L\1', 'g')`},omitempty"\`$0
 endsnippet
 
+snippet xorm "xorm field" w
+\`xorm:"${1:`!v substitute(getline('.'), '\W*\(\w*\).*', '\L\1', 'g')`}"\`$0
+endsnippet
+
 snippet testing "testing parameter" w
 t *testing.T
 endsnippet
@@ -344,10 +348,10 @@ ${1:db}, err := gorm.Open(${2:"mysql"}, ${3:uri})
 if err != nil {
 	${4}
 }
-db.DB().SetMaxIdleConns(${5:3})
-db.DB().SetMaxOpenConns(${6:10})
-db.DB().SetConnMaxLifetime(${7:3000} * time.Millisecond)
-db.LogMode(false)
+$1.DB().SetMaxIdleConns(${5:3})
+$1.DB().SetMaxOpenConns(${6:10})
+$1.DB().SetConnMaxLifetime(${7:3000} * time.Millisecond)
+$1.LogMode(false)
 endsnippet
 
 snippet gormtx "gorm transaction" b
@@ -361,6 +365,18 @@ if c.Error != nil {
 } else {
 	c.Commit()
 }
+endsnippet
+
+############################## xorm ##############################
+snippet xormne "xorn.NewEngine" b
+${1:engine}, err := xorm.NewEngine(${2:"mysql"}, ${3:uri})
+if err != nil {
+	${4}
+}
+$1.DB().SetMaxIdleConns(${5:3})
+$1.DB().SetMaxOpenConns(${6:10})
+$1.DB().SetConnMaxLifetime(${7:3000} * time.Millisecond)
+engine.SetLogLevel(${8:log.LOG_INFO})
 endsnippet
 
 ############################## http ##############################
