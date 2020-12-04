@@ -57,7 +57,7 @@ do
 	esac
 done
 
-remaining=$@
+args=$@
 endsnippet
 
 snippet getopts "getopts from argument"
@@ -86,7 +86,7 @@ do
 done
 
 # remove parsed arguments
-shift $(($OPTIND - 1))
+shift $((OPTIND - 1))
 
-remaining=$@
+args=$@
 endsnippet
