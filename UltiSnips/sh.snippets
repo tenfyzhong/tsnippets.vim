@@ -25,7 +25,7 @@ do
 		shift
 		;;
 	-${6:b}|--${7:blong})
-		b=\$2
+		B=\$2
 		${8:echo "Option b, argument \$2"}
 		shift 2
 		;;
@@ -35,7 +35,7 @@ do
 			${11:echo "Option c, no argument"}
 			;;
 		*)
-			c=\$2
+			C=\$2
 			${12:echo "Option c, argument \$2"}
 			;;
 		esac
@@ -57,7 +57,7 @@ do
 	esac
 done
 
-args=$@
+ARGS=$@
 endsnippet
 
 snippet getopts "getopts from argument"
@@ -73,7 +73,7 @@ while getopts "${1::a:bh}" opt
 do
 	case \$opt in
 	a)
-		a=\$OPTARG
+		A=\$OPTARG
 		echo "option a=\${a}"
 		;;
 	b)
@@ -89,5 +89,5 @@ done
 # remove parsed arguments
 shift $((OPTIND - 1))
 
-args=$@
+ARGS=$@
 endsnippet
