@@ -6,6 +6,7 @@ usage() {
 	echo "-a, --along				option a"
 	echo "-b bvalue, --blong=bvalue	option b"
 	echo "-ccvalue, --clong=cvalue	option c"
+	echo "-h, --help				help"
 }
 # `:` indicate it has a required arguent, `::` # inidcate it has an optinal argument
 # -o, --options shortopts
@@ -63,8 +64,9 @@ endsnippet
 snippet getopts "getopts from argument"
 usage() {
 	echo "Usage: \$0 [OPTION]..."
-	echo "-a, --along				option a"
+	echo "-a, --along               option a"
 	echo "-b bvalue, --blong=bvalue	option b"
+	echo "-h                        help"
 }
 
 # `:` before the option indicate ingore error
