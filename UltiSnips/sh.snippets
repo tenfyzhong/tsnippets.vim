@@ -1,6 +1,6 @@
 priority 10
 
-snippet getopt "getopt from argument"
+snippet getopt "getopt from argument" b
 usage() {
 	echo "Usage: \$0 [OPTION]..."
 	echo "-a, --along				option a"
@@ -60,7 +60,7 @@ done
 
 endsnippet
 
-snippet getopts "getopts from argument"
+snippet getopts "getopts from argument" b
 usage() {
 	echo "Usage: \$0 [OPTION]..."
 	echo "-a, --along               option a"
@@ -90,4 +90,23 @@ done
 # remove parsed arguments
 shift $((OPTIND - 1))
 
+endsnippet
+
+snippet map "declare a hashmap" b
+declare -A ${1:hashmap}
+$1['hello']='world'
+endsnippet
+
+snippet formapk "map for key" b
+for ${2:key} in "\${!${1:hashmap}[@]}"
+do
+	echo ${3:\${$1[\$$2]}}
+done
+endsnippet
+
+snippet formapv "map for value" b
+for ${2:value} in "\${${1:hashmap}[@]}"
+do
+	echo \$$2
+done
 endsnippet
