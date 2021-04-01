@@ -385,8 +385,11 @@ ${1:httpClient} := &http.Client{
 	Transport: &http.Transport{
 		MaxIdleConnsPerHost: ${2:100},
 		MaxIdleConns: ${3:10},
+		TLSClientConfig: &tls.Config{
+			InsecureSkipVerify: ${4:true},
+		},
 	},
-	Timeout: time.Duration(${4:1000}) * time.Millisecond,
+	Timeout: time.Duration(${5:1000}) * time.Millisecond,
 }
 endsnippet
 
