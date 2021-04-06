@@ -1,6 +1,15 @@
 # Snippets for Go 
 priority 10
 
+global !p
+import re
+def go_field():
+	content = vim.current.line
+	pattern = re.compile(r'^\s*([a-zA-Z_][a-zA-Z_0-9]*).*$')
+	match = pattern.match(content)
+	return '' if match is None else match.group(1)
+endglobal
+
 snippet : "name := value" b
 ${1:name} := ${2:value}
 endsnippet
@@ -150,31 +159,31 @@ endsnippet
 
 # field
 snippet bson "BSON field" w
-\`bson:"${1:`!v substitute(getline('.'), '\W*\(\w*\).*', '\L\1', 'g')`}"\`$0
+\`bson:"${1:`!p snip.rv = go_field()`}"\`$0
 endsnippet
 
 snippet xml "XML field" w
-\`xml:"${1:`!v substitute(getline('.'), '\W*\(\w*\).*', '\L\1', 'g')`}"\`$0
+\`xml:"${1:`!p snip.rv = go_field()`}"\`$0
 endsnippet
 
 snippet yaml "YAML field" w
-\`yaml:"${1:`!v substitute(getline('.'), '\W*\(\w*\).*', '\L\1', 'g')`}"\`$0
+\`yaml:"${1:`!p snip.rv = go_field()`}"\`$0
 endsnippet
 
 snippet cql "CQL field" w
-\`cql:"${1:`!v substitute(getline('.'), '\W*\(\w*\).*', '\L\1', 'g')`}"\`$0
+\`cql:"${1:`!p snip.rv = go_field()`}"\`$0
 endsnippet
 
 snippet env "env field" w
-\`env:"${1:`!v substitute(getline('.'), '\W*\(\w*\).*', '\L\1', 'g')`}"\`$0
+\`env:"${1:`!p snip.rv = go_field()`}"\`$0
 endsnippet
 
 snippet json "json field" w
-\`json:"${1:`!v substitute(getline('.'), '\W*\(\w*\).*', '\L\1', 'g')`},omitempty"\`$0
+\`json:"${1:`!p snip.rv = go_field()`}${2:,omitempty}"\`$0
 endsnippet
 
 snippet xorm "xorm field" w
-\`xorm:"${1:`!v substitute(getline('.'), '\W*\(\w*\).*', '\L\1', 'g')`}"\`$0
+\`xorm:"${1:`!p snip.rv = go_field()`}"\`$0
 endsnippet
 
 snippet testing "testing parameter" w
