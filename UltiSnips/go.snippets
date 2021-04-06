@@ -463,15 +463,19 @@ if err != nil {
 }
 defer resp.Body.Close()
 
-body, err := ioutil.ReadAll(resp.Body)
-if err != nil {
-	${6:return err}
+if resp.Body.StatusCode != http.StatusOK {
+	${6:return fmt.Errorf("status code: %d", resp.StatusCode)}
 }
 
-${7:rsp} := ${8:&Response{}}
+body, err := ioutil.ReadAll(resp.Body)
+if err != nil {
+	${7:return err}
+}
+
+${8:rsp} := ${9:&Response{}}
 err = json.Unmarshal(body, rsp)
 if err != nil {
-	${9:return err}
+	${10:return err}
 }
 endsnippet
 
@@ -485,15 +489,19 @@ if err != nil {
 }
 defer resp.Body.Close()
 
-body, err := ioutil.ReadAll(resp.Body)
-if err != nil {
-	${6:return err}
+if resp.Body.StatusCode != http.StatusOK {
+	${6:return fmt.Errorf("status code: %d", resp.StatusCode)}
 }
 
-${7:rsp} := ${8:&Response{}}
+body, err := ioutil.ReadAll(resp.Body)
+if err != nil {
+	${7:return err}
+}
+
+${8:rsp} := ${9:&Response{}}
 err = json.Unmarshal(body, rsp)
 if err != nil {
-	${9:return err}
+	${10:return err}
 }
 endsnippet
 
