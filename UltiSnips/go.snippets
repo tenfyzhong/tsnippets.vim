@@ -238,6 +238,25 @@ httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request)
 }))
 endsnippet
 
+snippet gmtc "gomock test case"
+{
+	name: "${1:test name}",
+	init: func(ctrl *gomock.Controller) ${2:Receiver} {
+		$3
+	},
+	args: func(t *gomock.Controller) args{
+		return args{
+			$4
+		}
+	},
+	want1: ${5:want1},
+	wantErr: ${6:true},
+	inspectErr: func(err error, t *testing.T) {
+		$7
+	},
+}, // $1
+endsnippet
+
 ############################## assert ##############################
 snippet asseq "assert.Equal" b
 assert.Equal(t, ${1:excepted}, ${2:actual}, "$2 == $1")
