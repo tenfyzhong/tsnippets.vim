@@ -1,0 +1,60 @@
+priority 10
+
+
+snippet /case|sw(itch)?/ "case .. (case)" rb
+case ${1:word} {
+	(${2:pattern})
+	${0:${VISUAL}}
+    ;;
+}
+endsnippet
+
+snippet if "if ... (if)" b
+if ${2:[[ ${1:condition} ]]} {
+	${0:${VISUAL}}
+}
+endsnippet
+
+snippet elif "elif .. (elif)" w
+elif ${2:[[ ${1:condition} ]]} {
+	${0:${VISUAL}}
+}
+endsnippet
+
+snippet for "for ... (for)" b
+for (( i = 0; i < ${1:10}; i++ )) {
+	${0:${VISUAL}}
+}
+endsnippet
+
+snippet forin "for ... (...)  (forin)" b
+for ${1:i} (${2:words}) {
+	${0:${VISUAL}}
+}
+endsnippet
+
+snippet until "until ... (done)" b
+until ${2:[[ ${1:condition} ]]} {
+	${0:${VISUAL}}
+}
+endsnippet
+
+snippet /wh(ile)?/ "while ... (done)" rb
+while ${2:[[ ${1:condition} ]]} {
+	${0:${VISUAL}}
+}
+endsnippet
+
+snippet repeat "repeat ... (repeat)" b
+repeat ${1:n} {
+    ${0:${VISUAL}}
+}
+endsnippet
+
+snippet select "select ... (...) (select)" b
+select ${1:n} (${2:items}) {
+    ${0:${VISUAL}}
+}
+endsnippet
+
+# vim:ft=snippets:
