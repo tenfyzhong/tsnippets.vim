@@ -108,3 +108,11 @@ if ($cors = 'allow') {
 	add_header 'Access-Control-Allow-Origin' $http_origin;
 }
 endsnippet
+
+snippet 301 "permanent"
+rewrite ^/(.*) http://${1:hostname}/\$1 permanent;
+endsnippet
+
+snippet 302 "redirect"
+rewrite ^/(.*) http://${1:hostname}/\$1 redirect;
+endsnippet
