@@ -3,11 +3,24 @@ priority 10
 
 global !p
 import re
-def go_field():
+def camel_to_snake(string):
+    string = re.sub('(.)([A-Z][a-z]+)', r'\1_\2', string)
+    string = re.sub('(.)([0-9]+)', r'\1_\2', string)
+    return re.sub('([a-z0-9])([A-Z])', r'\1_\2', string).lower()
+
+def go_field(mode=''):
 	content = vim.current.line
 	pattern = re.compile(r'^\s*([a-zA-Z_][a-zA-Z_0-9]*).*$')
 	match = pattern.match(content)
-	return '' if match is None else match.group(1)
+	if match is None:
+		return ''
+	result = match.group(1)
+	if mode == 'c':
+		return result[0:1].lower() + result[1:]
+	elif mode == 's':
+		return camel_to_snake(result)
+	else:
+		return result
 endglobal
 
 snippet : "name := value" b
@@ -162,28 +175,84 @@ snippet bson "BSON field" w
 \`bson:"${1:`!p snip.rv = go_field()`}"\`$0
 endsnippet
 
+snippet bsonc "BSON field, camel mode" w
+\`bson:"${1:`!p snip.rv = go_field('c')`}"\`$0
+endsnippet
+
+snippet bsons "BSON field, snake mode" w
+\`bson:"${1:`!p snip.rv = go_field('s')`}"\`$0
+endsnippet
+
 snippet xml "XML field" w
 \`xml:"${1:`!p snip.rv = go_field()`}"\`$0
+endsnippet
+
+snippet xmlc "XML field, camel mode" w
+\`xml:"${1:`!p snip.rv = go_field('c')`}"\`$0
+endsnippet
+
+snippet xmls "XML field, snake mode" w
+\`xml:"${1:`!p snip.rv = go_field('s')`}"\`$0
 endsnippet
 
 snippet yaml "YAML field" w
 \`yaml:"${1:`!p snip.rv = go_field()`}"\`$0
 endsnippet
 
+snippet yamlc "YAML field, camel mode" w
+\`yaml:"${1:`!p snip.rv = go_field('c')`}"\`$0
+endsnippet
+
+snippet yamls "YAML field, snake mode" w
+\`yaml:"${1:`!p snip.rv = go_field('s')`}"\`$0
+endsnippet
+
 snippet cql "CQL field" w
 \`cql:"${1:`!p snip.rv = go_field()`}"\`$0
+endsnippet
+
+snippet cqlc "CQL field, camel mode" w
+\`cql:"${1:`!p snip.rv = go_field('c')`}"\`$0
+endsnippet
+
+snippet cqls "CQL field, snake mode" w
+\`cql:"${1:`!p snip.rv = go_field('s')`}"\`$0
 endsnippet
 
 snippet env "env field" w
 \`env:"${1:`!p snip.rv = go_field()`}"\`$0
 endsnippet
 
+snippet envc "env field, camel mode" w
+\`env:"${1:`!p snip.rv = go_field('c')`}"\`$0
+endsnippet
+
+snippet envs "env field, snake mode" w
+\`env:"${1:`!p snip.rv = go_field('s')`}"\`$0
+endsnippet
+
 snippet json "json field" w
 \`json:"${1:`!p snip.rv = go_field()`}${2:,omitempty}"\`$0
 endsnippet
 
+snippet jsonc "json field, camel mode" w
+\`json:"${1:`!p snip.rv = go_field('c')`}${2:,omitempty}"\`$0
+endsnippet
+
+snippet jsons "json field, snake mode" w
+\`json:"${1:`!p snip.rv = go_field('s')`}${2:,omitempty}"\`$0
+endsnippet
+
 snippet xorm "xorm field" w
 \`xorm:"${1:`!p snip.rv = go_field()`}"\`$0
+endsnippet
+
+snippet xormc "xorm field, camel mode" w
+\`xorm:"${1:`!p snip.rv = go_field('c')`}"\`$0
+endsnippet
+
+snippet xorms "xorm field, snake mode" w
+\`xorm:"${1:`!p snip.rv = go_field('s')`}"\`$0
 endsnippet
 
 snippet testing "testing parameter" w
