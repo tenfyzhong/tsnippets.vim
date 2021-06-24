@@ -243,6 +243,18 @@ snippet jsons "json field, snake mode" w
 \`json:"${1:`!p snip.rv = go_field('s')`}${2:,omitempty}"\`$0
 endsnippet
 
+snippet gorm "gorm field" w
+\`gorm:"column:${1:`!p snip.rv = go_field()`}" json:"$1"\`$0
+endsnippet
+
+snippet gormc "gorm field, camel mode" w
+\`gorm:"column:${1:`!p snip.rv = go_field('c')`}" json:"$1"\`$0
+endsnippet
+
+snippet gorms "gorm field, snake mode" w
+\`gorm:"column:${1:`!p snip.rv = go_field('s')`}" json:"$1"\`$0
+endsnippet
+
 snippet xorm "xorm field" w
 \`xorm:"${1:`!p snip.rv = go_field()`}"\`$0
 endsnippet
