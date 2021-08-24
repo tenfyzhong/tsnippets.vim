@@ -586,3 +586,9 @@ if err != nil {
 }
 endsnippet
 
+snippet mysqlerr "check mysql error" b
+var ${1:mysqlErr} *mysql.MySQLError
+if errors.As(${2:err}, &$1) && $1.Number == ${3:1062} {
+	$0
+}
+endsnippet
