@@ -752,10 +752,10 @@ snippet "if\s+(\S+)(!=)nil" "expand not nil" br
 `!p snip.rv = expand_not_nil(match.group(1), match.group(2), ' && ')`
 endsnippet
 
-snippet "(\S+)(==)nil" "expand not nil" br
+snippet "(\S+)(==)nil" "expand is nil" br
 `!p snip.rv = expand_not_nil(match.group(1), match.group(2), ' || ')`
 endsnippet
 
-snippet "if\s+(\S+)(==)nil" "expand not nil" br
+snippet "if\s+(\S+)(==)nil" "expand is nil" br
 `!p snip.rv = expand_not_nil(match.group(1), match.group(2), ' || ')`
 endsnippet
