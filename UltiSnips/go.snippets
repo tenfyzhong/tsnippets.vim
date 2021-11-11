@@ -3,6 +3,18 @@ priority 10
 
 global !p
 import re
+def expand_not_nil(string, equal, symbol):
+	items = string.split('.')
+	res = []
+	for l in range(len(items)):
+		res.append('.'.join(items[0:l+1]))
+
+	indent = int(vim.Function('indent')(vim.Function('line')('.')))
+	tabstop = int(vim.eval("&tabstop"))
+	res = [item + ' ' + equal + ' nil' for item in res]
+	tabnum = int(indent/tabstop)
+	return 'if ' + symbol.join(res) + ' {\n' +  (tabnum * "\t") + '}'
+
 def camel_to_snake(string):
     string = re.sub('(.)([A-Z][a-z]+)', r'\1_\2', string)
     string = re.sub('(.)([0-9]+)', r'\1_\2', string)
@@ -591,4 +603,20 @@ var ${1:mysqlErr} *mysql.MySQLError
 if errors.As(${2:err}, &$1) && $1.Number == ${3:1062} {
 	$0
 }
+endsnippet
+
+snippet "(\S+)(!=)nil" "expand not nil" br
+`!p snip.rv = expand_not_nil(match.group(1), match.group(2), ' && ')`
+endsnippet
+
+snippet "if\s+(\S+)(!=)nil" "expand not nil" br
+`!p snip.rv = expand_not_nil(match.group(1), match.group(2), ' && ')`
+endsnippet
+
+snippet "(\S+)(==)nil" "expand not nil" br
+`!p snip.rv = expand_not_nil(match.group(1), match.group(2), ' || ')`
+endsnippet
+
+snippet "if\s+(\S+)(==)nil" "expand not nil" br
+`!p snip.rv = expand_not_nil(match.group(1), match.group(2), ' || ')`
 endsnippet
