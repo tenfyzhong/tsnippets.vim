@@ -297,7 +297,146 @@ if err != nil {
 	$0
 }
 endsnippet
+############################## log ##############################
+snippet frtf "logrus.WithFields.Tracef" b
+logrus.WithFields(logrus.Fields{
+	$0
+}).Tracef("$1", $2)
+endsnippet
 
+snippet frdf "logrus.WithFields.Debugf" b
+logrus.WithFields(logrus.Fields{
+	$0
+}).Debugf("$1", $2)
+endsnippet
+
+snippet frif "logrus.WithFields.Infof" b
+logrus.WithFields(logrus.Fields{
+	$0
+}).Infof("$1", $2)
+endsnippet
+
+snippet frwf "logrus.WithFields.Warnf" b
+logrus.WithFields(logrus.Fields{
+	$0
+}).Warnf("$1", $2)
+endsnippet
+
+snippet fref "logrus.WithFields.Errorf" b
+logrus.WithFields(logrus.Fields{
+	$0
+}).Errorf("$1", $2)
+endsnippet
+
+snippet frff "logrus.WithFields.Fatalf" b
+logrus.WithFields(logrus.Fields{
+	$0
+}).Fatalf("$1", $2)
+endsnippet
+
+snippet frpf "logrus.WithFields.Panicf" b
+logrus.WithFields(logrus.Fields{
+	$0
+}).Panicf("$1", $2)
+endsnippet
+
+snippet frt "logrus.WithFields.Trace" b
+logrus.WithFields(logrus.Fields{
+	$0
+}).Trace($1)
+endsnippet
+
+snippet frd "logrus.WithFields.Debug" b
+logrus.WithFields(logrus.Fields{
+	$0
+}).Debug($1)
+endsnippet
+
+snippet fri "logrus.WithFields.Info" b
+logrus.WithFields(logrus.Fields{
+	$0
+}).Info($1)
+endsnippet
+
+snippet frw "logrus.WithFields.Warn" b
+logrus.WithFields(logrus.Fields{
+	$0
+}).Warn($1)
+endsnippet
+
+snippet fre "logrus.WithFields.Error" b
+logrus.WithFields(logrus.Fields{
+	$0
+}).Error($1)
+endsnippet
+
+snippet frf "logrus.WithFields.Fatal" b
+logrus.WithFields(logrus.Fields{
+	$0
+}).Fatal($1)
+endsnippet
+
+snippet frp "logrus.WithFields.Panic" b
+logrus.WithFields(logrus.Fields{
+	$0
+}).Panic($1)
+endsnippet
+
+snippet lrtf "logrus.Tracef" b
+logrus.Tracef("$1", $2)$0
+endsnippet
+
+snippet lrdf "logrus.Debugf" b
+logrus.Debugf("$1", $2)$0
+endsnippet
+
+snippet lrif "logrus.Infof" b
+logrus.Infof("$1", $2)$0
+endsnippet
+
+snippet lrwf "logrus.Warnf" b
+logrus.Warnf("$1", $2)$0
+endsnippet
+
+snippet lref "logrus.Errorf" b
+logrus.Errorf("$1", $2)$0
+endsnippet
+
+snippet lrff "logrus.Fatalf" b
+logrus.Fatalf("$1", $2)$0
+endsnippet
+
+snippet lrpf "logrus.Panicf" b
+logrus.Panicf("$1", $2)$0
+endsnippet
+
+snippet lrt "logrus.Trace" b
+logrus.Trace($1)$0
+endsnippet
+
+snippet lrd "logrus.Debug" b
+logrus.Debug($1)$0
+endsnippet
+
+snippet lri "logrus.Info" b
+logrus.Info($1)$0
+endsnippet
+
+snippet lrw "logrus.Warn" b
+logrus.Warn($1)$0
+endsnippet
+
+snippet lre "logrus.Error" b
+logrus.Error($1)$0
+endsnippet
+
+snippet lrf "logrus.Fatal" b
+logrus.Fatal($1)$0
+endsnippet
+
+snippet lrp "logrus.Panic" b
+logrus.Panic($1)$0
+endsnippet
 ############################## fmt ##############################
 snippet fsf "fmt.Sprintf" w
 fmt.Sprintf("$1", $2)
