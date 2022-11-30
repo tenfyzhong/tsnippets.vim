@@ -1,0 +1,142 @@
+# Snippets for d2
+priority 10
+
+snippet shape "shape of the key" w
+shape: ${1:rectangle}
+endsnippet
+
+snippet exp "explanation text or code" w
+explanation: |${1:md}
+  $2
+| ${3:{
+  near: $4
+}}
+endsnippet
+
+snippet icon "icon with url" w
+icon: ${1:https://icons.terrastruct.com/infra/019-network.svg}
+endsnippet
+
+snippet img "image" b
+${1:key}: {
+  shape: image
+  icon: ${2:https://icons.terrastruct.com/dev/github.svg}
+}
+endsnippet
+
+snippet sql "sql_table" b
+${1:table}: {
+  shape: sql_table
+  id: int {constraint: primary_key}
+  $0
+}
+endsnippet
+
+snippet pk "primary_key for a table constraint" w
+{constraint: primary_key}
+endsnippet
+
+snippet fk "foreign_key for a table constraint" w
+{constraint: foreign_key}
+endsnippet
+
+snippet unq "unique for a table constraint" w
+{constraint: unique}
+endsnippet
+
+snippet class "class" b
+${1:Class}: {
+  shape: class
+  field: "string"
+  method(a int): int
+}
+endsnippet
+
+snippet sprectangle "rectangle矩形" w
+rectangle
+endsnippet
+
+snippet spsquare "square正方形" w
+square
+endsnippet
+
+snippet sppage "page页" w
+page
+endsnippet
+
+snippet spparallelogram "parallelogram平行四边形" w
+parallelogram
+endsnippet
+
+snippet spdocument "document文档" w
+document
+endsnippet
+
+snippet spcylinder "cylinder圆柱体" w
+cylinder
+endsnippet
+
+snippet spqueue "queue队列" w
+queue
+endsnippet
+
+snippet sppackage "package包" w
+package
+endsnippet
+
+snippet spstep "step台阶" w
+step
+endsnippet
+
+snippet spcallout "callout对话框" w
+callout
+endsnippet
+
+snippet spstored_data "stored_data存储" w
+stored_data
+endsnippet
+
+snippet spperson "person人物" w
+person
+endsnippet
+
+snippet spdiamond "diamond菱形" w
+diamond
+endsnippet
+
+snippet spoval "oval椭圆形" w
+oval
+endsnippet
+
+snippet spcircle "circle圆形" w
+circle
+endsnippet
+
+snippet sphexagon "hexagon六边形" w
+hexagon
+endsnippet
+
+snippet spcloud "cloud云" w
+cloud
+endsnippet
+
+snippet sptext "text文档" w
+text
+endsnippet
+
+snippet spcode "code代码" w
+code
+endsnippet
+
+snippet spclass "class类" w
+class
+endsnippet
+
+snippet spsql_table "sql_table数据库表" w
+sql_table
+endsnippet
+
+snippet spimage "image图片" w
+image
+endsnippet
+
