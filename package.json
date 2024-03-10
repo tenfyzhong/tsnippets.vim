@@ -1,0 +1,29 @@
+{
+    "name": "tsnippets",
+    "engines": {
+        "vscode": "^1.11.0"
+    },
+    "contributes": {
+        "snippets": [
+            {
+                "language": [
+                    "global",
+                    "all"
+                ],
+                "path": "./snippets/global.json"
+            },
+            {
+                "language": [
+                    "fish"
+                ],
+                "path": "./snippets/fish.json"
+            },
+            {
+                "language": [
+                    "json"
+                ],
+                "path": "./snippets/json.json"
+            }
+        ]
+    }
+}
