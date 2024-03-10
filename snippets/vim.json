@@ -1,0 +1,49 @@
+{
+    "if": {
+        "prefix": "if",
+        "body": [
+            "if ${1:expr1}",
+            "\t$0",
+            "endif"
+        ],
+        "description": "if statement"
+    },
+    "ife": {
+        "prefix": "ife",
+        "body": [
+            "if ${1:expr1}",
+            "\t$2",
+            "else",
+            "\t$0",
+            "endif"
+        ],
+        "description": "if statement"
+    },
+    "for": {
+        "prefix": "for",
+        "body": [
+            "for ${1:var} in ${2:object}",
+            "\t$0",
+            "endfor"
+        ],
+        "description": "for statement"
+    },
+    "while": {
+        "prefix": "while",
+        "body": [
+            "while ${1:expr1} ",
+            "\t$0",
+            "endwhile"
+        ],
+        "description": "while statement"
+    },
+    "try": {
+        "prefix": "try",
+        "body": [
+            "try ",
+            "\t$0",
+            "endtry"
+        ],
+        "description": "try statement"
+    }
+}

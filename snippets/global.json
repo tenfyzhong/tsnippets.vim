@@ -1,1 +1,56 @@
-{}
+{
+    "INFO": {
+        "prefix": "INFO",
+        "body": [
+            "`!p snip.rv=get_comment_format()[0]` INFO `!v g:snips_author` `!v strftime('%F %T')`",
+            "`!p snip.rv=get_comment_format()[0]` $0"
+        ],
+        "description": "comment info"
+    },
+    "TODO": {
+        "prefix": "TODO",
+        "body": [
+            "`!p snip.rv=get_comment_format()[0]` TODO `!v g:snips_author` `!v strftime('%F %T')`",
+            "`!p snip.rv=get_comment_format()[0]` $0"
+        ],
+        "description": "comment todo"
+    },
+    "BUG": {
+        "prefix": "BUG",
+        "body": [
+            "`!p snip.rv=get_comment_format()[0]` BUG `!v g:snips_author` `!v strftime('%F %T')`",
+            "`!p snip.rv=get_comment_format()[0]` $0"
+        ],
+        "description": "comment bug"
+    },
+    "ERROR": {
+        "prefix": "ERROR",
+        "body": [
+            "`!p snip.rv=get_comment_format()[0]` ERROR `!v g:snips_author` `!v strftime('%F %T')`",
+            "`!p snip.rv=get_comment_format()[0]` $0"
+        ],
+        "description": "comment error"
+    },
+    "TEST": {
+        "prefix": "TEST",
+        "body": [
+            "`!p snip.rv=get_comment_format()[0]` TEST `!v g:snips_author` `!v strftime('%F %T')`",
+            "`!p snip.rv=get_comment_format()[0]` $0"
+        ],
+        "description": "comment test"
+    },
+    "datetime": {
+        "prefix": "datetime",
+        "body": [
+            "`!v strftime('%F %T')`"
+        ],
+        "description": "YYYY-MM-DD hh:mm:ss"
+    },
+    "timestamp": {
+        "prefix": "timestamp",
+        "body": [
+            "`!v localtime()`"
+        ],
+        "description": "Unix timestamp from 1970-01-01"
+    }
+}

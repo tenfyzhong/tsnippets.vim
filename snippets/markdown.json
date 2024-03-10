@@ -1,0 +1,73 @@
+{
+    "sec": {
+        "prefix": "sec",
+        "body": [
+            "# ${1:Section Name}",
+            "$0"
+        ],
+        "description": "Section"
+    },
+    "ssec": {
+        "prefix": "ssec",
+        "body": [
+            "## ${1:Section Name}",
+            "$0"
+        ],
+        "description": "Sub Section"
+    },
+    "sssec": {
+        "prefix": "sssec",
+        "body": [
+            "### ${1:Section Name}",
+            "$0"
+        ],
+        "description": "SubSub Section"
+    },
+    "par": {
+        "prefix": "par",
+        "body": [
+            "#### ${1:Paragraph Name}",
+            "$0"
+        ],
+        "description": "Paragraph"
+    },
+    "spar": {
+        "prefix": "spar",
+        "body": [
+            "##### ${1:Paragraph Name}",
+            "$0"
+        ],
+        "description": "Paragraph"
+    },
+    "link": {
+        "prefix": "link",
+        "body": [
+            "[${1:${VISUAL:Text}}](${2:https}://${3:www.url.com}})$0"
+        ],
+        "description": "Link to something"
+    },
+    "~~": {
+        "prefix": "~~",
+        "body": [
+            "~~${1:${VISUAL}}~~$0"
+        ],
+        "description": "deleted"
+    },
+    "cbl": {
+        "prefix": "cbl",
+        "body": [
+            "\\`\\`\\`${1:filetype}",
+            "$2",
+            "\\`\\`\\`",
+            "$0"
+        ],
+        "description": "Codeblock"
+    },
+    "MORE": {
+        "prefix": "MORE",
+        "body": [
+            "<!-- more -->"
+        ],
+        "description": "comment more"
+    }
+}

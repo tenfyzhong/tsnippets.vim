@@ -14,15 +14,81 @@
             },
             {
                 "language": [
+                    "d2"
+                ],
+                "path": "./snippets/d2.json"
+            },
+            {
+                "language": [
+                    "docker-compose"
+                ],
+                "path": "./snippets/docker-compose.json"
+            },
+            {
+                "language": [
+                    "dockerfile"
+                ],
+                "path": "./snippets/dockerfile.json"
+            },
+            {
+                "language": [
+                    "ejs"
+                ],
+                "path": "./snippets/ejs.json"
+            },
+            {
+                "language": [
                     "fish"
                 ],
                 "path": "./snippets/fish.json"
             },
             {
                 "language": [
+                    "go"
+                ],
+                "path": "./snippets/go.json"
+            },
+            {
+                "language": [
                     "json"
                 ],
                 "path": "./snippets/json.json"
+            },
+            {
+                "language": [
+                    "markdown"
+                ],
+                "path": "./snippets/markdown.json"
+            },
+            {
+                "language": [
+                    "nginx"
+                ],
+                "path": "./snippets/nginx.json"
+            },
+            {
+                "language": [
+                    "proto"
+                ],
+                "path": "./snippets/proto.json"
+            },
+            {
+                "language": [
+                    "sh"
+                ],
+                "path": "./snippets/sh.json"
+            },
+            {
+                "language": [
+                    "vim"
+                ],
+                "path": "./snippets/vim.json"
+            },
+            {
+                "language": [
+                    "zsh"
+                ],
+                "path": "./snippets/zsh.json"
             }
         ]
     }
