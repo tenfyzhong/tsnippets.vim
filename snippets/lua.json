@@ -1,0 +1,17 @@
+{
+    "vim plugin": {
+        "prefix": "vimp",
+        "body": [
+            "local ${1:name} = {",
+            "    '${2:url}',",
+            "    config = function()",
+            "        $0",
+            "    end,",
+            "    event = 'VeryLazy',",
+            "}",
+            "",
+            "return { $1 }"
+        ],
+        "description": "vim plugin"
+    }
+}
