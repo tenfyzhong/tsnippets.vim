@@ -756,5 +756,194 @@
             "}"
         ],
         "description": "check mysql error"
+    },
+    "json filed tag in raw format": {
+        "prefix": "json",
+        "body": [
+            "`json:\"${VIM:luaeval('require(\"tsnippets.go\").field()')}\"`"
+        ],
+        "description": "json field tag in snake format"
+    },
+    "json filed tag in snake format": {
+        "prefix": "jsons",
+        "body": [
+            "`json:\"${VIM:luaeval('require(\"tsnippets.go\").field_snake()')}\"`"
+        ],
+        "description": "json field tag in snake format"
+    },
+    "json filed tag in camel format": {
+        "prefix": "jsonc",
+        "body": [
+            "`json:\"${VIM:luaeval('require(\"tsnippets.go\").field_camel()')}\"`"
+        ],
+        "description": "json field tag in snake format"
+    },
+    "bson filed tag in raw format": {
+        "prefix": "bson",
+        "body": [
+            "`bson:\"${VIM:luaeval('require(\"tsnippets.go\").field()')}\"`"
+        ],
+        "description": "bson field tag in snake format"
+    },
+    "bson filed tag in snake format": {
+        "prefix": "bsons",
+        "body": [
+            "`bson:\"${VIM:luaeval('require(\"tsnippets.go\").field_snake()')}\"`"
+        ],
+        "description": "bson field tag in snake format"
+    },
+    "bson filed tag in camel format": {
+        "prefix": "bsonc",
+        "body": [
+            "`bson:\"${VIM:luaeval('require(\"tsnippets.go\").field_camel()')}\"`"
+        ],
+        "description": "bson field tag in snake format"
+    },
+    "xml filed tag in raw format": {
+        "prefix": "xml",
+        "body": [
+            "`xml:\"${VIM:luaeval('require(\"tsnippets.go\").field()')}\"`"
+        ],
+        "description": "xml field tag in snake format"
+    },
+    "xml filed tag in snake format": {
+        "prefix": "xmls",
+        "body": [
+            "`xml:\"${VIM:luaeval('require(\"tsnippets.go\").field_snake()')}\"`"
+        ],
+        "description": "xml field tag in snake format"
+    },
+    "xml filed tag in camel format": {
+        "prefix": "xmlc",
+        "body": [
+            "`xml:\"${VIM:luaeval('require(\"tsnippets.go\").field_camel()')}\"`"
+        ],
+        "description": "xml field tag in snake format"
+    },
+    "yaml filed tag in raw format": {
+        "prefix": "yaml",
+        "body": [
+            "`yaml:\"${VIM:luaeval('require(\"tsnippets.go\").field()')}\"`"
+        ],
+        "description": "yaml field tag in snake format"
+    },
+    "yaml filed tag in snake format": {
+        "prefix": "yamls",
+        "body": [
+            "`yaml:\"${VIM:luaeval('require(\"tsnippets.go\").field_snake()')}\"`"
+        ],
+        "description": "yaml field tag in snake format"
+    },
+    "yaml filed tag in camel format": {
+        "prefix": "yamlc",
+        "body": [
+            "`yaml:\"${VIM:luaeval('require(\"tsnippets.go\").field_camel()')}\"`"
+        ],
+        "description": "yaml field tag in snake format"
+    },
+    "cql filed tag in raw format": {
+        "prefix": "cql",
+        "body": [
+            "`cql:\"${VIM:luaeval('require(\"tsnippets.go\").field()')}\"`"
+        ],
+        "description": "cql field tag in snake format"
+    },
+    "cql filed tag in snake format": {
+        "prefix": "cqls",
+        "body": [
+            "`cql:\"${VIM:luaeval('require(\"tsnippets.go\").field_snake()')}\"`"
+        ],
+        "description": "cql field tag in snake format"
+    },
+    "cql filed tag in camel format": {
+        "prefix": "cqlc",
+        "body": [
+            "`cql:\"${VIM:luaeval('require(\"tsnippets.go\").field_camel()')}\"`"
+        ],
+        "description": "cql field tag in snake format"
+    },
+    "env filed tag in raw format": {
+        "prefix": "env",
+        "body": [
+            "`env:\"${VIM:luaeval('require(\"tsnippets.go\").field()')}\"`"
+        ],
+        "description": "env field tag in snake format"
+    },
+    "env filed tag in snake format": {
+        "prefix": "envs",
+        "body": [
+            "`env:\"${VIM:luaeval('require(\"tsnippets.go\").field_snake()')}\"`"
+        ],
+        "description": "env field tag in snake format"
+    },
+    "env filed tag in camel format": {
+        "prefix": "envc",
+        "body": [
+            "`env:\"${VIM:luaeval('require(\"tsnippets.go\").field_camel()')}\"`"
+        ],
+        "description": "env field tag in snake format"
+    },
+    "csv filed tag in raw format": {
+        "prefix": "csv",
+        "body": [
+            "`csv:\"${VIM:luaeval('require(\"tsnippets.go\").field()')}\"`"
+        ],
+        "description": "csv field tag in snake format"
+    },
+    "csv filed tag in snake format": {
+        "prefix": "csvs",
+        "body": [
+            "`csv:\"${VIM:luaeval('require(\"tsnippets.go\").field_snake()')}\"`"
+        ],
+        "description": "csv field tag in snake format"
+    },
+    "csv filed tag in camel format": {
+        "prefix": "csvc",
+        "body": [
+            "`csv:\"${VIM:luaeval('require(\"tsnippets.go\").field_camel()')}\"`"
+        ],
+        "description": "csv field tag in snake format"
+    },
+    "gorm filed tag in raw format": {
+        "prefix": "gorm",
+        "body": [
+            "`gorm:\"${VIM:luaeval('require(\"tsnippets.go\").field()')}\"`"
+        ],
+        "description": "gorm field tag in snake format"
+    },
+    "gorm filed tag in snake format": {
+        "prefix": "gorms",
+        "body": [
+            "`gorm:\"${VIM:luaeval('require(\"tsnippets.go\").field_snake()')}\"`"
+        ],
+        "description": "gorm field tag in snake format"
+    },
+    "gorm filed tag in camel format": {
+        "prefix": "gormc",
+        "body": [
+            "`gorm:\"${VIM:luaeval('require(\"tsnippets.go\").field_camel()')}\"`"
+        ],
+        "description": "gorm field tag in snake format"
+    },
+    "xorm filed tag in raw format": {
+        "prefix": "xorm",
+        "body": [
+            "`xorm:\"${VIM:luaeval('require(\"tsnippets.go\").field()')}\"`"
+        ],
+        "description": "xorm field tag in snake format"
+    },
+    "xorm filed tag in snake format": {
+        "prefix": "xorms",
+        "body": [
+            "`xorm:\"${VIM:luaeval('require(\"tsnippets.go\").field_snake()')}\"`"
+        ],
+        "description": "xorm field tag in snake format"
+    },
+    "xorm filed tag in camel format": {
+        "prefix": "xormc",
+        "body": [
+            "`xorm:\"${VIM:luaeval('require(\"tsnippets.go\").field_camel()')}\"`"
+        ],
+        "description": "xorm field tag in snake format"
     }
 }
