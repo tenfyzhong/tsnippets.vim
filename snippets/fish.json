@@ -21,7 +21,7 @@
             "        '$1: $2' \\",
             "        'Usage: $1 <opts>' \\",
             "        '' \\",
-            "        'Options: '\\",
+            "        'Options:'\\",
             "        '  -h/--help               print this help message'",
             "end"
         ],
