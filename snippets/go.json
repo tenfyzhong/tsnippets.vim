@@ -945,5 +945,19 @@
             "`xorm:\"${VIM:luaeval('require(\"tsnippets.go\").field_camel()')}\"`"
         ],
         "description": "xorm field tag in snake format"
+    },
+    "for move slice element": {
+        "prefix": "formove",
+        "body": [
+            "${1:index} := 0",
+            "for i := 0; i < len(${2:slice}); i++ {",
+            "\tif ${3:true} {",
+            "\t\t$2[index] = $2[i]",
+            "\t\tindex++",
+            "\t}",
+            "}",
+            "$2 = $2[:$1]"
+        ],
+        "description": "for loop to remove element not match condition"
     }
 }
