@@ -95,6 +95,12 @@
                     "zsh"
                 ],
                 "path": "./snippets/zsh.json"
+            },
+            {
+                "language": [
+                    "envrc"
+                ],
+                "path": "./snippets/envrc.json"
             }
         ]
     }
