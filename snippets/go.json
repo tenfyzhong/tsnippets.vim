@@ -860,6 +860,27 @@
         ],
         "description": "env field tag in snake format"
     },
+    "header filed tag in raw format": {
+        "prefix": "header",
+        "body": [
+            "`header:\"${VIM:luaeval('require(\"tsnippets.go\").field()')}\"`"
+        ],
+        "description": "header field tag in snake format"
+    },
+    "header filed tag in snake format": {
+        "prefix": "envs",
+        "body": [
+            "`header:\"${VIM:luaeval('require(\"tsnippets.go\").field_snake()')}\"`"
+        ],
+        "description": "header field tag in snake format"
+    },
+    "header filed tag in camel format": {
+        "prefix": "envc",
+        "body": [
+            "`header:\"${VIM:luaeval('require(\"tsnippets.go\").field_camel()')}\"`"
+        ],
+        "description": "header field tag in snake format"
+    },
     "csv filed tag in raw format": {
         "prefix": "csv",
         "body": [
