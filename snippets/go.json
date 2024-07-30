@@ -609,21 +609,12 @@
         ],
         "description": "gorm.Open"
     },
-    "gormtx": {
-        "prefix": "gormtx",
+    "gormnotfound": {
+        "prefix": "gormnotfound",
         "body": [
-            "ctx, cancel := context.WithTimeout(context.Background(), ${1:1000} * time.Millisecond)",
-            "defer cancel()",
-            "c := db.BeginTx(ctx, &sql.TxOptions{})",
-            "$0",
-            "",
-            "if c.Error != nil {",
-            "\tc.Rollback()",
-            "} else {",
-            "\tc.Commit()",
-            "}"
+            "errors.Is(${1:err}, gorm.ErrRecordNotFound)"
         ],
-        "description": "gorm transaction"
+        "description": "gorm record not found"
     },
     "xormne": {
         "prefix": "xormne",
