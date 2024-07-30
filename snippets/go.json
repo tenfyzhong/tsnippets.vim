@@ -616,20 +616,6 @@
         ],
         "description": "gorm record not found"
     },
-    "xormne": {
-        "prefix": "xormne",
-        "body": [
-            "${1:engine}, err := xorm.NewEngine(${2:\"mysql\"}, ${3:uri})",
-            "if err != nil {",
-            "\t${4}",
-            "}",
-            "$1.DB().SetMaxIdleConns(${5:3})",
-            "$1.DB().SetMaxOpenConns(${6:10})",
-            "$1.DB().SetConnMaxLifetime(${7:3000} * time.Millisecond)",
-            "engine.SetLogLevel(${8:log.LOG_INFO})"
-        ],
-        "description": "xorn.NewEngine"
-    },
     "httpclient": {
         "prefix": "httpclient",
         "body": [
@@ -915,27 +901,6 @@
             "`gorm:\"${VIM:luaeval('require(\"tsnippets.go\").field_camel()')}\"`"
         ],
         "description": "gorm field tag in snake format"
-    },
-    "xorm filed tag in raw format": {
-        "prefix": "xorm",
-        "body": [
-            "`xorm:\"${VIM:luaeval('require(\"tsnippets.go\").field()')}\"`"
-        ],
-        "description": "xorm field tag in snake format"
-    },
-    "xorm filed tag in snake format": {
-        "prefix": "xorms",
-        "body": [
-            "`xorm:\"${VIM:luaeval('require(\"tsnippets.go\").field_snake()')}\"`"
-        ],
-        "description": "xorm field tag in snake format"
-    },
-    "xorm filed tag in camel format": {
-        "prefix": "xormc",
-        "body": [
-            "`xorm:\"${VIM:luaeval('require(\"tsnippets.go\").field_camel()')}\"`"
-        ],
-        "description": "xorm field tag in snake format"
     },
     "for move slice element": {
         "prefix": "formove",
