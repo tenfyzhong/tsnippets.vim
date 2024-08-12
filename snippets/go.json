@@ -33,7 +33,7 @@
         "prefix": "st",
         "body": [
             "type ${1:Struct} struct {",
-            "\t${0:${VISUAL}}",
+            "\t$0",
             "}"
         ],
         "description": "Struct declaration"
@@ -42,7 +42,7 @@
         "prefix": "stn",
         "body": [
             "type ${1:Struct} struct {",
-            "\t${0:${VISUAL}}",
+            "\t$0",
             "}",
             "",
             "func New$1() *$1 {",
@@ -55,7 +55,7 @@
         "prefix": "in",
         "body": [
             "type ${1:Interface} interface {",
-            "\t${0:${VISUAL}}",
+            "\t$0",
             "}"
         ],
         "description": "Interface declaration"
