@@ -101,6 +101,12 @@
                     "envrc"
                 ],
                 "path": "./snippets/envrc.json"
+            },
+            {
+                "language": [
+                    "thrift"
+                ],
+                "path": "./snippets/thrift.json"
             }
         ]
     }
