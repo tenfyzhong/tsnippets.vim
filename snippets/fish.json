@@ -2,7 +2,7 @@
     "function for command": {
         "prefix": "funcc",
         "body": [
-            "function ${1:name} --description '${2:desc}'",
+            "function ${1:$TM_FILENAME_BASE} --description '${2:desc}'",
             "    argparse 'h/help' -- \\$argv 2>/dev/null",
             "    if test \\$status -ne 0",
             "        return 1",
@@ -17,10 +17,10 @@
             "end",
             "",
             "function _$1_help",
-            "    printf %s\\n \\",
-            "        '$1: $2' \\",
-            "        'Usage: $1 <opts>' \\",
-            "        '' \\",
+            "    printf %s\\n\\",
+            "        '$1: $2'\\",
+            "        'Usage: $1 <opts>'\\",
+            "        ''\\",
             "        'Options:'\\",
             "        '  -h/--help               print this help message'",
             "end"
