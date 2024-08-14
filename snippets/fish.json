@@ -26,5 +26,12 @@
             "end"
         ],
         "description": "function for command"
+    },
+    "complete": {
+        "prefix": "com",
+        "body": [
+            "complete $TM_FILENAME_BASE $0"
+        ],
+        "description": "complete"
     }
 }
