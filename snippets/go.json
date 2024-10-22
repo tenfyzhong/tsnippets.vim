@@ -162,8 +162,8 @@
         ],
         "description": "For select"
     },
-    "ife": {
-        "prefix": "if err",
+    "if err": {
+        "prefix": "ife",
         "body": [
             "if err != nil {",
             "\t$0",
