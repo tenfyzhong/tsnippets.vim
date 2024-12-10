@@ -1,40 +1,121 @@
 {
-    "INFO": {
-        "prefix": "INFO",
+    "FIX": {
+        "prefix": [
+            "FIX",
+            "fix"
+        ],
         "body": [
-            "$LINE_COMMENT INFO ${VIM:system('git config --get user.name 2>/dev/null | tr -d \"\n\"')} $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE $CURRENT_HOUR:$CURRENT_MINUTE:$CURRENT_SECOND",
+            "$LINE_COMMENT FIX: ${VIM:system('git config --get user.name 2>/dev/null | tr -d \"\n\"')} $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE $CURRENT_HOUR:$CURRENT_MINUTE:$CURRENT_SECOND",
             "$LINE_COMMENT $0"
         ],
-        "description": "comment info"
-    },
-    "TODO": {
-        "prefix": "TODO",
-        "body": [
-            "$LINE_COMMENT TODO ${VIM:system('git config --get user.name 2>/dev/null | tr -d \"\n\"')} $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE $CURRENT_HOUR:$CURRENT_MINUTE:$CURRENT_SECOND",
-            "$LINE_COMMENT $0"
-        ],
-        "description": "comment todo"
+        "description": "comment fix"
     },
     "BUG": {
-        "prefix": "BUG",
+        "prefix": [
+            "BUG",
+            "bug"
+        ],
         "body": [
-            "$LINE_COMMENT BUG ${VIM:system('git config --get user.name 2>/dev/null | tr -d \"\n\"')} $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE $CURRENT_HOUR:$CURRENT_MINUTE:$CURRENT_SECOND",
+            "$LINE_COMMENT BUG: ${VIM:system('git config --get user.name 2>/dev/null | tr -d \"\n\"')} $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE $CURRENT_HOUR:$CURRENT_MINUTE:$CURRENT_SECOND",
             "$LINE_COMMENT $0"
         ],
         "description": "comment bug"
     },
-    "ERROR": {
-        "prefix": "ERROR",
+    "ISSUE": {
+        "prefix": [
+            "ISSUE",
+            "issue"
+        ],
         "body": [
-            "$LINE_COMMENT ERROR ${VIM:system('git config --get user.name 2>/dev/null | tr -d \"\n\"')} $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE $CURRENT_HOUR:$CURRENT_MINUTE:$CURRENT_SECOND",
+            "$LINE_COMMENT ISSUE: ${VIM:system('git config --get user.name 2>/dev/null | tr -d \"\n\"')} $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE $CURRENT_HOUR:$CURRENT_MINUTE:$CURRENT_SECOND",
+            "$LINE_COMMENT $0"
+        ],
+        "description": "comment issue"
+    },
+    "TODO": {
+        "prefix": [
+            "TODO",
+            "todo"
+        ],
+        "body": [
+            "$LINE_COMMENT TODO: ${VIM:system('git config --get user.name 2>/dev/null | tr -d \"\n\"')} $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE $CURRENT_HOUR:$CURRENT_MINUTE:$CURRENT_SECOND",
+            "$LINE_COMMENT $0"
+        ],
+        "description": "comment todo"
+    },
+    "HACK": {
+        "prefix": [
+            "HACK",
+            "hack"
+        ],
+        "body": [
+            "$LINE_COMMENT HACK: ${VIM:system('git config --get user.name 2>/dev/null | tr -d \"\n\"')} $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE $CURRENT_HOUR:$CURRENT_MINUTE:$CURRENT_SECOND",
+            "$LINE_COMMENT $0"
+        ],
+        "description": "comment hack"
+    },
+    "WARN": {
+        "prefix": [
+            "WARN",
+            "warn"
+        ],
+        "body": [
+            "$LINE_COMMENT WARN: ${VIM:system('git config --get user.name 2>/dev/null | tr -d \"\n\"')} $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE $CURRENT_HOUR:$CURRENT_MINUTE:$CURRENT_SECOND",
+            "$LINE_COMMENT $0"
+        ],
+        "description": "comment warn"
+    },
+    "PERF": {
+        "prefix": [
+            "PERF",
+            "perf"
+        ],
+        "body": [
+            "$LINE_COMMENT PERF: ${VIM:system('git config --get user.name 2>/dev/null | tr -d \"\n\"')} $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE $CURRENT_HOUR:$CURRENT_MINUTE:$CURRENT_SECOND",
+            "$LINE_COMMENT $0"
+        ],
+        "description": "comment perf"
+    },
+    "NOTE": {
+        "prefix": [
+            "NOTE",
+            "note"
+        ],
+        "body": [
+            "$LINE_COMMENT NOTE: ${VIM:system('git config --get user.name 2>/dev/null | tr -d \"\n\"')} $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE $CURRENT_HOUR:$CURRENT_MINUTE:$CURRENT_SECOND",
+            "$LINE_COMMENT $0"
+        ],
+        "description": "comment note"
+    },
+    "INFO": {
+        "prefix": [
+            "INFO",
+            "info"
+        ],
+        "body": [
+            "$LINE_COMMENT INFO: ${VIM:system('git config --get user.name 2>/dev/null | tr -d \"\n\"')} $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE $CURRENT_HOUR:$CURRENT_MINUTE:$CURRENT_SECOND",
+            "$LINE_COMMENT $0"
+        ],
+        "description": "comment info"
+    },
+    "ERROR": {
+        "prefix": [
+            "ERROR",
+            "error"
+        ],
+        "body": [
+            "$LINE_COMMENT ERROR: ${VIM:system('git config --get user.name 2>/dev/null | tr -d \"\n\"')} $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE $CURRENT_HOUR:$CURRENT_MINUTE:$CURRENT_SECOND",
             "$LINE_COMMENT $0"
         ],
         "description": "comment error"
     },
     "TEST": {
-        "prefix": "TEST",
+        "prefix": [
+            "TEST",
+            "test"
+        ],
         "body": [
-            "$LINE_COMMENT TEST ${VIM:system('git config --get user.name 2>/dev/null | tr -d \"\n\"')} $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE $CURRENT_HOUR:$CURRENT_MINUTE:$CURRENT_SECOND",
+            "$LINE_COMMENT TEST: ${VIM:system('git config --get user.name 2>/dev/null | tr -d \"\n\"')} $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE $CURRENT_HOUR:$CURRENT_MINUTE:$CURRENT_SECOND",
             "$LINE_COMMENT $0"
         ],
         "description": "comment test"
