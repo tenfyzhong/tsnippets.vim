@@ -286,9 +286,14 @@
             "# -------- gofumpt end -------- "
         ]
     },
-    "formatters in conform.nvim": {
-        "prefix": "formatter",
-        "description": "formatters for conform.nvim",
-        "body": "export CONFORM_${1:GO}_FORMATTERS=${2:goimports-reviser,gofumpt}"
+    "auto formatters in conform.nvim": {
+        "prefix": "autoformatt",
+        "description": "auto formatters for conform.nvim",
+        "body": "export CONFORM_AUTO_${1:GO}_FORMATTERS=${2:goimports-reviser,gofumpt}"
+    },
+    "manual formatters in conform.nvim": {
+        "prefix": "manualformatt",
+        "description": "manual formatters for conform.nvim",
+        "body": "export CONFORM_MANUAL_${1:GO}_FORMATTERS=${2:goimports-reviser-rm-unused,gofumpt}"
     }
 }
