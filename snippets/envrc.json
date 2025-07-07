@@ -285,5 +285,10 @@
             "export GOFUMPT_MODPATH=",
             "# -------- gofumpt end -------- "
         ]
+    },
+    "formatters in conform.nvim": {
+        "prefix": "formatter",
+        "description": "formatters in conform.nvim",
+        "body": "export CONFORM_${1:GO}_FORMATTERS=${2:goimports-reviser,gofumpt}"
     }
 }
