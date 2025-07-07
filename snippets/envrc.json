@@ -229,9 +229,9 @@
         "body": "on_git_branch ${1:branch}",
         "description": "Returns 0 if within a git repository with given branch_name. If no branch name is provided, then returns 0 when within any branch"
     },
-    "block of shfmt": {
+    "shfmt options": {
         "prefix": "shfmt",
-        "description": "block of shfmt",
+        "description": "shfmt options",
         "body": [
             "# -------- shfmt begin --------",
             "# These variables are passed to the formatter shfmt of conform.nvim",
@@ -241,12 +241,12 @@
             "#   -sr, --space-redirects   redirect operators will be followed by a space",
             "#   -kp, --keep-padding      keep column alignment paddings",
             "#   -fn, --func-next-line    function opening braces are placed on a separate line",
-            "SHFMT_INDENT=",
-            "SHFMT_BINARY_NEXT_LINE=",
-            "SHFMT_CASE_INDEX=",
-            "SHFMT_SPACE_REDIRECTS=",
-            "SHFMT_KEEP_PADDING=",
-            "SHFMT_FUNC_NEXT_LINE=",
+            "export SHFMT_INDENT=",
+            "export SHFMT_BINARY_NEXT_LINE=",
+            "export SHFMT_CASE_INDEX=",
+            "export SHFMT_SPACE_REDIRECTS=",
+            "export SHFMT_KEEP_PADDING=",
+            "export SHFMT_FUNC_NEXT_LINE=",
             "# -------- shfmt end --------"
         ]
     }
