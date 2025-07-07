@@ -249,5 +249,26 @@
             "export SHFMT_FUNC_NEXT_LINE=",
             "# -------- shfmt end --------"
         ]
+    },
+    "goimport-reviser options": {
+        "prefix": "goimport-reviser",
+        "description": "goimport-reviser options",
+        "body": [
+            "# -------- goimport-reviser begin --------",
+            "# These variables are passed to the formatter goimport-reviser in conform.nvim",
+            "#   -format Option will perform additional formatting",
+            "export GOIMPORTS_REVISER_FORMAT=",
+            "#   -imports-order Your imports groups can be sorted in your way",
+            "export GOIMPORTS_REVISER_IMPORTS_ORDER=",
+            "#   -project-name Your project name",
+            "export GOIMPORTS_REVISER_PROJECT_NAME=",
+            "#   -separate-named Option will separate named imports from the rest of the imports, per group",
+            "export GOIMPORTS_REVISER_SEPARATE_NAMED=",
+            "#   -set-alias Set alias for versioned package names",
+            "export GOIMPORTS_REVISER_SET_ALIAS=",
+            "#   -use-cache Use cache to improve performance",
+            "export GOIMPORTS_REVISER_USE_CACHE=",
+            "# -------- goimport-reviser end --------"
+        ]
     }
 }
