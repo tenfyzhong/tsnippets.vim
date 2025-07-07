@@ -234,7 +234,7 @@
         "description": "shfmt options",
         "body": [
             "# -------- shfmt begin --------",
-            "# These variables are passed to the formatter shfmt in conform.nvim",
+            "# These variables are passed to the formatter shfmt for conform.nvim",
             "#   -i,  --indent uint       0 for tabs (default), >0 for number of spaces",
             "export SHFMT_INDENT=",
             "#   -bn, --binary-next-line  binary ops like && and | may start a line",
@@ -255,7 +255,7 @@
         "description": "goimport-reviser options",
         "body": [
             "# -------- goimport-reviser begin --------",
-            "# These variables are passed to the formatter goimport-reviser in conform.nvim",
+            "# These variables are passed to the formatter goimport-reviser for conform.nvim",
             "#   -format Option will perform additional formatting",
             "export GOIMPORTS_REVISER_FORMAT=",
             "#   -imports-order Your imports groups can be sorted in your way",
@@ -276,7 +276,7 @@
         "description": "gofumpt options",
         "body": [
             "# -------- gofumpt begin --------",
-            "# These variables are passed to the formatter gofumpt in conform.nvim",
+            "# These variables are passed to the formatter gofumpt for conform.nvim",
             "#   -extra enable extra rules which should be vetted by a human",
             "export GOFUMPT_EXTRA=",
             "#   -lang target go version in the form go1.X",
@@ -288,7 +288,7 @@
     },
     "formatters in conform.nvim": {
         "prefix": "formatter",
-        "description": "formatters in conform.nvim",
+        "description": "formatters for conform.nvim",
         "body": "export CONFORM_${1:GO}_FORMATTERS=${2:goimports-reviser,gofumpt}"
     }
 }
