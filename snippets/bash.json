@@ -97,6 +97,24 @@
         ],
         "description": "getopts from argument"
     },
+    "Parse options using while": {
+        "prefix": "whileopt",
+        "body": [
+            "while [[ \\$# -gt 0 ]]; do",
+            "\tcase \"\\$1\" in",
+            "\t${1:-v | --version})",
+            "\t\t${2:ver}=\"\\$2\"",
+            "\t\tshift 2",
+            "\t\t;;",
+            "\t-h | --help)",
+            "\t\tshow_help",
+            "\t\texit 0",
+            "\t\t;;",
+            "\tesac",
+            "done"
+        ],
+        "description": "Parse options using while"
+    },
     "map": {
         "prefix": "map",
         "body": [

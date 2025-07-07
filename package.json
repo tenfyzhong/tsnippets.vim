@@ -80,9 +80,9 @@
             },
             {
                 "language": [
-                    "sh"
+                    "bash"
                 ],
-                "path": "./snippets/sh.json"
+                "path": "./snippets/bash.json"
             },
             {
                 "language": [
