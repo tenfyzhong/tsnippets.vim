@@ -290,6 +290,8 @@
         "prefix": "goformatter",
         "description": "go formatters for conform.nvim",
         "body": [
+            "# available formatters: goimports-reviser, goimports-reviser-rm-unused, gofumpt, gci",
+            "#                       gofmt, goimports, golangci-lint, golines",
             "export CONFORM_AUTO_GO_FORMATTERS=${1:goimports-reviser,gofumpt}",
             "export CONFORM_MANUAL_GO_FORMATTERS=${2:goimports-reviser-rm-unused,gofumpt}"
         ]
