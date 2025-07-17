@@ -19,7 +19,7 @@
             "function _$1_help",
             "    printf %s\\n\\",
             "        '$1: $2'\\",
-            "        'Usage: $1 <opts>'\\",
+            "        'Usage: $1 [opts]'\\",
             "        ''\\",
             "        'Options:'\\",
             "        '  -h/--help               Show this help message'",
