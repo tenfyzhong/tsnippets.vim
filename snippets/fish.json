@@ -22,7 +22,7 @@
             "        'Usage: $1 <opts>'\\",
             "        ''\\",
             "        'Options:'\\",
-            "        '  -h/--help               print this help message'",
+            "        '  -h/--help               Show this help message'",
             "end"
         ],
         "description": "function for command"
