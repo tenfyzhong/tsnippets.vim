@@ -286,14 +286,25 @@
             "# -------- gofumpt end -------- "
         ]
     },
+    "goimports options": {
+        "prefix": "goimports",
+        "description": "goimports options",
+        "body": [
+            "# -------- goimports begin --------",
+            "# These variables are passed to the formatter goimports for conform.nvim",
+            "#   -local put imports beginning with this string after 3rd-party packages; comma-separated list",
+            "export GOIMPORTS_LOCAL=",
+            "# -------- goimports end --------"
+        ]
+    },
     "go formatters for conform.nvim": {
         "prefix": "goformatter",
         "description": "go formatters for conform.nvim",
         "body": [
             "# available formatters: goimports-reviser, goimports-reviser-rm-unused, gofumpt, gci",
-            "#                       gofmt, goimports, golangci-lint, golines",
-            "export CONFORM_AUTO_GO_FORMATTERS=${1:goimports-reviser,gofumpt}",
-            "export CONFORM_MANUAL_GO_FORMATTERS=${2:goimports-reviser-rm-unused,gofumpt}"
+            "#                       gofmt, goimports, goimports_format_only, golangci-lint, golines",
+            "export CONFORM_AUTO_GO_FORMATTERS=${1:goimports_format_only,gofumpt}",
+            "export CONFORM_MANUAL_GO_FORMATTERS=${2:goimports,gofumpt}"
         ]
     }
 }
