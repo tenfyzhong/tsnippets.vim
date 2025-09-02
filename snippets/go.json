@@ -935,5 +935,14 @@
             "$2 = $2[:$1]"
         ],
         "description": "for loop to remove element not match condition"
+    },
+    "define normalized error": {
+        "prefix": "dnerr",
+        "body": [
+            "${1:Err} = errors.Normalize(",
+            "\t\"$2\",",
+            "\terrors.RFCCodeText(\"CDC:$1\"),",
+            ")"
+        ]
     }
 }
