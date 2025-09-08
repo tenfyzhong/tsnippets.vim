@@ -142,5 +142,13 @@
             "done"
         ],
         "description": "map for value"
+    },
+    "set -x for debug": {
+        "prefix": "setx",
+        "body": [
+            "export PS4='+\\$(basename \\${BASH_SOURCE}):\\${LINENO}:'",
+            "set -x"
+        ],
+        "description": "set -x for debug"
     }
 }
