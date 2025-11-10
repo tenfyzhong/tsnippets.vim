@@ -306,5 +306,10 @@
             "export CONFORM_AUTO_GO_FORMATTERS=${1:goimports_format_only,gofumpt}",
             "export CONFORM_MANUAL_GO_FORMATTERS=${2:goimports,gofumpt}"
         ]
+    },
+    "disable formmater for filetype": {
+        "prefix": "conform-disable",
+        "description": "disable formatter for filetype",
+        "body": "export CONFORM_DISABLE_${1:FT}=1"
     }
 }
