@@ -229,87 +229,24 @@
         "body": "on_git_branch ${1:branch}",
         "description": "Returns 0 if within a git repository with given branch_name. If no branch name is provided, then returns 0 when within any branch"
     },
-    "shfmt options": {
-        "prefix": "shfmt",
-        "description": "shfmt options",
-        "body": [
-            "# -------- shfmt begin --------",
-            "# These variables are passed to the formatter shfmt for conform.nvim",
-            "#   -i,  --indent uint       0 for tabs (default), >0 for number of spaces",
-            "export SHFMT_INDENT=",
-            "#   -bn, --binary-next-line  binary ops like && and | may start a line",
-            "export SHFMT_BINARY_NEXT_LINE=",
-            "#   -ci, --case-indent       switch cases will be indented",
-            "export SHFMT_CASE_INDEX=",
-            "#   -sr, --space-redirects   redirect operators will be followed by a space",
-            "export SHFMT_SPACE_REDIRECTS=",
-            "#   -kp, --keep-padding      keep column alignment paddings",
-            "export SHFMT_KEEP_PADDING=",
-            "#   -fn, --func-next-line    function opening braces are placed on a separate line",
-            "export SHFMT_FUNC_NEXT_LINE=",
-            "# -------- shfmt end --------"
-        ]
+    "conform formatter args": {
+        "prefix": "conform-args",
+        "description": "config conform formatter args",
+        "body": "export CONFORM_ARGS_${1:FORMATTER}=$2"
     },
-    "goimport-reviser options": {
-        "prefix": "goimport-reviser",
-        "description": "goimport-reviser options",
-        "body": [
-            "# -------- goimport-reviser begin --------",
-            "# These variables are passed to the formatter goimport-reviser for conform.nvim",
-            "#   -format Option will perform additional formatting",
-            "export GOIMPORTS_REVISER_FORMAT=",
-            "#   -imports-order Your imports groups can be sorted in your way",
-            "export GOIMPORTS_REVISER_IMPORTS_ORDER=",
-            "#   -project-name Your project name",
-            "export GOIMPORTS_REVISER_PROJECT_NAME=",
-            "#   -separate-named Option will separate named imports from the rest of the imports, per group",
-            "export GOIMPORTS_REVISER_SEPARATE_NAMED=",
-            "#   -set-alias Set alias for versioned package names",
-            "export GOIMPORTS_REVISER_SET_ALIAS=",
-            "#   -use-cache Use cache to improve performance",
-            "export GOIMPORTS_REVISER_USE_CACHE=",
-            "# -------- goimport-reviser end --------"
-        ]
-    },
-    "gofumpt options": {
-        "prefix": "gofumpt",
-        "description": "gofumpt options",
-        "body": [
-            "# -------- gofumpt begin --------",
-            "# These variables are passed to the formatter gofumpt for conform.nvim",
-            "#   -extra enable extra rules which should be vetted by a human",
-            "export GOFUMPT_EXTRA=",
-            "#   -lang target go version in the form go1.X",
-            "export GOFUMPT_LANG=",
-            "#   -modpath Go module path containing the source file",
-            "export GOFUMPT_MODPATH=",
-            "# -------- gofumpt end -------- "
-        ]
-    },
-    "goimports options": {
-        "prefix": "goimports",
-        "description": "goimports options",
-        "body": [
-            "# -------- goimports begin --------",
-            "# These variables are passed to the formatter goimports for conform.nvim",
-            "#   -local put imports beginning with this string after 3rd-party packages; comma-separated list",
-            "export GOIMPORTS_LOCAL=",
-            "# -------- goimports end --------"
-        ]
-    },
-    "go formatters for conform.nvim": {
-        "prefix": "goformatter",
-        "description": "go formatters for conform.nvim",
-        "body": [
-            "# available formatters: goimports-reviser, goimports-reviser-rm-unused, gofumpt, gci",
-            "#                       gofmt, goimports, goimports_format_only, golangci-lint, golines",
-            "export CONFORM_AUTO_GO_FORMATTERS=${1:goimports_format_only,gofumpt}",
-            "export CONFORM_MANUAL_GO_FORMATTERS=${2:goimports,gofumpt}"
-        ]
-    },
-    "disable formmater for filetype": {
+    "conform disable formatter for filetype": {
         "prefix": "conform-disable",
         "description": "disable formatter for filetype",
         "body": "export CONFORM_DISABLE_${1:FT}=1"
+    },
+    "conform auto formmater": {
+        "prefix": "conform-auto",
+        "description": "config conform auto formatter",
+        "body": "export CONFORM_AUTO_FORMATTERS_${1:FT}=$2"
+    },
+    "conform manual formmater": {
+        "prefix": "conform-manual",
+        "description": "config conform manual formatter",
+        "body": "export CONFORM_MANUAL_FORMATTERS_${1:FT}=$2"
     }
 }
