@@ -239,14 +239,12 @@
         "description": "disable formatter for filetype",
         "body": "export CONFORM_DISABLE_${1:FT}=1"
     },
-    "conform auto formmater": {
-        "prefix": "conform-auto",
-        "description": "config conform auto formatter",
-        "body": "export CONFORM_AUTO_FORMATTERS_${1:FT}=$2"
-    },
-    "conform manual formmater": {
-        "prefix": "conform-manual",
-        "description": "config conform manual formatter",
-        "body": "export CONFORM_MANUAL_FORMATTERS_${1:FT}=$2"
+    "conform formmater": {
+        "prefix": "conform-formatter",
+        "description": "config conform formatter",
+        "body": [
+            "export CONFORM_AUTO_FORMATTERS_${1:FT}=$2",
+            "export CONFORM_MANUAL_FORMATTERS_${1:FT}=$2"
+        ]
     }
 }
