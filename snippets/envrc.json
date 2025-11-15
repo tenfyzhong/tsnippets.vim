@@ -246,5 +246,13 @@
             "export CONFORM_AUTO_FORMATTERS_${1:FT}=$2",
             "export CONFORM_MANUAL_FORMATTERS_${1:FT}=$2"
         ]
+    },
+    "vim tab confgi": {
+        "prefix": "vimtab",
+        "description": "config vim tab",
+        "body": [
+            "export VIM_EXPANDTAB_${1:FT}=1",
+            "export VIM_TABWIDTH_${1:FT}=4"
+        ]
     }
 }
