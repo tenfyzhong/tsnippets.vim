@@ -60,8 +60,8 @@
         "prefix": "conform-formatter",
         "description": "config conform formatter",
         "body": [
-            "let g:conform_auto_formatters_${1:ft}=$2",
-            "let g:conform_manual_formatters_${1:ft}=$2"
+            "let g:conform_auto_formatters_${1:ft}=[$2]",
+            "let g:conform_manual_formatters_${1:ft}=[$3]"
         ]
     }
 }
