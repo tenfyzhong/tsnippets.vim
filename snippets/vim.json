@@ -45,5 +45,23 @@
             "endtry"
         ],
         "description": "try statement"
+    },
+    "conform formatter args": {
+        "prefix": "conform-args",
+        "description": "config conform formatter args",
+        "body": "let g:conform_args_${1:formatter}=[$2]"
+    },
+    "conform disable formatter for filetype": {
+        "prefix": "conform-disable",
+        "description": "disable formatter for filetype",
+        "body": "let g:conform_disable_${1:ft}=1"
+    },
+    "conform formmater": {
+        "prefix": "conform-formatter",
+        "description": "config conform formatter",
+        "body": [
+            "let g:conform_auto_formatters_${1:ft}=$2",
+            "let g:conform_manual_formatters_${1:ft}=$2"
+        ]
     }
 }

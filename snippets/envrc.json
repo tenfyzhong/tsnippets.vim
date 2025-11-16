@@ -201,7 +201,7 @@
     },
     "use vim [<vimrc_file>]": {
         "prefix": "usevim",
-        "body": "use vim ${1:vimrc}",
+        "body": "use vim ${1:.vimrc.local}",
         "description": "Prepends the specified vim script (or .vimrc.local by default) to the DIRENV_EXTRA_VIMRC environment variable"
     },
     "watch_file <path> [<path> ...]": {
@@ -233,26 +233,5 @@
         "prefix": "conform-args",
         "description": "config conform formatter args",
         "body": "export CONFORM_ARGS_${1:FORMATTER}=$2"
-    },
-    "conform disable formatter for filetype": {
-        "prefix": "conform-disable",
-        "description": "disable formatter for filetype",
-        "body": "export CONFORM_DISABLE_${1:FT}=1"
-    },
-    "conform formmater": {
-        "prefix": "conform-formatter",
-        "description": "config conform formatter",
-        "body": [
-            "export CONFORM_AUTO_FORMATTERS_${1:FT}=$2",
-            "export CONFORM_MANUAL_FORMATTERS_${1:FT}=$2"
-        ]
-    },
-    "vim tab confgi": {
-        "prefix": "vimtab",
-        "description": "config vim tab",
-        "body": [
-            "export VIM_EXPANDTAB_${1:FT}=1",
-            "export VIM_TABWIDTH_${1:FT}=4"
-        ]
     }
 }
