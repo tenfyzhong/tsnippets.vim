@@ -104,9 +104,9 @@
             },
             {
                 "language": [
-                    "envrc"
+                    "direnv"
                 ],
-                "path": "./snippets/envrc.json"
+                "path": "./snippets/direnv.json"
             },
             {
                 "language": [
