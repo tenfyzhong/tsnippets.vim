@@ -1,152 +1,152 @@
 {
-    "301": {
-        "prefix": "301",
-        "body": [
-            "rewrite ^/(.*) http://${1:hostname}/\\$1 permanent;"
-        ],
-        "description": "permanent"
-    },
-    "302": {
-        "prefix": "302",
-        "body": [
-            "rewrite ^/(.*) http://${1:hostname}/\\$1 redirect;"
-        ],
-        "description": "redirect"
-    },
-    "http": {
-        "prefix": "http",
-        "body": [
-            "http {",
-            "\tinclude      /etc/nginx/mime.types;",
-            "\tdefault_type application/octet-stream;",
-            "\t",
-            "\topen_log_file_cache max=1000 inactive=20s min_uses=2 valid=1m;",
-            "",
-            "\taccess_log        /var/log/nginx/access.log;",
-            "\tsendfile          on;",
-            "\tcharset           UTF-8;",
-            "\tkeepalive_timeout 65;",
-            "\tproxy_cache_path /var/cache/nginx/cache levels=1:2 keys_zone=imgcache:100m inactive=2h max_size=1g use_temp_path=off;",
-            "",
-            "\tssl_session_cache shared:SSL:100m;",
-            "\tssl_session_timeout 20m;",
-            "",
-            "\tgzip            on;",
-            "\tgzip_min_length 2048;",
-            "\tgzip_types      text/plain application/x-javascript text/css application/xml application/json application/javascript text/javascript;",
-            "\tgzip_disable    \"MSIE [1-6]\\.(?!.*SV1)\";",
-            "\tgzip_static     on;",
-            "\tgzip_proxied    expired no-cache no-store private auth;",
-            "",
-            "\tproxy_buffers 128 128k;",
-            "\tinclude /etc/nginx/conf.d/*;",
-            "}"
-        ],
-        "description": "http block"
-    },
-    "upstream": {
-        "prefix": "upstream",
-        "body": [
-            "upstream ${1:Upstream} {",
-            "\tserver ${2:127.0.0.1:8080};",
-            "",
-            "\tkeepalive 64;",
-            "\tcheck interval=10000 rise=1 fall=2 timeout=10000 type=tcp;",
-            "}"
-        ],
-        "description": "upstream block"
-    },
-    "server": {
-        "prefix": "server",
-        "body": [
-            "server {",
-            "\tlisten ${1:80};",
-            "\tserver_name ${3:localhost};",
-            "",
-            "\t$0",
-            "}"
-        ],
-        "description": "server block"
-    },
-    "location": {
-        "prefix": "location",
-        "body": [
-            "location ${1:/} {",
-            "\tproxy_connect_timeout 30;",
-            "\tproxy_read_timeout    30;",
-            "\tproxy_redirect        off;",
-            "\tproxy_set_header      Host            $host;",
-            "\tproxy_set_header      X-Real-IP       $remote_addr;",
-            "\tproxy_set_header      X-Forwarded-For $proxy_add_x_forwarded_for;",
-            "\tproxy_set_header      Connection      '';",
-            "\tproxy_http_version    1.1;",
-            "",
-            "\tproxy_pass http://${2:Upstream};",
-            "}"
-        ],
-        "description": "location"
-    },
-    "ssl": {
-        "prefix": "ssl",
-        "body": [
-            "listen ${1:443} ssl;",
-            "ssl on;",
-            "ssl_certificate           ${2:/etc/nginx/ssl/domain}.cer;",
-            "ssl_certificate_key       $1.key;",
-            "ssl_protocols             TLSv1 TLSv1.1 TLSv1.2;",
-            "ssl_ciphers               RC4:HIGH:!aNULL:!MD5;",
-            "ssl_prefer_server_ciphers on;"
-        ],
-        "description": "ssl config"
-    },
-    "resolver": {
-        "prefix": "resolver",
-        "body": [
-            "resolver ${1:8.8.8.8} valid=${2:30}s;"
-        ],
-        "description": "b"
-    },
-    "open_file": {
-        "prefix": "open_file",
-        "body": [
-            "open_file_cache          max=204800 inactive=20s;",
-            "open_file_cache_min_uses 1;",
-            "open_file_cache_valid    30s;"
-        ],
-        "description": "open file config"
-    },
-    "proxy_cache_path": {
-        "prefix": "proxy_cache_path",
-        "body": [
-            "proxy_cache_path /var/cache/nginx/cache levels=1:2 keys_zone=${1:my_cache}:100m inactive=2h max_size=1g use_temp_path=off;"
-        ],
-        "description": "proxy_cache_path"
-    },
-    "cors": {
-        "prefix": "cors",
-        "body": [
-            "set $cors '';",
-            "if ($http_origin ~* \"${1:sample.com}\") {",
-            "\tset $cors 'allow';",
-            "}",
-            "if ($request_method = \"OPTIONS\") {",
-            "\tset $cors '${cors}options';",
-            "}",
-            "",
-            "if ($cors = \"allowoptions\") {",
-            "\tadd_header 'Access-Control-Allow-Origin' $http_origin;",
-            "\tadd_header 'Access-Control-Allow-Headers' 'Content-Type,Accept,Accept-Encoding,Accept-Language,Connection,Host,Origin,User-Agent,Referer';",
-            "\tadd_header 'Access-Control-Allow-Methods' 'GET,PUT,POST,OPTIONS';",
-            "\tadd_header 'Access-Control-Allow-Credentials' 'true';",
-            "\tadd_header 'Content-Type' 'text/plain; charset=utf-8';",
-            "\tadd_header 'Content-Length' 0;",
-            "\treturn 204;",
-            "}",
-            "",
-            "if ($cors = 'allow') {",
-            "\tadd_header 'Access-Control-Allow-Origin' $http_origin always;",
-            "}"
-        ],
-        "description": "set cors"
-    }
+  "301": {
+    "prefix": "301",
+    "body": [
+      "rewrite ^/(.*) http://${1:hostname}/\\$1 permanent;"
+    ],
+    "description": "permanent"
+  },
+  "302": {
+    "prefix": "302",
+    "body": [
+      "rewrite ^/(.*) http://${1:hostname}/\\$1 redirect;"
+    ],
+    "description": "redirect"
+  },
+  "http": {
+    "prefix": "http",
+    "body": [
+      "http {",
+      "\tinclude      /etc/nginx/mime.types;",
+      "\tdefault_type application/octet-stream;",
+      "\t",
+      "\topen_log_file_cache max=1000 inactive=20s min_uses=2 valid=1m;",
+      "",
+      "\taccess_log        /var/log/nginx/access.log;",
+      "\tsendfile          on;",
+      "\tcharset           UTF-8;",
+      "\tkeepalive_timeout 65;",
+      "\tproxy_cache_path /var/cache/nginx/cache levels=1:2 keys_zone=imgcache:100m inactive=2h max_size=1g use_temp_path=off;",
+      "",
+      "\tssl_session_cache shared:SSL:100m;",
+      "\tssl_session_timeout 20m;",
+      "",
+      "\tgzip            on;",
+      "\tgzip_min_length 2048;",
+      "\tgzip_types      text/plain application/x-javascript text/css application/xml application/json application/javascript text/javascript;",
+      "\tgzip_disable    \"MSIE [1-6]\\.(?!.*SV1)\";",
+      "\tgzip_static     on;",
+      "\tgzip_proxied    expired no-cache no-store private auth;",
+      "",
+      "\tproxy_buffers 128 128k;",
+      "\tinclude /etc/nginx/conf.d/*;",
+      "}"
+    ],
+    "description": "http block"
+  },
+  "upstream": {
+    "prefix": "upstream",
+    "body": [
+      "upstream ${1:Upstream} {",
+      "\tserver ${2:127.0.0.1:8080};",
+      "",
+      "\tkeepalive 64;",
+      "\tcheck interval=10000 rise=1 fall=2 timeout=10000 type=tcp;",
+      "}"
+    ],
+    "description": "upstream block"
+  },
+  "server": {
+    "prefix": "server",
+    "body": [
+      "server {",
+      "\tlisten ${1:80};",
+      "\tserver_name ${3:localhost};",
+      "",
+      "\t$0",
+      "}"
+    ],
+    "description": "server block"
+  },
+  "location": {
+    "prefix": "location",
+    "body": [
+      "location ${1:/} {",
+      "\tproxy_connect_timeout 30;",
+      "\tproxy_read_timeout    30;",
+      "\tproxy_redirect        off;",
+      "\tproxy_set_header      Host            $host;",
+      "\tproxy_set_header      X-Real-IP       $remote_addr;",
+      "\tproxy_set_header      X-Forwarded-For $proxy_add_x_forwarded_for;",
+      "\tproxy_set_header      Connection      '';",
+      "\tproxy_http_version    1.1;",
+      "",
+      "\tproxy_pass http://${2:Upstream};",
+      "}"
+    ],
+    "description": "location"
+  },
+  "ssl": {
+    "prefix": "ssl",
+    "body": [
+      "listen ${1:443} ssl;",
+      "ssl on;",
+      "ssl_certificate           ${2:/etc/nginx/ssl/domain}.cer;",
+      "ssl_certificate_key       $1.key;",
+      "ssl_protocols             TLSv1 TLSv1.1 TLSv1.2;",
+      "ssl_ciphers               RC4:HIGH:!aNULL:!MD5;",
+      "ssl_prefer_server_ciphers on;"
+    ],
+    "description": "ssl config"
+  },
+  "resolver": {
+    "prefix": "resolver",
+    "body": [
+      "resolver ${1:8.8.8.8} valid=${2:30}s;"
+    ],
+    "description": "b"
+  },
+  "open_file": {
+    "prefix": "open_file",
+    "body": [
+      "open_file_cache          max=204800 inactive=20s;",
+      "open_file_cache_min_uses 1;",
+      "open_file_cache_valid    30s;"
+    ],
+    "description": "open file config"
+  },
+  "proxy_cache_path": {
+    "prefix": "proxy_cache_path",
+    "body": [
+      "proxy_cache_path /var/cache/nginx/cache levels=1:2 keys_zone=${1:my_cache}:100m inactive=2h max_size=1g use_temp_path=off;"
+    ],
+    "description": "proxy_cache_path"
+  },
+  "cors": {
+    "prefix": "cors",
+    "body": [
+      "set $cors '';",
+      "if ($http_origin ~* \"${1:sample.com}\") {",
+      "\tset $cors 'allow';",
+      "}",
+      "if ($request_method = \"OPTIONS\") {",
+      "\tset $cors '${cors}options';",
+      "}",
+      "",
+      "if ($cors = \"allowoptions\") {",
+      "\tadd_header 'Access-Control-Allow-Origin' $http_origin;",
+      "\tadd_header 'Access-Control-Allow-Headers' 'Content-Type,Accept,Accept-Encoding,Accept-Language,Connection,Host,Origin,User-Agent,Referer';",
+      "\tadd_header 'Access-Control-Allow-Methods' 'GET,PUT,POST,OPTIONS';",
+      "\tadd_header 'Access-Control-Allow-Credentials' 'true';",
+      "\tadd_header 'Content-Type' 'text/plain; charset=utf-8';",
+      "\tadd_header 'Content-Length' 0;",
+      "\treturn 204;",
+      "}",
+      "",
+      "if ($cors = 'allow') {",
+      "\tadd_header 'Access-Control-Allow-Origin' $http_origin always;",
+      "}"
+    ],
+    "description": "set cors"
+  }
 }

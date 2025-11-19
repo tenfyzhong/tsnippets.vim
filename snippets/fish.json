@@ -1,37 +1,37 @@
 {
-    "function for command": {
-        "prefix": "funcc",
-        "body": [
-            "function ${1:$TM_FILENAME_BASE} --description '${2:desc}'",
-            "    argparse 'h/help' -- \\$argv 2>/dev/null",
-            "    if test \\$status -ne 0",
-            "        return 1",
-            "    end",
-            "",
-            "    if set -q _flag_help",
-            "        _$1_help",
-            "        return 0",
-            "    end",
-            "",
-            "    $0",
-            "end",
-            "",
-            "function _$1_help",
-            "    printf %s\\n\\",
-            "        '$1: $2'\\",
-            "        'Usage: $1 [opts]'\\",
-            "        ''\\",
-            "        'Options:'\\",
-            "        '  -h/--help               Show this help message'",
-            "end"
-        ],
-        "description": "function for command"
-    },
-    "complete": {
-        "prefix": "com",
-        "body": [
-            "complete $TM_FILENAME_BASE $0"
-        ],
-        "description": "complete"
-    }
+  "function for command": {
+    "prefix": "funcc",
+    "body": [
+      "function ${1:$TM_FILENAME_BASE} --description '${2:desc}'",
+      "    argparse 'h/help' -- \\$argv 2>/dev/null",
+      "    if test \\$status -ne 0",
+      "        return 1",
+      "    end",
+      "",
+      "    if set -q _flag_help",
+      "        _$1_help",
+      "        return 0",
+      "    end",
+      "",
+      "    $0",
+      "end",
+      "",
+      "function _$1_help",
+      "    printf %s\\n\\",
+      "        '$1: $2'\\",
+      "        'Usage: $1 [opts]'\\",
+      "        ''\\",
+      "        'Options:'\\",
+      "        '  -h/--help               Show this help message'",
+      "end"
+    ],
+    "description": "function for command"
+  },
+  "complete": {
+    "prefix": "com",
+    "body": [
+      "complete $TM_FILENAME_BASE $0"
+    ],
+    "description": "complete"
+  }
 }

@@ -1,113 +1,113 @@
 {
-    "syn": {
-        "prefix": "syn",
-        "body": [
-            "syntax = \"proto3\";"
-        ],
-        "description": "syntax"
-    },
-    "syn3": {
-        "prefix": "syn3",
-        "body": [
-            "syntax = \"proto3\";"
-        ],
-        "description": "syntax"
-    },
-    "syn2": {
-        "prefix": "syn2",
-        "body": [
-            "syntax = \"proto3\";"
-        ],
-        "description": "syntax"
-    },
-    "pac": {
-        "prefix": "pac",
-        "body": [
-            "package $1;"
-        ],
-        "description": "package"
-    },
-    "opgp": {
-        "prefix": "opgp",
-        "body": [
-            "option go_package=\"$1\";"
-        ],
-        "description": "option go_package"
-    },
-    "imp": {
-        "prefix": "imp",
-        "body": [
-            "import \"$1\";"
-        ],
-        "description": "import"
-    },
-    "mes": {
-        "prefix": "mes",
-        "body": [
-            "message $1 {",
-            "\t$0",
-            "}"
-        ],
-        "description": "message"
-    },
-    "enum": {
-        "prefix": "enum",
-        "body": [
-            "enum $1 {",
-            "\t$0",
-            "}"
-        ],
-        "description": "enum"
-    },
-    "service": {
-        "prefix": "service",
-        "body": [
-            "service ${1:Service} {",
-            "\t$0",
-            "}"
-        ],
-        "description": "service"
-    },
-    "rpc": {
-        "prefix": "rpc",
-        "body": [
-            "rpc ${1:RpcMethod}($1Req) returns ($1Rsp);"
-        ],
-        "description": "rpc"
-    },
-    "rr": {
-        "prefix": "rr",
-        "body": [
-            "message ${1:Foo}Req {",
-            "\t$2",
-            "}",
-            "",
-            "message $1Rsp {",
-            "\t$3",
-            "}"
-        ],
-        "description": "req, rsp"
-    },
-    "rrr": {
-        "prefix": "rrr",
-        "body": [
-            "message ${1:Foo}Req {",
-            "\t$2",
-            "}",
-            "",
-            "message $1Rsp {",
-            "\t$3",
-            "}",
-            "",
-            "rpc $1($1Req) returns ($1Rsp);"
-        ],
-        "description": "req, rsp, rpc"
-    },
-    "map": {
-        "prefix": "map",
-        "body": [
-            "map<${1:key}, ${2:value}> ${3:field} = ${4:1};"
-        ],
-        "description": "map<key, value>"
-    }
+  "syn": {
+    "prefix": "syn",
+    "body": [
+      "syntax = \"proto3\";"
+    ],
+    "description": "syntax"
+  },
+  "syn3": {
+    "prefix": "syn3",
+    "body": [
+      "syntax = \"proto3\";"
+    ],
+    "description": "syntax"
+  },
+  "syn2": {
+    "prefix": "syn2",
+    "body": [
+      "syntax = \"proto3\";"
+    ],
+    "description": "syntax"
+  },
+  "pac": {
+    "prefix": "pac",
+    "body": [
+      "package $1;"
+    ],
+    "description": "package"
+  },
+  "opgp": {
+    "prefix": "opgp",
+    "body": [
+      "option go_package=\"$1\";"
+    ],
+    "description": "option go_package"
+  },
+  "imp": {
+    "prefix": "imp",
+    "body": [
+      "import \"$1\";"
+    ],
+    "description": "import"
+  },
+  "mes": {
+    "prefix": "mes",
+    "body": [
+      "message $1 {",
+      "\t$0",
+      "}"
+    ],
+    "description": "message"
+  },
+  "enum": {
+    "prefix": "enum",
+    "body": [
+      "enum $1 {",
+      "\t$0",
+      "}"
+    ],
+    "description": "enum"
+  },
+  "service": {
+    "prefix": "service",
+    "body": [
+      "service ${1:Service} {",
+      "\t$0",
+      "}"
+    ],
+    "description": "service"
+  },
+  "rpc": {
+    "prefix": "rpc",
+    "body": [
+      "rpc ${1:RpcMethod}($1Req) returns ($1Rsp);"
+    ],
+    "description": "rpc"
+  },
+  "rr": {
+    "prefix": "rr",
+    "body": [
+      "message ${1:Foo}Req {",
+      "\t$2",
+      "}",
+      "",
+      "message $1Rsp {",
+      "\t$3",
+      "}"
+    ],
+    "description": "req, rsp"
+  },
+  "rrr": {
+    "prefix": "rrr",
+    "body": [
+      "message ${1:Foo}Req {",
+      "\t$2",
+      "}",
+      "",
+      "message $1Rsp {",
+      "\t$3",
+      "}",
+      "",
+      "rpc $1($1Req) returns ($1Rsp);"
+    ],
+    "description": "req, rsp, rpc"
+  },
+  "map": {
+    "prefix": "map",
+    "body": [
+      "map<${1:key}, ${2:value}> ${3:field} = ${4:1};"
+    ],
+    "description": "map<key, value>"
+  }
 }

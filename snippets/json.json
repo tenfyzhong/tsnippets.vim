@@ -1,15 +1,15 @@
 {
-    "snippet": {
-        "prefix": "vsnip",
-        "body": [
-            "\"${1:name}\": {",
-            "    \"prefix\": \"${2:prefix}\",",
-            "    \"body\": [",
-            "        $0",
-            "    ],",
-            "    \"description\": \"${3:description}\"",
-            "}"
-        ],
-        "description": "snippet for vim-vsnip"
-    }
+  "snippet": {
+    "prefix": "vsnip",
+    "body": [
+      "\"${1:name}\": {",
+      "    \"prefix\": \"${2:prefix}\",",
+      "    \"body\": [",
+      "        $0",
+      "    ],",
+      "    \"description\": \"${3:description}\"",
+      "}"
+    ],
+    "description": "snippet for vim-vsnip"
+  }
 }

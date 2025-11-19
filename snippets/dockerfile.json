@@ -1,198 +1,198 @@
 {
-    "F": {
-        "prefix": "F",
-        "body": [
-            "FROM ${1:ubuntu}"
-        ],
-        "description": "FROM name"
-    },
-    "from": {
-        "prefix": "from",
-        "body": [
-            "FROM ${1:ubuntu}"
-        ],
-        "description": "FROM name"
-    },
-    "M": {
-        "prefix": "M",
-        "body": [
-            "MAINTAINER ${1:name}"
-        ],
-        "description": "MAINTAINER name"
-    },
-    "maintainer": {
-        "prefix": "maintainer",
-        "body": [
-            "MAINTAINER ${1:name}"
-        ],
-        "description": "MAINTAINER name"
-    },
-    "R": {
-        "prefix": "R",
-        "body": [
-            "RUN ${1:command}"
-        ],
-        "description": "RUN command"
-    },
-    "run": {
-        "prefix": "run",
-        "body": [
-            "RUN ${1:command}"
-        ],
-        "description": "RUN command"
-    },
-    "C": {
-        "prefix": "C",
-        "body": [
-            "CMD ${1:command}"
-        ],
-        "description": "CMD command"
-    },
-    "cmd": {
-        "prefix": "cmd",
-        "body": [
-            "CMD ${1:command}"
-        ],
-        "description": "CMD command"
-    },
-    "CP": {
-        "prefix": "CP",
-        "body": [
-            "COPY ${1:src} ${2:dst}"
-        ],
-        "description": "COPY src dsc"
-    },
-    "copy": {
-        "prefix": "copy",
-        "body": [
-            "COPY ${1:src} ${2:dst}"
-        ],
-        "description": "COPY src dsc"
-    },
-    "EXP": {
-        "prefix": "EXP",
-        "body": [
-            "EXPOSE ${1:port}"
-        ],
-        "description": "EXPOSE port"
-    },
-    "expose": {
-        "prefix": "expose",
-        "body": [
-            "EXPOSE ${1:port}"
-        ],
-        "description": "EXPOSE port"
-    },
-    "E": {
-        "prefix": "E",
-        "body": [
-            "ENV ${1:key} ${2:value}"
-        ],
-        "description": "ENV key value"
-    },
-    "env": {
-        "prefix": "env",
-        "body": [
-            "ENV ${1:key} ${2:value}"
-        ],
-        "description": "ENV key value"
-    },
-    "A": {
-        "prefix": "A",
-        "body": [
-            "ADD ${1:src} ${2:dst}"
-        ],
-        "description": "ADD src dst"
-    },
-    "add": {
-        "prefix": "add",
-        "body": [
-            "ADD ${1:src} ${2:dst}"
-        ],
-        "description": "ADD src dst"
-    },
-    "ENT": {
-        "prefix": "ENT",
-        "body": [
-            "ENTRYPOINT ${1:command}"
-        ],
-        "description": "ENTRYPOINT cmd"
-    },
-    "entrypoint": {
-        "prefix": "entrypoint",
-        "body": [
-            "ENTRYPOINT ${1:command}"
-        ],
-        "description": "ENTRYPOINT cmd"
-    },
-    "V": {
-        "prefix": "V",
-        "body": [
-            "VOLUME [\"${1:path}\"]"
-        ],
-        "description": "VOLUME path"
-    },
-    "volume": {
-        "prefix": "volume",
-        "body": [
-            "VOLUME [\"${1:path}\"]"
-        ],
-        "description": "VOLUME path"
-    },
-    "U": {
-        "prefix": "U",
-        "body": [
-            "USER ${1:name}"
-        ],
-        "description": "USER name"
-    },
-    "user": {
-        "prefix": "user",
-        "body": [
-            "USER ${1:name}"
-        ],
-        "description": "USER name"
-    },
-    "W": {
-        "prefix": "W",
-        "body": [
-            "WORKDIR ${1:path}"
-        ],
-        "description": "WORKDIR path"
-    },
-    "workdir": {
-        "prefix": "workdir",
-        "body": [
-            "WORKDIR ${1:path}"
-        ],
-        "description": "WORKDIR path"
-    },
-    "O": {
-        "prefix": "O",
-        "body": [
-            "ONBUILD ${1}"
-        ],
-        "description": "ONBUILD ..."
-    },
-    "onbuild": {
-        "prefix": "onbuild",
-        "body": [
-            "ONBUILD ${1}"
-        ],
-        "description": "ONBUILD ..."
-    },
-    "L": {
-        "prefix": "L",
-        "body": [
-            "LABEL ${1:label}=\"${2:value}\""
-        ],
-        "description": "LABEL label=value"
-    },
-    "label": {
-        "prefix": "label",
-        "body": [
-            "LABEL ${1:label}=\"${2:value}\""
-        ],
-        "description": "LABEL label=value"
-    }
+  "F": {
+    "prefix": "F",
+    "body": [
+      "FROM ${1:ubuntu}"
+    ],
+    "description": "FROM name"
+  },
+  "from": {
+    "prefix": "from",
+    "body": [
+      "FROM ${1:ubuntu}"
+    ],
+    "description": "FROM name"
+  },
+  "M": {
+    "prefix": "M",
+    "body": [
+      "MAINTAINER ${1:name}"
+    ],
+    "description": "MAINTAINER name"
+  },
+  "maintainer": {
+    "prefix": "maintainer",
+    "body": [
+      "MAINTAINER ${1:name}"
+    ],
+    "description": "MAINTAINER name"
+  },
+  "R": {
+    "prefix": "R",
+    "body": [
+      "RUN ${1:command}"
+    ],
+    "description": "RUN command"
+  },
+  "run": {
+    "prefix": "run",
+    "body": [
+      "RUN ${1:command}"
+    ],
+    "description": "RUN command"
+  },
+  "C": {
+    "prefix": "C",
+    "body": [
+      "CMD ${1:command}"
+    ],
+    "description": "CMD command"
+  },
+  "cmd": {
+    "prefix": "cmd",
+    "body": [
+      "CMD ${1:command}"
+    ],
+    "description": "CMD command"
+  },
+  "CP": {
+    "prefix": "CP",
+    "body": [
+      "COPY ${1:src} ${2:dst}"
+    ],
+    "description": "COPY src dsc"
+  },
+  "copy": {
+    "prefix": "copy",
+    "body": [
+      "COPY ${1:src} ${2:dst}"
+    ],
+    "description": "COPY src dsc"
+  },
+  "EXP": {
+    "prefix": "EXP",
+    "body": [
+      "EXPOSE ${1:port}"
+    ],
+    "description": "EXPOSE port"
+  },
+  "expose": {
+    "prefix": "expose",
+    "body": [
+      "EXPOSE ${1:port}"
+    ],
+    "description": "EXPOSE port"
+  },
+  "E": {
+    "prefix": "E",
+    "body": [
+      "ENV ${1:key} ${2:value}"
+    ],
+    "description": "ENV key value"
+  },
+  "env": {
+    "prefix": "env",
+    "body": [
+      "ENV ${1:key} ${2:value}"
+    ],
+    "description": "ENV key value"
+  },
+  "A": {
+    "prefix": "A",
+    "body": [
+      "ADD ${1:src} ${2:dst}"
+    ],
+    "description": "ADD src dst"
+  },
+  "add": {
+    "prefix": "add",
+    "body": [
+      "ADD ${1:src} ${2:dst}"
+    ],
+    "description": "ADD src dst"
+  },
+  "ENT": {
+    "prefix": "ENT",
+    "body": [
+      "ENTRYPOINT ${1:command}"
+    ],
+    "description": "ENTRYPOINT cmd"
+  },
+  "entrypoint": {
+    "prefix": "entrypoint",
+    "body": [
+      "ENTRYPOINT ${1:command}"
+    ],
+    "description": "ENTRYPOINT cmd"
+  },
+  "V": {
+    "prefix": "V",
+    "body": [
+      "VOLUME [\"${1:path}\"]"
+    ],
+    "description": "VOLUME path"
+  },
+  "volume": {
+    "prefix": "volume",
+    "body": [
+      "VOLUME [\"${1:path}\"]"
+    ],
+    "description": "VOLUME path"
+  },
+  "U": {
+    "prefix": "U",
+    "body": [
+      "USER ${1:name}"
+    ],
+    "description": "USER name"
+  },
+  "user": {
+    "prefix": "user",
+    "body": [
+      "USER ${1:name}"
+    ],
+    "description": "USER name"
+  },
+  "W": {
+    "prefix": "W",
+    "body": [
+      "WORKDIR ${1:path}"
+    ],
+    "description": "WORKDIR path"
+  },
+  "workdir": {
+    "prefix": "workdir",
+    "body": [
+      "WORKDIR ${1:path}"
+    ],
+    "description": "WORKDIR path"
+  },
+  "O": {
+    "prefix": "O",
+    "body": [
+      "ONBUILD ${1}"
+    ],
+    "description": "ONBUILD ..."
+  },
+  "onbuild": {
+    "prefix": "onbuild",
+    "body": [
+      "ONBUILD ${1}"
+    ],
+    "description": "ONBUILD ..."
+  },
+  "L": {
+    "prefix": "L",
+    "body": [
+      "LABEL ${1:label}=\"${2:value}\""
+    ],
+    "description": "LABEL label=value"
+  },
+  "label": {
+    "prefix": "label",
+    "body": [
+      "LABEL ${1:label}=\"${2:value}\""
+    ],
+    "description": "LABEL label=value"
+  }
 }

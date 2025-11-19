@@ -1,234 +1,234 @@
 {
-    "shape": {
-        "prefix": "shape",
-        "body": [
-            "shape: ${1:rectangle}"
-        ],
-        "description": "shape of the key"
-    },
-    "exp": {
-        "prefix": "exp",
-        "body": [
-            "explanation: |${1:md}",
-            "  $2",
-            "| ${3:{",
-            "  near: $4",
-            "}}"
-        ],
-        "description": "explanation text or code"
-    },
-    "icon": {
-        "prefix": "icon",
-        "body": [
-            "icon: ${1:https://icons.terrastruct.com/infra/019-network.svg}"
-        ],
-        "description": "icon with url"
-    },
-    "img": {
-        "prefix": "img",
-        "body": [
-            "${1:key}: {",
-            "  shape: image",
-            "  icon: ${2:https://icons.terrastruct.com/dev/github.svg}",
-            "}"
-        ],
-        "description": "image"
-    },
-    "sql": {
-        "prefix": "sql",
-        "body": [
-            "${1:table}: {",
-            "  shape: sql_table",
-            "  id: int {constraint: primary_key}",
-            "  $0",
-            "}"
-        ],
-        "description": "sql_table"
-    },
-    "pk": {
-        "prefix": "pk",
-        "body": [
-            "{constraint: primary_key}"
-        ],
-        "description": "primary_key for a table constraint"
-    },
-    "fk": {
-        "prefix": "fk",
-        "body": [
-            "{constraint: foreign_key}"
-        ],
-        "description": "foreign_key for a table constraint"
-    },
-    "unq": {
-        "prefix": "unq",
-        "body": [
-            "{constraint: unique}"
-        ],
-        "description": "unique for a table constraint"
-    },
-    "class": {
-        "prefix": "class",
-        "body": [
-            "${1:Class}: {",
-            "  shape: class",
-            "  field: \"string\"",
-            "  method(a int): int",
-            "}"
-        ],
-        "description": "class"
-    },
-    "sprectangle": {
-        "prefix": "sprectangle",
-        "body": [
-            "rectangle"
-        ],
-        "description": "rectangle矩形"
-    },
-    "spsquare": {
-        "prefix": "spsquare",
-        "body": [
-            "square"
-        ],
-        "description": "square正方形"
-    },
-    "sppage": {
-        "prefix": "sppage",
-        "body": [
-            "page"
-        ],
-        "description": "page页"
-    },
-    "spparallelogram": {
-        "prefix": "spparallelogram",
-        "body": [
-            "parallelogram"
-        ],
-        "description": "parallelogram平行四边形"
-    },
-    "spdocument": {
-        "prefix": "spdocument",
-        "body": [
-            "document"
-        ],
-        "description": "document文档"
-    },
-    "spcylinder": {
-        "prefix": "spcylinder",
-        "body": [
-            "cylinder"
-        ],
-        "description": "cylinder圆柱体"
-    },
-    "spqueue": {
-        "prefix": "spqueue",
-        "body": [
-            "queue"
-        ],
-        "description": "queue队列"
-    },
-    "sppackage": {
-        "prefix": "sppackage",
-        "body": [
-            "package"
-        ],
-        "description": "package包"
-    },
-    "spstep": {
-        "prefix": "spstep",
-        "body": [
-            "step"
-        ],
-        "description": "step台阶"
-    },
-    "spcallout": {
-        "prefix": "spcallout",
-        "body": [
-            "callout"
-        ],
-        "description": "callout对话框"
-    },
-    "spstored_data": {
-        "prefix": "spstored_data",
-        "body": [
-            "stored_data"
-        ],
-        "description": "stored_data存储"
-    },
-    "spperson": {
-        "prefix": "spperson",
-        "body": [
-            "person"
-        ],
-        "description": "person人物"
-    },
-    "spdiamond": {
-        "prefix": "spdiamond",
-        "body": [
-            "diamond"
-        ],
-        "description": "diamond菱形"
-    },
-    "spoval": {
-        "prefix": "spoval",
-        "body": [
-            "oval"
-        ],
-        "description": "oval椭圆形"
-    },
-    "spcircle": {
-        "prefix": "spcircle",
-        "body": [
-            "circle"
-        ],
-        "description": "circle圆形"
-    },
-    "sphexagon": {
-        "prefix": "sphexagon",
-        "body": [
-            "hexagon"
-        ],
-        "description": "hexagon六边形"
-    },
-    "spcloud": {
-        "prefix": "spcloud",
-        "body": [
-            "cloud"
-        ],
-        "description": "cloud云"
-    },
-    "sptext": {
-        "prefix": "sptext",
-        "body": [
-            "text"
-        ],
-        "description": "text文档"
-    },
-    "spcode": {
-        "prefix": "spcode",
-        "body": [
-            "code"
-        ],
-        "description": "code代码"
-    },
-    "spclass": {
-        "prefix": "spclass",
-        "body": [
-            "class"
-        ],
-        "description": "class类"
-    },
-    "spsql_table": {
-        "prefix": "spsql_table",
-        "body": [
-            "sql_table"
-        ],
-        "description": "sql_table数据库表"
-    },
-    "spimage": {
-        "prefix": "spimage",
-        "body": [
-            "image"
-        ],
-        "description": "image图片"
-    }
+  "shape": {
+    "prefix": "shape",
+    "body": [
+      "shape: ${1:rectangle}"
+    ],
+    "description": "shape of the key"
+  },
+  "exp": {
+    "prefix": "exp",
+    "body": [
+      "explanation: |${1:md}",
+      "  $2",
+      "| ${3:{",
+      "  near: $4",
+      "}}"
+    ],
+    "description": "explanation text or code"
+  },
+  "icon": {
+    "prefix": "icon",
+    "body": [
+      "icon: ${1:https://icons.terrastruct.com/infra/019-network.svg}"
+    ],
+    "description": "icon with url"
+  },
+  "img": {
+    "prefix": "img",
+    "body": [
+      "${1:key}: {",
+      "  shape: image",
+      "  icon: ${2:https://icons.terrastruct.com/dev/github.svg}",
+      "}"
+    ],
+    "description": "image"
+  },
+  "sql": {
+    "prefix": "sql",
+    "body": [
+      "${1:table}: {",
+      "  shape: sql_table",
+      "  id: int {constraint: primary_key}",
+      "  $0",
+      "}"
+    ],
+    "description": "sql_table"
+  },
+  "pk": {
+    "prefix": "pk",
+    "body": [
+      "{constraint: primary_key}"
+    ],
+    "description": "primary_key for a table constraint"
+  },
+  "fk": {
+    "prefix": "fk",
+    "body": [
+      "{constraint: foreign_key}"
+    ],
+    "description": "foreign_key for a table constraint"
+  },
+  "unq": {
+    "prefix": "unq",
+    "body": [
+      "{constraint: unique}"
+    ],
+    "description": "unique for a table constraint"
+  },
+  "class": {
+    "prefix": "class",
+    "body": [
+      "${1:Class}: {",
+      "  shape: class",
+      "  field: \"string\"",
+      "  method(a int): int",
+      "}"
+    ],
+    "description": "class"
+  },
+  "sprectangle": {
+    "prefix": "sprectangle",
+    "body": [
+      "rectangle"
+    ],
+    "description": "rectangle矩形"
+  },
+  "spsquare": {
+    "prefix": "spsquare",
+    "body": [
+      "square"
+    ],
+    "description": "square正方形"
+  },
+  "sppage": {
+    "prefix": "sppage",
+    "body": [
+      "page"
+    ],
+    "description": "page页"
+  },
+  "spparallelogram": {
+    "prefix": "spparallelogram",
+    "body": [
+      "parallelogram"
+    ],
+    "description": "parallelogram平行四边形"
+  },
+  "spdocument": {
+    "prefix": "spdocument",
+    "body": [
+      "document"
+    ],
+    "description": "document文档"
+  },
+  "spcylinder": {
+    "prefix": "spcylinder",
+    "body": [
+      "cylinder"
+    ],
+    "description": "cylinder圆柱体"
+  },
+  "spqueue": {
+    "prefix": "spqueue",
+    "body": [
+      "queue"
+    ],
+    "description": "queue队列"
+  },
+  "sppackage": {
+    "prefix": "sppackage",
+    "body": [
+      "package"
+    ],
+    "description": "package包"
+  },
+  "spstep": {
+    "prefix": "spstep",
+    "body": [
+      "step"
+    ],
+    "description": "step台阶"
+  },
+  "spcallout": {
+    "prefix": "spcallout",
+    "body": [
+      "callout"
+    ],
+    "description": "callout对话框"
+  },
+  "spstored_data": {
+    "prefix": "spstored_data",
+    "body": [
+      "stored_data"
+    ],
+    "description": "stored_data存储"
+  },
+  "spperson": {
+    "prefix": "spperson",
+    "body": [
+      "person"
+    ],
+    "description": "person人物"
+  },
+  "spdiamond": {
+    "prefix": "spdiamond",
+    "body": [
+      "diamond"
+    ],
+    "description": "diamond菱形"
+  },
+  "spoval": {
+    "prefix": "spoval",
+    "body": [
+      "oval"
+    ],
+    "description": "oval椭圆形"
+  },
+  "spcircle": {
+    "prefix": "spcircle",
+    "body": [
+      "circle"
+    ],
+    "description": "circle圆形"
+  },
+  "sphexagon": {
+    "prefix": "sphexagon",
+    "body": [
+      "hexagon"
+    ],
+    "description": "hexagon六边形"
+  },
+  "spcloud": {
+    "prefix": "spcloud",
+    "body": [
+      "cloud"
+    ],
+    "description": "cloud云"
+  },
+  "sptext": {
+    "prefix": "sptext",
+    "body": [
+      "text"
+    ],
+    "description": "text文档"
+  },
+  "spcode": {
+    "prefix": "spcode",
+    "body": [
+      "code"
+    ],
+    "description": "code代码"
+  },
+  "spclass": {
+    "prefix": "spclass",
+    "body": [
+      "class"
+    ],
+    "description": "class类"
+  },
+  "spsql_table": {
+    "prefix": "spsql_table",
+    "body": [
+      "sql_table"
+    ],
+    "description": "sql_table数据库表"
+  },
+  "spimage": {
+    "prefix": "spimage",
+    "body": [
+      "image"
+    ],
+    "description": "image图片"
+  }
 }

@@ -1,93 +1,93 @@
 {
-    "%": {
-        "prefix": "%",
-        "body": [
-            "<% $1 %>"
-        ],
-        "description": "<% %>"
-    },
-    "-": {
-        "prefix": "-",
-        "body": [
-            "<%- $1 %>"
-        ],
-        "description": "<%- %>"
-    },
-    "=": {
-        "prefix": "=",
-        "body": [
-            "<%= $1 %>"
-        ],
-        "description": "<%= %>"
-    },
-    "#": {
-        "prefix": "#",
-        "body": [
-            "<%# $1 %>"
-        ],
-        "description": "<%# %>"
-    },
-    "for": {
-        "prefix": "for",
-        "body": [
-            "<% for ($1; $2; $3) { %>",
-            "  $4",
-            "<% } %>"
-        ],
-        "description": "for"
-    },
-    "fori": {
-        "prefix": "fori",
-        "body": [
-            "<% for ($1 in $2) { %>",
-            "  $3",
-            "<% } %>"
-        ],
-        "description": "for...in"
-    },
-    "while": {
-        "prefix": "while",
-        "body": [
-            "<% while ($1) { %>",
-            "  $2",
-            "<% } %>"
-        ],
-        "description": "while"
-    },
-    "if": {
-        "prefix": "if",
-        "body": [
-            "<% if ($1) { %>",
-            "  $2",
-            "<% } %>"
-        ],
-        "description": "if"
-    },
-    "ife": {
-        "prefix": "ife",
-        "body": [
-            "<% if ($1) { %>",
-            "  $2",
-            "<% } else { %>",
-            "  $3",
-            "<% } %>"
-        ],
-        "description": "if...else"
-    },
-    "else": {
-        "prefix": "else",
-        "body": [
-            "<% } else { %>",
-            "  $1"
-        ],
-        "description": "else"
-    },
-    "elif": {
-        "prefix": "elif",
-        "body": [
-            "<% } else if ($1) { %>",
-            "  $2"
-        ],
-        "description": "else if"
-    }
+  "%": {
+    "prefix": "%",
+    "body": [
+      "<% $1 %>"
+    ],
+    "description": "<% %>"
+  },
+  "-": {
+    "prefix": "-",
+    "body": [
+      "<%- $1 %>"
+    ],
+    "description": "<%- %>"
+  },
+  "=": {
+    "prefix": "=",
+    "body": [
+      "<%= $1 %>"
+    ],
+    "description": "<%= %>"
+  },
+  "#": {
+    "prefix": "#",
+    "body": [
+      "<%# $1 %>"
+    ],
+    "description": "<%# %>"
+  },
+  "for": {
+    "prefix": "for",
+    "body": [
+      "<% for ($1; $2; $3) { %>",
+      "  $4",
+      "<% } %>"
+    ],
+    "description": "for"
+  },
+  "fori": {
+    "prefix": "fori",
+    "body": [
+      "<% for ($1 in $2) { %>",
+      "  $3",
+      "<% } %>"
+    ],
+    "description": "for...in"
+  },
+  "while": {
+    "prefix": "while",
+    "body": [
+      "<% while ($1) { %>",
+      "  $2",
+      "<% } %>"
+    ],
+    "description": "while"
+  },
+  "if": {
+    "prefix": "if",
+    "body": [
+      "<% if ($1) { %>",
+      "  $2",
+      "<% } %>"
+    ],
+    "description": "if"
+  },
+  "ife": {
+    "prefix": "ife",
+    "body": [
+      "<% if ($1) { %>",
+      "  $2",
+      "<% } else { %>",
+      "  $3",
+      "<% } %>"
+    ],
+    "description": "if...else"
+  },
+  "else": {
+    "prefix": "else",
+    "body": [
+      "<% } else { %>",
+      "  $1"
+    ],
+    "description": "else"
+  },
+  "elif": {
+    "prefix": "elif",
+    "body": [
+      "<% } else if ($1) { %>",
+      "  $2"
+    ],
+    "description": "else if"
+  }
 }

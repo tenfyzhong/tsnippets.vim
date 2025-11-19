@@ -1,11 +1,11 @@
 {
-    "namespace": {
-        "prefix": "ns",
-        "body": [
-            "namespace go ${1:namespace}",
-            "namespace py $1",
-            "namespace java $1"
-        ],
-        "description": "snippets for namepsace"
-    }
+  "namespace": {
+    "prefix": "ns",
+    "body": [
+      "namespace go ${1:namespace}",
+      "namespace py $1",
+      "namespace java $1"
+    ],
+    "description": "snippets for namepsace"
+  }
 }

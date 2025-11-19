@@ -1,85 +1,85 @@
 {
-    "/case|sw(itch)?/": {
-        "prefix": "/case|sw(itch)?/",
-        "body": [
-            "case ${1:word} {",
-            "\t(${2:pattern})",
-            "\t${0:${VISUAL}}",
-            "    ;;",
-            "}"
-        ],
-        "description": "case .. (case)"
-    },
-    "if": {
-        "prefix": "if",
-        "body": [
-            "if ${2:[[ ${1:condition} ]]} {",
-            "\t${0:${VISUAL}}",
-            "}"
-        ],
-        "description": "if ... (if)"
-    },
-    "elif": {
-        "prefix": "elif",
-        "body": [
-            "elif ${2:[[ ${1:condition} ]]} {",
-            "\t${0:${VISUAL}}",
-            "}"
-        ],
-        "description": "elif .. (elif)"
-    },
-    "for": {
-        "prefix": "for",
-        "body": [
-            "for (( i = 0; i < ${1:10}; i++ )) {",
-            "\t${0:${VISUAL}}",
-            "}"
-        ],
-        "description": "for ... (for)"
-    },
-    "forin": {
-        "prefix": "forin",
-        "body": [
-            "for ${1:i} (${2:words}) {",
-            "\t${0:${VISUAL}}",
-            "}"
-        ],
-        "description": "for ... (...)  (forin)"
-    },
-    "until": {
-        "prefix": "until",
-        "body": [
-            "until ${2:[[ ${1:condition} ]]} {",
-            "\t${0:${VISUAL}}",
-            "}"
-        ],
-        "description": "until ... (done)"
-    },
-    "/wh(ile)?/": {
-        "prefix": "/wh(ile)?/",
-        "body": [
-            "while ${2:[[ ${1:condition} ]]} {",
-            "\t${0:${VISUAL}}",
-            "}"
-        ],
-        "description": "while ... (done)"
-    },
-    "repeat": {
-        "prefix": "repeat",
-        "body": [
-            "repeat ${1:n} {",
-            "    ${0:${VISUAL}}",
-            "}"
-        ],
-        "description": "repeat ... (repeat)"
-    },
-    "select": {
-        "prefix": "select",
-        "body": [
-            "select ${1:n} (${2:items}) {",
-            "    ${0:${VISUAL}}",
-            "}"
-        ],
-        "description": "select ... (...) (select)"
-    }
+  "/case|sw(itch)?/": {
+    "prefix": "/case|sw(itch)?/",
+    "body": [
+      "case ${1:word} {",
+      "\t(${2:pattern})",
+      "\t${0:${VISUAL}}",
+      "    ;;",
+      "}"
+    ],
+    "description": "case .. (case)"
+  },
+  "if": {
+    "prefix": "if",
+    "body": [
+      "if ${2:[[ ${1:condition} ]]} {",
+      "\t${0:${VISUAL}}",
+      "}"
+    ],
+    "description": "if ... (if)"
+  },
+  "elif": {
+    "prefix": "elif",
+    "body": [
+      "elif ${2:[[ ${1:condition} ]]} {",
+      "\t${0:${VISUAL}}",
+      "}"
+    ],
+    "description": "elif .. (elif)"
+  },
+  "for": {
+    "prefix": "for",
+    "body": [
+      "for (( i = 0; i < ${1:10}; i++ )) {",
+      "\t${0:${VISUAL}}",
+      "}"
+    ],
+    "description": "for ... (for)"
+  },
+  "forin": {
+    "prefix": "forin",
+    "body": [
+      "for ${1:i} (${2:words}) {",
+      "\t${0:${VISUAL}}",
+      "}"
+    ],
+    "description": "for ... (...)  (forin)"
+  },
+  "until": {
+    "prefix": "until",
+    "body": [
+      "until ${2:[[ ${1:condition} ]]} {",
+      "\t${0:${VISUAL}}",
+      "}"
+    ],
+    "description": "until ... (done)"
+  },
+  "/wh(ile)?/": {
+    "prefix": "/wh(ile)?/",
+    "body": [
+      "while ${2:[[ ${1:condition} ]]} {",
+      "\t${0:${VISUAL}}",
+      "}"
+    ],
+    "description": "while ... (done)"
+  },
+  "repeat": {
+    "prefix": "repeat",
+    "body": [
+      "repeat ${1:n} {",
+      "    ${0:${VISUAL}}",
+      "}"
+    ],
+    "description": "repeat ... (repeat)"
+  },
+  "select": {
+    "prefix": "select",
+    "body": [
+      "select ${1:n} (${2:items}) {",
+      "    ${0:${VISUAL}}",
+      "}"
+    ],
+    "description": "select ... (...) (select)"
+  }
 }

@@ -1,948 +1,948 @@
 {
-    ":": {
-        "prefix": ":",
-        "body": [
-            "${1:name} := ${2:value}"
-        ],
-        "description": "name := value"
-    },
-    "[]": {
-        "prefix": "[]",
-        "body": [
-            "[]${1:type}{}"
-        ],
-        "description": "[]type{}"
-    },
-    "/^imp/": {
-        "prefix": "/^imp/",
-        "body": [
-            "import (",
-            "\t\"${1:package}\"",
-            ")"
-        ],
-        "description": "Import declaration"
-    },
-    "ch": {
-        "prefix": "ch",
-        "body": [
-            "chan ${1:type}"
-        ],
-        "description": "Chan declaration"
-    },
-    "st": {
-        "prefix": "st",
-        "body": [
-            "type ${1:Struct} struct {",
-            "\t$0",
-            "}"
-        ],
-        "description": "Struct declaration"
-    },
-    "stn": {
-        "prefix": "stn",
-        "body": [
-            "type ${1:Struct} struct {",
-            "\t$0",
-            "}",
-            "",
-            "func New$1() *$1 {",
-            "\treturn &$1{}",
-            "}"
-        ],
-        "description": "Struct and new function"
-    },
-    "in": {
-        "prefix": "in",
-        "body": [
-            "type ${1:Interface} interface {",
-            "\t$0",
-            "}"
-        ],
-        "description": "Interface declaration"
-    },
-    "new": {
-        "prefix": "new",
-        "body": [
-            "new(${1:type})"
-        ],
-        "description": "new statement"
-    },
-    "de": {
-        "prefix": "de",
-        "body": [
-            "defer ${1:func}"
-        ],
-        "description": "defer statement"
-    },
-    "/^init/": {
-        "prefix": "/^init/",
-        "body": [
-            "func init() {",
-            "\t$0",
-            "}"
-        ],
-        "description": "Init function"
-    },
-    "sel": {
-        "prefix": "sel",
-        "body": [
-            "select {",
-            "case $1:",
-            "\t$2",
-            "default:",
-            "\t$0",
-            "}"
-        ],
-        "description": "Select statement"
-    },
-    "swi": {
-        "prefix": "swi",
-        "body": [
-            "switch ${1:expression}${1/(.+)/ /}{",
-            "case$0",
-            "}"
-        ],
-        "description": "Switch statement"
-    },
-    "case": {
-        "prefix": "case",
-        "body": [
-            "case $1:",
-            "\t$0"
-        ],
-        "description": "Case statement"
-    },
-    "for": {
-        "prefix": "for",
-        "body": [
-            "for ${1:condition} {",
-            "\t$0",
-            "}"
-        ],
-        "description": "For loop"
-    },
-    "forr": {
-        "prefix": "forr",
-        "body": [
-            "for ${1:_}, ${2:item} := range ${3:items} {",
-            "\t$0",
-            "}"
-        ],
-        "description": "For range"
-    },
-    "fori": {
-        "prefix": "fori",
-        "body": [
-            "for i:=${1:0}; i<${2:n}; i++ {",
-            "\t$0",
-            "}"
-        ],
-        "description": "For i..n"
-    },
-    "forc": {
-        "prefix": "forc",
-        "body": [
-            "for ${1:i} := range ${2:c} {",
-            "\t$0",
-            "}"
-        ],
-        "description": "For chan"
-    },
-    "fors": {
-        "prefix": "fors",
-        "body": [
-            "for {",
-            "\tselect {",
-            "\tcase ${1:c}:",
-            "\t\t$2",
-            "\tdefault:",
-            "\t\t$0",
-            "\t}",
-            "}"
-        ],
-        "description": "For select"
-    },
-    "if err": {
-        "prefix": "ife",
-        "body": [
-            "if err != nil {",
-            "\t$0",
-            "\treturn errors.WithStack(err)",
-            "}"
-        ],
-        "description": "if err != nil"
-    },
-    "ap": {
-        "prefix": "ap",
-        "body": [
-            "$1 = append(${1:slice}, ${2:variable})"
-        ],
-        "description": "append"
-    },
-    "del": {
-        "prefix": "del",
-        "body": [
-            "delete(${1:map}, ${2:key})"
-        ],
-        "description": "delete"
-    },
-    "ctxt": {
-        "prefix": "ctxt",
-        "body": [
-            "${1:ctx}, ${2:cancel} := context.WithTimeout(context.Background(), ${3:1000}*time.${4:Millisecond})",
-            "defer $2()"
-        ],
-        "description": "context.WithTimeout"
-    },
-    "ms": {
-        "prefix": "ms",
-        "body": [
-            "make([]${1:string}, ${2:0}, ${3:0})"
-        ],
-        "description": "make slice"
-    },
-    "mm": {
-        "prefix": "mm",
-        "body": [
-            "make(map[${1:string}]${2:string}, ${3:0})"
-        ],
-        "description": "make map"
-    },
-    "mc": {
-        "prefix": "mc",
-        "body": [
-            "make(chan ${1:type}, ${2:size})"
-        ],
-        "description": "make chan"
-    },
-    "mc0": {
-        "prefix": "mc0",
-        "body": [
-            "make(chan ${1:type})"
-        ],
-        "description": "make unbuffered chan"
-    },
-    "testing": {
-        "prefix": "testing",
-        "body": [
-            "t *testing.T"
-        ],
-        "description": "testing parameter"
-    },
-    "marshal": {
-        "prefix": "marshal",
-        "body": [
-            "${1:data}, ${2:err} := ${3:json}.Marshal(${4:st})",
-            "if $2 != nil {",
-            "\t$0",
-            "}"
-        ],
-        "description": "Marshal"
-    },
-    "unmarshal": {
-        "prefix": "unmarshal",
-        "body": [
-            "${1:st} := &${2:Struct}{}",
-            "${3:err} := ${4:json}.Unmarshal(${5:data}, $1)",
-            "if err != nil {",
-            "\t$0",
-            "}"
-        ],
-        "description": "Unmarshal"
-    },
-    "lft": {
-        "prefix": "lft",
-        "body": [
-            "log.WithFields(log.Fields{",
-            "\t$3",
-            "}).Trace(${1:ctx}, \"${2:format}\")$0"
-        ],
-        "description": "log.WithFields.Trace"
-    },
-    "lfd": {
-        "prefix": "lfd",
-        "body": [
-            "log.WithFields(log.Fields{",
-            "\t$3",
-            "}).Debug(${1:ctx}, \"${2:format}\")$0"
-        ],
-        "description": "log.WithFields.Debug"
-    },
-    "lfi": {
-        "prefix": "lfi",
-        "body": [
-            "log.WithFields(log.Fields{",
-            "\t$3",
-            "}).Info(${1:ctx}, \"${2:format}\")$0"
-        ],
-        "description": "log.WithFields.Info"
-    },
-    "lfw": {
-        "prefix": "lfw",
-        "body": [
-            "log.WithFields(log.Fields{",
-            "\t$3",
-            "}).Warn(${1:ctx}, \"${2:format}\")$0"
-        ],
-        "description": "log.WithFields.Warn"
-    },
-    "lfe": {
-        "prefix": "lfe",
-        "body": [
-            "log.WithFields(log.Fields{",
-            "\t$3",
-            "}).Error(${1:ctx}, \"${2:format}\")$0"
-        ],
-        "description": "log.WithFields.Error"
-    },
-    "lff": {
-        "prefix": "lff",
-        "body": [
-            "log.WithFields(log.Fields{",
-            "\t$3",
-            "}).Fatal(${1:ctx}, \"${2:format}\")$0"
-        ],
-        "description": "log.WithFields.Fatal"
-    },
-    "lfp": {
-        "prefix": "lfp",
-        "body": [
-            "log.WithFields(log.Fields{",
-            "\t$3",
-            "}).Panic(${1:ctx}, \"${2:format}\")$0"
-        ],
-        "description": "log.WithFields.Panic"
-    },
-    "lgt": {
-        "prefix": "lgt",
-        "body": [
-            "log.Trace(${1:ctx}, \"${2:format}\")$0"
-        ],
-        "description": "log.Trace"
-    },
-    "lgd": {
-        "prefix": "lgd",
-        "body": [
-            "log.Debug(${1:ctx}, \"${2:format}\")$0"
-        ],
-        "description": "log.Debug"
-    },
-    "lgi": {
-        "prefix": "lgi",
-        "body": [
-            "log.Info(${1:ctx}, \"${2:format}\")$0"
-        ],
-        "description": "log.Info"
-    },
-    "lgw": {
-        "prefix": "lgw",
-        "body": [
-            "log.Warn(${1:ctx}, \"${2:format}\")$0"
-        ],
-        "description": "log.Warn"
-    },
-    "lge": {
-        "prefix": "lge",
-        "body": [
-            "log.Error(${1:ctx}, \"${2:format}\")$0"
-        ],
-        "description": "log.Error"
-    },
-    "lgf": {
-        "prefix": "lgf",
-        "body": [
-            "log.Fatal(${1:ctx}, \"${2:format}\")$0"
-        ],
-        "description": "log.Fatal"
-    },
-    "lgp": {
-        "prefix": "lgp",
-        "body": [
-            "log.Panic(${1:ctx}, \"${2:format}\")$0"
-        ],
-        "description": "log.Panic"
-    },
-    "fsf": {
-        "prefix": "fsf",
-        "body": [
-            "fmt.Sprintf(\"$1\", $2)"
-        ],
-        "description": "fmt.Sprintf"
-    },
-    "fpf": {
-        "prefix": "fpf",
-        "body": [
-            "fmt.Printf(\"$1\\n\", $2)"
-        ],
-        "description": "fmt.Printf"
-    },
-    "fef": {
-        "prefix": "fef",
-        "body": [
-            "fmt.Errorf(\"$1\", $2)"
-        ],
-        "description": "fmt.Errorf"
-    },
-    "funct": {
-        "prefix": "funct",
-        "body": [
-            "func Test${1:Func}(t *testing.T) {",
-            "\t$0",
-            "}"
-        ],
-        "description": "testing function"
-    },
-    "funcb": {
-        "prefix": "funcb",
-        "body": [
-            "func Benchmark${1:Func}(b *testing.B) {",
-            "\t// b.ResetTimer()",
-            "\tfor i := 0; i < b.N; i++ {",
-            "\t\t$0",
-            "\t}",
-            "}"
-        ],
-        "description": "benchmark testing function"
-    },
-    "gomock": {
-        "prefix": "gomock",
-        "body": [
-            "ctrl := gomock.NewController(t)",
-            "defer ctrl.Finish()",
-            "",
-            ""
-        ],
-        "description": "gomock.NewController"
-    },
-    "httptests": {
-        "prefix": "httptests",
-        "body": [
-            "httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {",
-            "\t$0",
-            "}))"
-        ],
-        "description": "httptest.NewServer"
-    },
-    "gmtc": {
-        "prefix": "gmtc",
-        "body": [
-            "{",
-            "\tname: \"${1:test name}\",",
-            "\tinit: func(ctrl *gomock.Controller) ${2:Receiver} {",
-            "\t\t$3",
-            "\t},",
-            "\targs: func(t *gomock.Controller) args{",
-            "\t\treturn args{",
-            "\t\t\t$4",
-            "\t\t}",
-            "\t},",
-            "\twant1: ${5:want1},",
-            "\twantErr: ${6:true},",
-            "\tinspectErr: func(err error, t *testing.T) {",
-            "\t\t$7",
-            "\t},",
-            "}, // $1"
-        ],
-        "description": "gomock test case"
-    },
-    "asseq": {
-        "prefix": "asseq",
-        "body": [
-            "assert.Equal(t, ${1:excepted}, ${2:actual}, \"$2 == $1\")"
-        ],
-        "description": "assert.Equal"
-    },
-    "assemp": {
-        "prefix": "assemp",
-        "body": [
-            "assert.Empty(t, ${1:object}, \"$1 should be empty\")"
-        ],
-        "description": "assert.Empty"
-    },
-    "assnemp": {
-        "prefix": "assnemp",
-        "body": [
-            "assert.NotEmpty(t, ${1:object}, \"$1 should not be empty\")"
-        ],
-        "description": "assert.NotEmpty"
-    },
-    "asserr": {
-        "prefix": "asserr",
-        "body": [
-            "assert.Error(t, ${1:err}, \"$1 != nil\")"
-        ],
-        "description": "assert.Error"
-    },
-    "assnerr": {
-        "prefix": "assnerr",
-        "body": [
-            "assert.NoError(t, ${1:err}, \"$1 == nil\")"
-        ],
-        "description": "assert.NoError"
-    },
-    "assee": {
-        "prefix": "assee",
-        "body": [
-            "assert.EqualError(t, ${1:err}, \"${2:errstr}\", \"$1.Error() == \\`$2\\`\")"
-        ],
-        "description": "assert.ErrorEqual"
-    },
-    "assfe": {
-        "prefix": "assfe",
-        "body": [
-            "assert.False(t, ${1:value}, \"$1 == false\")"
-        ],
-        "description": "assert.False"
-    },
-    "asstr": {
-        "prefix": "asstr",
-        "body": [
-            "assert.True(t, ${1:value}, \"$1 == true\")"
-        ],
-        "description": "assert.True"
-    },
-    "assnil": {
-        "prefix": "assnil",
-        "body": [
-            "assert.Nil(t, ${1:object}, \"$1 == nil\")"
-        ],
-        "description": "assert.Nil"
-    },
-    "assnnil": {
-        "prefix": "assnnil",
-        "body": [
-            "assert.NotNil(t, ${1:object}, \"$1 != nil\")"
-        ],
-        "description": "assert.NotNil"
-    },
-    "ass0": {
-        "prefix": "ass0",
-        "body": [
-            "assert.Zero(t, ${1:object})"
-        ],
-        "description": "assert.Zero"
-    },
-    "assn0": {
-        "prefix": "assn0",
-        "body": [
-            "assert.NotZero(t, ${1:object})"
-        ],
-        "description": "assert.NotZero"
-    },
-    "mocket": {
-        "prefix": "mocket",
-        "body": [
-            "mocket.Catcher.Reset().NewMock().WithQuery(\\`${1:sql}\\`).${2:WithReply}(${3:reply})"
-        ],
-        "description": "mocket WithQuery"
-    },
-    "redigopool": {
-        "prefix": "redigopool",
-        "body": [
-            "pool := &redis.Pool{",
-            "\tMaxIdle:     ${1:8},",
-            "\tIdleTimeout: ${2:300} * ${3:time.Second},",
-            "}",
-            "pool.Dial = func() (redis.Conn, error) {",
-            "\tc, err := redis.Dial(",
-            "\t\t\"tcp\",",
-            "\t\t${4:\"127.0.0.1:6379\"},",
-            "\t\tredis.DialConnectTimeout(${5:1}*time.Second),",
-            "\t\tredis.DialReadTimeout(${6:1}*time.Second),",
-            "\t\tredis.DialWriteTimeout(${7:1}*time.Second),",
-            "\t\tredis.DialPassword(${8:\"password\"}),",
-            "\t\tredis.DialDatabase(${9:0}))",
-            "\tif err != nil {",
-            "\t\treturn nil, err",
-            "\t}",
-            "\treturn c, err",
-            "}",
-            "pool.TestOnBorrow = func(c redis.Conn, t time.Time) error {",
-            "\t_, err := c.Do(\"Ping\")",
-            "\treturn err",
-            "}"
-        ],
-        "description": "new redisgo pool"
-    },
-    "redigodo": {
-        "prefix": "redigodo",
-        "body": [
-            "${1:c} := ${2:pool}.Get()",
-            "defer $1.Close",
-            "${3:data}, ${4:err} := redis.${5:Bytes}($1.Do(\"${6:GET}\", ${7:\"foo\"}))",
-            "if $4 != nil {",
-            "\t$8",
-            "}",
-            "",
-            "$0",
-            ""
-        ],
-        "description": "redigo do"
-    },
-    "redigomulti": {
-        "prefix": "redigomulti",
-        "body": [
-            "${1:c} := ${2:pool}.Get()",
-            "defer $1.Close",
-            "$1.Send(\"MULTI\")",
-            "${3:data}, ${4:err} := $1.Do(\"EXEC\")",
-            "if $4 != nil {",
-            "\t$5",
-            "}",
-            "",
-            "$0"
-        ],
-        "description": "redigo MULTI"
-    },
-    "gormopen": {
-        "prefix": "gormopen",
-        "body": [
-            "${1:db}, err := gorm.Open(${2:\"mysql\"}, ${3:uri})",
-            "if err != nil {",
-            "\t${4}",
-            "}",
-            "$1.DB().SetMaxIdleConns(${5:3})",
-            "$1.DB().SetMaxOpenConns(${6:10})",
-            "$1.DB().SetConnMaxLifetime(${7:3000} * time.Millisecond)",
-            "$1.LogMode(false)"
-        ],
-        "description": "gorm.Open"
-    },
-    "gormnotfound": {
-        "prefix": "gormnotfound",
-        "body": [
-            "errors.Is(${1:err}, gorm.ErrRecordNotFound)"
-        ],
-        "description": "gorm record not found"
-    },
-    "httpclient": {
-        "prefix": "httpclient",
-        "body": [
-            "${1:httpClient} := &http.Client{",
-            "\tTransport: &http.Transport{",
-            "\t\tMaxIdleConnsPerHost: ${2:100},",
-            "\t\tMaxIdleConns: ${3:10},",
-            "\t\tTLSClientConfig: &tls.Config{",
-            "\t\t\tInsecureSkipVerify: ${4:true},",
-            "\t\t},",
-            "\t},",
-            "\tTimeout: time.Duration(${5:1000}) * time.Millisecond,",
-            "}"
-        ],
-        "description": "new http chlent"
-    },
-    "httpget": {
-        "prefix": "httpget",
-        "body": [
-            "v := url.Values{}",
-            "v.Add(${1:\"key\"}, ${2:\"value\"})",
-            "query := v.Encode()",
-            "url := ${3:\"http://localhost:8080\"} + \"?\" + query",
-            "resp, err := ${4:http}.Get(url)",
-            "if err != nil {",
-            "\t${5:return err}",
-            "}",
-            "defer resp.Body.Close()",
-            "",
-            "if resp.StatusCode != http.StatusOK {",
-            "\t${6:return fmt.Errorf(\"status code: %d\", resp.StatusCode)}",
-            "}",
-            "",
-            "body, err := ioutil.ReadAll(resp.Body)",
-            "if err != nil {",
-            "\t${7:return err}",
-            "}",
-            "",
-            "${8:rsp} := ${9:&Response{}}",
-            "err = json.Unmarshal(body, rsp)",
-            "if err != nil {",
-            "\t${10:return err}",
-            "}"
-        ],
-        "description": "http get json"
-    },
-    "httppostj": {
-        "prefix": "httppostj",
-        "body": [
-            "url := ${1:\"http://localhost:8080\"}",
-            "req := ${2:&Request{}}",
-            "body, err := json.Marshal(req)",
-            "if err != nil {",
-            "\t${3:return err}",
-            "}",
-            "",
-            "resp, err := ${4:http}.Post(url, \"application/json\", bytes.NewReader(body))",
-            "if err != nil {",
-            "\t${5:return err}",
-            "}",
-            "defer resp.Body.Close()",
-            "",
-            "if resp.StatusCode != http.StatusOK {",
-            "\t${6:return fmt.Errorf(\"status code: %d\", resp.StatusCode)}",
-            "}",
-            "",
-            "body, err := ioutil.ReadAll(resp.Body)",
-            "if err != nil {",
-            "\t${7:return err}",
-            "}",
-            "",
-            "${8:rsp} := ${9:&Response{}}",
-            "err = json.Unmarshal(body, rsp)",
-            "if err != nil {",
-            "\t${10:return err}",
-            "}"
-        ],
-        "description": "http post json"
-    },
-    "httppostf": {
-        "prefix": "httppostf",
-        "body": [
-            "v := url.Values{}",
-            "v.Add(${1:\"key\"}, ${2:\"value\"})",
-            "url := ${3:\"http://localhost:8080\"}",
-            "resp, err := ${4:http}.PostForm(url, v)",
-            "if err != nil {",
-            "\t${5:return err}",
-            "}",
-            "defer resp.Body.Close()",
-            "",
-            "if resp.StatusCode != http.StatusOK {",
-            "\t${6:return fmt.Errorf(\"status code: %d\", resp.StatusCode)}",
-            "}",
-            "",
-            "body, err := ioutil.ReadAll(resp.Body)",
-            "if err != nil {",
-            "\t${7:return err}",
-            "}",
-            "",
-            "${8:rsp} := ${9:&Response{}}",
-            "err = json.Unmarshal(body, rsp)",
-            "if err != nil {",
-            "\t${10:return err}",
-            "}"
-        ],
-        "description": "http post form"
-    },
-    "mysqlerr": {
-        "prefix": "mysqlerr",
-        "body": [
-            "var ${1:mysqlErr} *mysql.MySQLError",
-            "if errors.As(${2:err}, &$1) && $1.Number == ${3:1062} {",
-            "\t$0",
-            "}"
-        ],
-        "description": "check mysql error"
-    },
-    "json filed tag in raw format": {
-        "prefix": "json",
-        "body": [
-            "`json:\"${VIM:luaeval('require(\"tsnippets.go\").field()')}\"`"
-        ],
-        "description": "json field tag in snake format"
-    },
-    "json filed tag in snake format": {
-        "prefix": "jsons",
-        "body": [
-            "`json:\"${VIM:luaeval('require(\"tsnippets.go\").field_snake()')}\"`"
-        ],
-        "description": "json field tag in snake format"
-    },
-    "json filed tag in camel format": {
-        "prefix": "jsonc",
-        "body": [
-            "`json:\"${VIM:luaeval('require(\"tsnippets.go\").field_camel()')}\"`"
-        ],
-        "description": "json field tag in snake format"
-    },
-    "bson filed tag in raw format": {
-        "prefix": "bson",
-        "body": [
-            "`bson:\"${VIM:luaeval('require(\"tsnippets.go\").field()')}\"`"
-        ],
-        "description": "bson field tag in snake format"
-    },
-    "bson filed tag in snake format": {
-        "prefix": "bsons",
-        "body": [
-            "`bson:\"${VIM:luaeval('require(\"tsnippets.go\").field_snake()')}\"`"
-        ],
-        "description": "bson field tag in snake format"
-    },
-    "bson filed tag in camel format": {
-        "prefix": "bsonc",
-        "body": [
-            "`bson:\"${VIM:luaeval('require(\"tsnippets.go\").field_camel()')}\"`"
-        ],
-        "description": "bson field tag in snake format"
-    },
-    "xml filed tag in raw format": {
-        "prefix": "xml",
-        "body": [
-            "`xml:\"${VIM:luaeval('require(\"tsnippets.go\").field()')}\"`"
-        ],
-        "description": "xml field tag in snake format"
-    },
-    "xml filed tag in snake format": {
-        "prefix": "xmls",
-        "body": [
-            "`xml:\"${VIM:luaeval('require(\"tsnippets.go\").field_snake()')}\"`"
-        ],
-        "description": "xml field tag in snake format"
-    },
-    "xml filed tag in camel format": {
-        "prefix": "xmlc",
-        "body": [
-            "`xml:\"${VIM:luaeval('require(\"tsnippets.go\").field_camel()')}\"`"
-        ],
-        "description": "xml field tag in snake format"
-    },
-    "yaml filed tag in raw format": {
-        "prefix": "yaml",
-        "body": [
-            "`yaml:\"${VIM:luaeval('require(\"tsnippets.go\").field()')}\"`"
-        ],
-        "description": "yaml field tag in snake format"
-    },
-    "yaml filed tag in snake format": {
-        "prefix": "yamls",
-        "body": [
-            "`yaml:\"${VIM:luaeval('require(\"tsnippets.go\").field_snake()')}\"`"
-        ],
-        "description": "yaml field tag in snake format"
-    },
-    "yaml filed tag in camel format": {
-        "prefix": "yamlc",
-        "body": [
-            "`yaml:\"${VIM:luaeval('require(\"tsnippets.go\").field_camel()')}\"`"
-        ],
-        "description": "yaml field tag in snake format"
-    },
-    "cql filed tag in raw format": {
-        "prefix": "cql",
-        "body": [
-            "`cql:\"${VIM:luaeval('require(\"tsnippets.go\").field()')}\"`"
-        ],
-        "description": "cql field tag in snake format"
-    },
-    "cql filed tag in snake format": {
-        "prefix": "cqls",
-        "body": [
-            "`cql:\"${VIM:luaeval('require(\"tsnippets.go\").field_snake()')}\"`"
-        ],
-        "description": "cql field tag in snake format"
-    },
-    "cql filed tag in camel format": {
-        "prefix": "cqlc",
-        "body": [
-            "`cql:\"${VIM:luaeval('require(\"tsnippets.go\").field_camel()')}\"`"
-        ],
-        "description": "cql field tag in snake format"
-    },
-    "env filed tag in raw format": {
-        "prefix": "env",
-        "body": [
-            "`env:\"${VIM:luaeval('require(\"tsnippets.go\").field()')}\"`"
-        ],
-        "description": "env field tag in snake format"
-    },
-    "env filed tag in snake format": {
-        "prefix": "envs",
-        "body": [
-            "`env:\"${VIM:luaeval('require(\"tsnippets.go\").field_snake()')}\"`"
-        ],
-        "description": "env field tag in snake format"
-    },
-    "env filed tag in camel format": {
-        "prefix": "envc",
-        "body": [
-            "`env:\"${VIM:luaeval('require(\"tsnippets.go\").field_camel()')}\"`"
-        ],
-        "description": "env field tag in snake format"
-    },
-    "header filed tag in raw format": {
-        "prefix": "header",
-        "body": [
-            "`header:\"${VIM:luaeval('require(\"tsnippets.go\").field()')}\"`"
-        ],
-        "description": "header field tag in snake format"
-    },
-    "header filed tag in snake format": {
-        "prefix": "envs",
-        "body": [
-            "`header:\"${VIM:luaeval('require(\"tsnippets.go\").field_snake()')}\"`"
-        ],
-        "description": "header field tag in snake format"
-    },
-    "header filed tag in camel format": {
-        "prefix": "envc",
-        "body": [
-            "`header:\"${VIM:luaeval('require(\"tsnippets.go\").field_camel()')}\"`"
-        ],
-        "description": "header field tag in snake format"
-    },
-    "csv filed tag in raw format": {
-        "prefix": "csv",
-        "body": [
-            "`csv:\"${VIM:luaeval('require(\"tsnippets.go\").field()')}\"`"
-        ],
-        "description": "csv field tag in snake format"
-    },
-    "csv filed tag in snake format": {
-        "prefix": "csvs",
-        "body": [
-            "`csv:\"${VIM:luaeval('require(\"tsnippets.go\").field_snake()')}\"`"
-        ],
-        "description": "csv field tag in snake format"
-    },
-    "csv filed tag in camel format": {
-        "prefix": "csvc",
-        "body": [
-            "`csv:\"${VIM:luaeval('require(\"tsnippets.go\").field_camel()')}\"`"
-        ],
-        "description": "csv field tag in snake format"
-    },
-    "gorm filed tag in raw format": {
-        "prefix": "gorm",
-        "body": [
-            "`gorm:\"${VIM:luaeval('require(\"tsnippets.go\").field()')}\"`"
-        ],
-        "description": "gorm field tag in snake format"
-    },
-    "gorm filed tag in snake format": {
-        "prefix": "gorms",
-        "body": [
-            "`gorm:\"${VIM:luaeval('require(\"tsnippets.go\").field_snake()')}\"`"
-        ],
-        "description": "gorm field tag in snake format"
-    },
-    "gorm filed tag in camel format": {
-        "prefix": "gormc",
-        "body": [
-            "`gorm:\"${VIM:luaeval('require(\"tsnippets.go\").field_camel()')}\"`"
-        ],
-        "description": "gorm field tag in snake format"
-    },
-    "for move slice element": {
-        "prefix": "formove",
-        "body": [
-            "${1:index} := 0",
-            "for i := 0; i < len(${2:slice}); i++ {",
-            "\tif ${3:true} {",
-            "\t\t$2[index] = $2[i]",
-            "\t\tindex++",
-            "\t}",
-            "}",
-            "$2 = $2[:$1]"
-        ],
-        "description": "for loop to remove element not match condition"
-    },
-    "define normalized error": {
-        "prefix": "dnerr",
-        "body": [
-            "${1:Err} = errors.Normalize(",
-            "\t\"$2\",",
-            "\terrors.RFCCodeText(\"CDC:$1\"),",
-            ")"
-        ]
-    }
+  ":": {
+    "prefix": ":",
+    "body": [
+      "${1:name} := ${2:value}"
+    ],
+    "description": "name := value"
+  },
+  "[]": {
+    "prefix": "[]",
+    "body": [
+      "[]${1:type}{}"
+    ],
+    "description": "[]type{}"
+  },
+  "/^imp/": {
+    "prefix": "/^imp/",
+    "body": [
+      "import (",
+      "\t\"${1:package}\"",
+      ")"
+    ],
+    "description": "Import declaration"
+  },
+  "ch": {
+    "prefix": "ch",
+    "body": [
+      "chan ${1:type}"
+    ],
+    "description": "Chan declaration"
+  },
+  "st": {
+    "prefix": "st",
+    "body": [
+      "type ${1:Struct} struct {",
+      "\t$0",
+      "}"
+    ],
+    "description": "Struct declaration"
+  },
+  "stn": {
+    "prefix": "stn",
+    "body": [
+      "type ${1:Struct} struct {",
+      "\t$0",
+      "}",
+      "",
+      "func New$1() *$1 {",
+      "\treturn &$1{}",
+      "}"
+    ],
+    "description": "Struct and new function"
+  },
+  "in": {
+    "prefix": "in",
+    "body": [
+      "type ${1:Interface} interface {",
+      "\t$0",
+      "}"
+    ],
+    "description": "Interface declaration"
+  },
+  "new": {
+    "prefix": "new",
+    "body": [
+      "new(${1:type})"
+    ],
+    "description": "new statement"
+  },
+  "de": {
+    "prefix": "de",
+    "body": [
+      "defer ${1:func}"
+    ],
+    "description": "defer statement"
+  },
+  "/^init/": {
+    "prefix": "/^init/",
+    "body": [
+      "func init() {",
+      "\t$0",
+      "}"
+    ],
+    "description": "Init function"
+  },
+  "sel": {
+    "prefix": "sel",
+    "body": [
+      "select {",
+      "case $1:",
+      "\t$2",
+      "default:",
+      "\t$0",
+      "}"
+    ],
+    "description": "Select statement"
+  },
+  "swi": {
+    "prefix": "swi",
+    "body": [
+      "switch ${1:expression}${1/(.+)/ /}{",
+      "case$0",
+      "}"
+    ],
+    "description": "Switch statement"
+  },
+  "case": {
+    "prefix": "case",
+    "body": [
+      "case $1:",
+      "\t$0"
+    ],
+    "description": "Case statement"
+  },
+  "for": {
+    "prefix": "for",
+    "body": [
+      "for ${1:condition} {",
+      "\t$0",
+      "}"
+    ],
+    "description": "For loop"
+  },
+  "forr": {
+    "prefix": "forr",
+    "body": [
+      "for ${1:_}, ${2:item} := range ${3:items} {",
+      "\t$0",
+      "}"
+    ],
+    "description": "For range"
+  },
+  "fori": {
+    "prefix": "fori",
+    "body": [
+      "for i:=${1:0}; i<${2:n}; i++ {",
+      "\t$0",
+      "}"
+    ],
+    "description": "For i..n"
+  },
+  "forc": {
+    "prefix": "forc",
+    "body": [
+      "for ${1:i} := range ${2:c} {",
+      "\t$0",
+      "}"
+    ],
+    "description": "For chan"
+  },
+  "fors": {
+    "prefix": "fors",
+    "body": [
+      "for {",
+      "\tselect {",
+      "\tcase ${1:c}:",
+      "\t\t$2",
+      "\tdefault:",
+      "\t\t$0",
+      "\t}",
+      "}"
+    ],
+    "description": "For select"
+  },
+  "if err": {
+    "prefix": "ife",
+    "body": [
+      "if err != nil {",
+      "\t$0",
+      "\treturn errors.WithStack(err)",
+      "}"
+    ],
+    "description": "if err != nil"
+  },
+  "ap": {
+    "prefix": "ap",
+    "body": [
+      "$1 = append(${1:slice}, ${2:variable})"
+    ],
+    "description": "append"
+  },
+  "del": {
+    "prefix": "del",
+    "body": [
+      "delete(${1:map}, ${2:key})"
+    ],
+    "description": "delete"
+  },
+  "ctxt": {
+    "prefix": "ctxt",
+    "body": [
+      "${1:ctx}, ${2:cancel} := context.WithTimeout(context.Background(), ${3:1000}*time.${4:Millisecond})",
+      "defer $2()"
+    ],
+    "description": "context.WithTimeout"
+  },
+  "ms": {
+    "prefix": "ms",
+    "body": [
+      "make([]${1:string}, ${2:0}, ${3:0})"
+    ],
+    "description": "make slice"
+  },
+  "mm": {
+    "prefix": "mm",
+    "body": [
+      "make(map[${1:string}]${2:string}, ${3:0})"
+    ],
+    "description": "make map"
+  },
+  "mc": {
+    "prefix": "mc",
+    "body": [
+      "make(chan ${1:type}, ${2:size})"
+    ],
+    "description": "make chan"
+  },
+  "mc0": {
+    "prefix": "mc0",
+    "body": [
+      "make(chan ${1:type})"
+    ],
+    "description": "make unbuffered chan"
+  },
+  "testing": {
+    "prefix": "testing",
+    "body": [
+      "t *testing.T"
+    ],
+    "description": "testing parameter"
+  },
+  "marshal": {
+    "prefix": "marshal",
+    "body": [
+      "${1:data}, ${2:err} := ${3:json}.Marshal(${4:st})",
+      "if $2 != nil {",
+      "\t$0",
+      "}"
+    ],
+    "description": "Marshal"
+  },
+  "unmarshal": {
+    "prefix": "unmarshal",
+    "body": [
+      "${1:st} := &${2:Struct}{}",
+      "${3:err} := ${4:json}.Unmarshal(${5:data}, $1)",
+      "if err != nil {",
+      "\t$0",
+      "}"
+    ],
+    "description": "Unmarshal"
+  },
+  "lft": {
+    "prefix": "lft",
+    "body": [
+      "log.WithFields(log.Fields{",
+      "\t$3",
+      "}).Trace(${1:ctx}, \"${2:format}\")$0"
+    ],
+    "description": "log.WithFields.Trace"
+  },
+  "lfd": {
+    "prefix": "lfd",
+    "body": [
+      "log.WithFields(log.Fields{",
+      "\t$3",
+      "}).Debug(${1:ctx}, \"${2:format}\")$0"
+    ],
+    "description": "log.WithFields.Debug"
+  },
+  "lfi": {
+    "prefix": "lfi",
+    "body": [
+      "log.WithFields(log.Fields{",
+      "\t$3",
+      "}).Info(${1:ctx}, \"${2:format}\")$0"
+    ],
+    "description": "log.WithFields.Info"
+  },
+  "lfw": {
+    "prefix": "lfw",
+    "body": [
+      "log.WithFields(log.Fields{",
+      "\t$3",
+      "}).Warn(${1:ctx}, \"${2:format}\")$0"
+    ],
+    "description": "log.WithFields.Warn"
+  },
+  "lfe": {
+    "prefix": "lfe",
+    "body": [
+      "log.WithFields(log.Fields{",
+      "\t$3",
+      "}).Error(${1:ctx}, \"${2:format}\")$0"
+    ],
+    "description": "log.WithFields.Error"
+  },
+  "lff": {
+    "prefix": "lff",
+    "body": [
+      "log.WithFields(log.Fields{",
+      "\t$3",
+      "}).Fatal(${1:ctx}, \"${2:format}\")$0"
+    ],
+    "description": "log.WithFields.Fatal"
+  },
+  "lfp": {
+    "prefix": "lfp",
+    "body": [
+      "log.WithFields(log.Fields{",
+      "\t$3",
+      "}).Panic(${1:ctx}, \"${2:format}\")$0"
+    ],
+    "description": "log.WithFields.Panic"
+  },
+  "lgt": {
+    "prefix": "lgt",
+    "body": [
+      "log.Trace(${1:ctx}, \"${2:format}\")$0"
+    ],
+    "description": "log.Trace"
+  },
+  "lgd": {
+    "prefix": "lgd",
+    "body": [
+      "log.Debug(${1:ctx}, \"${2:format}\")$0"
+    ],
+    "description": "log.Debug"
+  },
+  "lgi": {
+    "prefix": "lgi",
+    "body": [
+      "log.Info(${1:ctx}, \"${2:format}\")$0"
+    ],
+    "description": "log.Info"
+  },
+  "lgw": {
+    "prefix": "lgw",
+    "body": [
+      "log.Warn(${1:ctx}, \"${2:format}\")$0"
+    ],
+    "description": "log.Warn"
+  },
+  "lge": {
+    "prefix": "lge",
+    "body": [
+      "log.Error(${1:ctx}, \"${2:format}\")$0"
+    ],
+    "description": "log.Error"
+  },
+  "lgf": {
+    "prefix": "lgf",
+    "body": [
+      "log.Fatal(${1:ctx}, \"${2:format}\")$0"
+    ],
+    "description": "log.Fatal"
+  },
+  "lgp": {
+    "prefix": "lgp",
+    "body": [
+      "log.Panic(${1:ctx}, \"${2:format}\")$0"
+    ],
+    "description": "log.Panic"
+  },
+  "fsf": {
+    "prefix": "fsf",
+    "body": [
+      "fmt.Sprintf(\"$1\", $2)"
+    ],
+    "description": "fmt.Sprintf"
+  },
+  "fpf": {
+    "prefix": "fpf",
+    "body": [
+      "fmt.Printf(\"$1\\n\", $2)"
+    ],
+    "description": "fmt.Printf"
+  },
+  "fef": {
+    "prefix": "fef",
+    "body": [
+      "fmt.Errorf(\"$1\", $2)"
+    ],
+    "description": "fmt.Errorf"
+  },
+  "funct": {
+    "prefix": "funct",
+    "body": [
+      "func Test${1:Func}(t *testing.T) {",
+      "\t$0",
+      "}"
+    ],
+    "description": "testing function"
+  },
+  "funcb": {
+    "prefix": "funcb",
+    "body": [
+      "func Benchmark${1:Func}(b *testing.B) {",
+      "\t// b.ResetTimer()",
+      "\tfor i := 0; i < b.N; i++ {",
+      "\t\t$0",
+      "\t}",
+      "}"
+    ],
+    "description": "benchmark testing function"
+  },
+  "gomock": {
+    "prefix": "gomock",
+    "body": [
+      "ctrl := gomock.NewController(t)",
+      "defer ctrl.Finish()",
+      "",
+      ""
+    ],
+    "description": "gomock.NewController"
+  },
+  "httptests": {
+    "prefix": "httptests",
+    "body": [
+      "httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {",
+      "\t$0",
+      "}))"
+    ],
+    "description": "httptest.NewServer"
+  },
+  "gmtc": {
+    "prefix": "gmtc",
+    "body": [
+      "{",
+      "\tname: \"${1:test name}\",",
+      "\tinit: func(ctrl *gomock.Controller) ${2:Receiver} {",
+      "\t\t$3",
+      "\t},",
+      "\targs: func(t *gomock.Controller) args{",
+      "\t\treturn args{",
+      "\t\t\t$4",
+      "\t\t}",
+      "\t},",
+      "\twant1: ${5:want1},",
+      "\twantErr: ${6:true},",
+      "\tinspectErr: func(err error, t *testing.T) {",
+      "\t\t$7",
+      "\t},",
+      "}, // $1"
+    ],
+    "description": "gomock test case"
+  },
+  "asseq": {
+    "prefix": "asseq",
+    "body": [
+      "assert.Equal(t, ${1:excepted}, ${2:actual}, \"$2 == $1\")"
+    ],
+    "description": "assert.Equal"
+  },
+  "assemp": {
+    "prefix": "assemp",
+    "body": [
+      "assert.Empty(t, ${1:object}, \"$1 should be empty\")"
+    ],
+    "description": "assert.Empty"
+  },
+  "assnemp": {
+    "prefix": "assnemp",
+    "body": [
+      "assert.NotEmpty(t, ${1:object}, \"$1 should not be empty\")"
+    ],
+    "description": "assert.NotEmpty"
+  },
+  "asserr": {
+    "prefix": "asserr",
+    "body": [
+      "assert.Error(t, ${1:err}, \"$1 != nil\")"
+    ],
+    "description": "assert.Error"
+  },
+  "assnerr": {
+    "prefix": "assnerr",
+    "body": [
+      "assert.NoError(t, ${1:err}, \"$1 == nil\")"
+    ],
+    "description": "assert.NoError"
+  },
+  "assee": {
+    "prefix": "assee",
+    "body": [
+      "assert.EqualError(t, ${1:err}, \"${2:errstr}\", \"$1.Error() == \\`$2\\`\")"
+    ],
+    "description": "assert.ErrorEqual"
+  },
+  "assfe": {
+    "prefix": "assfe",
+    "body": [
+      "assert.False(t, ${1:value}, \"$1 == false\")"
+    ],
+    "description": "assert.False"
+  },
+  "asstr": {
+    "prefix": "asstr",
+    "body": [
+      "assert.True(t, ${1:value}, \"$1 == true\")"
+    ],
+    "description": "assert.True"
+  },
+  "assnil": {
+    "prefix": "assnil",
+    "body": [
+      "assert.Nil(t, ${1:object}, \"$1 == nil\")"
+    ],
+    "description": "assert.Nil"
+  },
+  "assnnil": {
+    "prefix": "assnnil",
+    "body": [
+      "assert.NotNil(t, ${1:object}, \"$1 != nil\")"
+    ],
+    "description": "assert.NotNil"
+  },
+  "ass0": {
+    "prefix": "ass0",
+    "body": [
+      "assert.Zero(t, ${1:object})"
+    ],
+    "description": "assert.Zero"
+  },
+  "assn0": {
+    "prefix": "assn0",
+    "body": [
+      "assert.NotZero(t, ${1:object})"
+    ],
+    "description": "assert.NotZero"
+  },
+  "mocket": {
+    "prefix": "mocket",
+    "body": [
+      "mocket.Catcher.Reset().NewMock().WithQuery(\\`${1:sql}\\`).${2:WithReply}(${3:reply})"
+    ],
+    "description": "mocket WithQuery"
+  },
+  "redigopool": {
+    "prefix": "redigopool",
+    "body": [
+      "pool := &redis.Pool{",
+      "\tMaxIdle:     ${1:8},",
+      "\tIdleTimeout: ${2:300} * ${3:time.Second},",
+      "}",
+      "pool.Dial = func() (redis.Conn, error) {",
+      "\tc, err := redis.Dial(",
+      "\t\t\"tcp\",",
+      "\t\t${4:\"127.0.0.1:6379\"},",
+      "\t\tredis.DialConnectTimeout(${5:1}*time.Second),",
+      "\t\tredis.DialReadTimeout(${6:1}*time.Second),",
+      "\t\tredis.DialWriteTimeout(${7:1}*time.Second),",
+      "\t\tredis.DialPassword(${8:\"password\"}),",
+      "\t\tredis.DialDatabase(${9:0}))",
+      "\tif err != nil {",
+      "\t\treturn nil, err",
+      "\t}",
+      "\treturn c, err",
+      "}",
+      "pool.TestOnBorrow = func(c redis.Conn, t time.Time) error {",
+      "\t_, err := c.Do(\"Ping\")",
+      "\treturn err",
+      "}"
+    ],
+    "description": "new redisgo pool"
+  },
+  "redigodo": {
+    "prefix": "redigodo",
+    "body": [
+      "${1:c} := ${2:pool}.Get()",
+      "defer $1.Close",
+      "${3:data}, ${4:err} := redis.${5:Bytes}($1.Do(\"${6:GET}\", ${7:\"foo\"}))",
+      "if $4 != nil {",
+      "\t$8",
+      "}",
+      "",
+      "$0",
+      ""
+    ],
+    "description": "redigo do"
+  },
+  "redigomulti": {
+    "prefix": "redigomulti",
+    "body": [
+      "${1:c} := ${2:pool}.Get()",
+      "defer $1.Close",
+      "$1.Send(\"MULTI\")",
+      "${3:data}, ${4:err} := $1.Do(\"EXEC\")",
+      "if $4 != nil {",
+      "\t$5",
+      "}",
+      "",
+      "$0"
+    ],
+    "description": "redigo MULTI"
+  },
+  "gormopen": {
+    "prefix": "gormopen",
+    "body": [
+      "${1:db}, err := gorm.Open(${2:\"mysql\"}, ${3:uri})",
+      "if err != nil {",
+      "\t${4}",
+      "}",
+      "$1.DB().SetMaxIdleConns(${5:3})",
+      "$1.DB().SetMaxOpenConns(${6:10})",
+      "$1.DB().SetConnMaxLifetime(${7:3000} * time.Millisecond)",
+      "$1.LogMode(false)"
+    ],
+    "description": "gorm.Open"
+  },
+  "gormnotfound": {
+    "prefix": "gormnotfound",
+    "body": [
+      "errors.Is(${1:err}, gorm.ErrRecordNotFound)"
+    ],
+    "description": "gorm record not found"
+  },
+  "httpclient": {
+    "prefix": "httpclient",
+    "body": [
+      "${1:httpClient} := &http.Client{",
+      "\tTransport: &http.Transport{",
+      "\t\tMaxIdleConnsPerHost: ${2:100},",
+      "\t\tMaxIdleConns: ${3:10},",
+      "\t\tTLSClientConfig: &tls.Config{",
+      "\t\t\tInsecureSkipVerify: ${4:true},",
+      "\t\t},",
+      "\t},",
+      "\tTimeout: time.Duration(${5:1000}) * time.Millisecond,",
+      "}"
+    ],
+    "description": "new http chlent"
+  },
+  "httpget": {
+    "prefix": "httpget",
+    "body": [
+      "v := url.Values{}",
+      "v.Add(${1:\"key\"}, ${2:\"value\"})",
+      "query := v.Encode()",
+      "url := ${3:\"http://localhost:8080\"} + \"?\" + query",
+      "resp, err := ${4:http}.Get(url)",
+      "if err != nil {",
+      "\t${5:return err}",
+      "}",
+      "defer resp.Body.Close()",
+      "",
+      "if resp.StatusCode != http.StatusOK {",
+      "\t${6:return fmt.Errorf(\"status code: %d\", resp.StatusCode)}",
+      "}",
+      "",
+      "body, err := ioutil.ReadAll(resp.Body)",
+      "if err != nil {",
+      "\t${7:return err}",
+      "}",
+      "",
+      "${8:rsp} := ${9:&Response{}}",
+      "err = json.Unmarshal(body, rsp)",
+      "if err != nil {",
+      "\t${10:return err}",
+      "}"
+    ],
+    "description": "http get json"
+  },
+  "httppostj": {
+    "prefix": "httppostj",
+    "body": [
+      "url := ${1:\"http://localhost:8080\"}",
+      "req := ${2:&Request{}}",
+      "body, err := json.Marshal(req)",
+      "if err != nil {",
+      "\t${3:return err}",
+      "}",
+      "",
+      "resp, err := ${4:http}.Post(url, \"application/json\", bytes.NewReader(body))",
+      "if err != nil {",
+      "\t${5:return err}",
+      "}",
+      "defer resp.Body.Close()",
+      "",
+      "if resp.StatusCode != http.StatusOK {",
+      "\t${6:return fmt.Errorf(\"status code: %d\", resp.StatusCode)}",
+      "}",
+      "",
+      "body, err := ioutil.ReadAll(resp.Body)",
+      "if err != nil {",
+      "\t${7:return err}",
+      "}",
+      "",
+      "${8:rsp} := ${9:&Response{}}",
+      "err = json.Unmarshal(body, rsp)",
+      "if err != nil {",
+      "\t${10:return err}",
+      "}"
+    ],
+    "description": "http post json"
+  },
+  "httppostf": {
+    "prefix": "httppostf",
+    "body": [
+      "v := url.Values{}",
+      "v.Add(${1:\"key\"}, ${2:\"value\"})",
+      "url := ${3:\"http://localhost:8080\"}",
+      "resp, err := ${4:http}.PostForm(url, v)",
+      "if err != nil {",
+      "\t${5:return err}",
+      "}",
+      "defer resp.Body.Close()",
+      "",
+      "if resp.StatusCode != http.StatusOK {",
+      "\t${6:return fmt.Errorf(\"status code: %d\", resp.StatusCode)}",
+      "}",
+      "",
+      "body, err := ioutil.ReadAll(resp.Body)",
+      "if err != nil {",
+      "\t${7:return err}",
+      "}",
+      "",
+      "${8:rsp} := ${9:&Response{}}",
+      "err = json.Unmarshal(body, rsp)",
+      "if err != nil {",
+      "\t${10:return err}",
+      "}"
+    ],
+    "description": "http post form"
+  },
+  "mysqlerr": {
+    "prefix": "mysqlerr",
+    "body": [
+      "var ${1:mysqlErr} *mysql.MySQLError",
+      "if errors.As(${2:err}, &$1) && $1.Number == ${3:1062} {",
+      "\t$0",
+      "}"
+    ],
+    "description": "check mysql error"
+  },
+  "json filed tag in raw format": {
+    "prefix": "json",
+    "body": [
+      "`json:\"${VIM:luaeval('require(\"tsnippets.go\").field()')}\"`"
+    ],
+    "description": "json field tag in snake format"
+  },
+  "json filed tag in snake format": {
+    "prefix": "jsons",
+    "body": [
+      "`json:\"${VIM:luaeval('require(\"tsnippets.go\").field_snake()')}\"`"
+    ],
+    "description": "json field tag in snake format"
+  },
+  "json filed tag in camel format": {
+    "prefix": "jsonc",
+    "body": [
+      "`json:\"${VIM:luaeval('require(\"tsnippets.go\").field_camel()')}\"`"
+    ],
+    "description": "json field tag in snake format"
+  },
+  "bson filed tag in raw format": {
+    "prefix": "bson",
+    "body": [
+      "`bson:\"${VIM:luaeval('require(\"tsnippets.go\").field()')}\"`"
+    ],
+    "description": "bson field tag in snake format"
+  },
+  "bson filed tag in snake format": {
+    "prefix": "bsons",
+    "body": [
+      "`bson:\"${VIM:luaeval('require(\"tsnippets.go\").field_snake()')}\"`"
+    ],
+    "description": "bson field tag in snake format"
+  },
+  "bson filed tag in camel format": {
+    "prefix": "bsonc",
+    "body": [
+      "`bson:\"${VIM:luaeval('require(\"tsnippets.go\").field_camel()')}\"`"
+    ],
+    "description": "bson field tag in snake format"
+  },
+  "xml filed tag in raw format": {
+    "prefix": "xml",
+    "body": [
+      "`xml:\"${VIM:luaeval('require(\"tsnippets.go\").field()')}\"`"
+    ],
+    "description": "xml field tag in snake format"
+  },
+  "xml filed tag in snake format": {
+    "prefix": "xmls",
+    "body": [
+      "`xml:\"${VIM:luaeval('require(\"tsnippets.go\").field_snake()')}\"`"
+    ],
+    "description": "xml field tag in snake format"
+  },
+  "xml filed tag in camel format": {
+    "prefix": "xmlc",
+    "body": [
+      "`xml:\"${VIM:luaeval('require(\"tsnippets.go\").field_camel()')}\"`"
+    ],
+    "description": "xml field tag in snake format"
+  },
+  "yaml filed tag in raw format": {
+    "prefix": "yaml",
+    "body": [
+      "`yaml:\"${VIM:luaeval('require(\"tsnippets.go\").field()')}\"`"
+    ],
+    "description": "yaml field tag in snake format"
+  },
+  "yaml filed tag in snake format": {
+    "prefix": "yamls",
+    "body": [
+      "`yaml:\"${VIM:luaeval('require(\"tsnippets.go\").field_snake()')}\"`"
+    ],
+    "description": "yaml field tag in snake format"
+  },
+  "yaml filed tag in camel format": {
+    "prefix": "yamlc",
+    "body": [
+      "`yaml:\"${VIM:luaeval('require(\"tsnippets.go\").field_camel()')}\"`"
+    ],
+    "description": "yaml field tag in snake format"
+  },
+  "cql filed tag in raw format": {
+    "prefix": "cql",
+    "body": [
+      "`cql:\"${VIM:luaeval('require(\"tsnippets.go\").field()')}\"`"
+    ],
+    "description": "cql field tag in snake format"
+  },
+  "cql filed tag in snake format": {
+    "prefix": "cqls",
+    "body": [
+      "`cql:\"${VIM:luaeval('require(\"tsnippets.go\").field_snake()')}\"`"
+    ],
+    "description": "cql field tag in snake format"
+  },
+  "cql filed tag in camel format": {
+    "prefix": "cqlc",
+    "body": [
+      "`cql:\"${VIM:luaeval('require(\"tsnippets.go\").field_camel()')}\"`"
+    ],
+    "description": "cql field tag in snake format"
+  },
+  "env filed tag in raw format": {
+    "prefix": "env",
+    "body": [
+      "`env:\"${VIM:luaeval('require(\"tsnippets.go\").field()')}\"`"
+    ],
+    "description": "env field tag in snake format"
+  },
+  "env filed tag in snake format": {
+    "prefix": "envs",
+    "body": [
+      "`env:\"${VIM:luaeval('require(\"tsnippets.go\").field_snake()')}\"`"
+    ],
+    "description": "env field tag in snake format"
+  },
+  "env filed tag in camel format": {
+    "prefix": "envc",
+    "body": [
+      "`env:\"${VIM:luaeval('require(\"tsnippets.go\").field_camel()')}\"`"
+    ],
+    "description": "env field tag in snake format"
+  },
+  "header filed tag in raw format": {
+    "prefix": "header",
+    "body": [
+      "`header:\"${VIM:luaeval('require(\"tsnippets.go\").field()')}\"`"
+    ],
+    "description": "header field tag in snake format"
+  },
+  "header filed tag in snake format": {
+    "prefix": "envs",
+    "body": [
+      "`header:\"${VIM:luaeval('require(\"tsnippets.go\").field_snake()')}\"`"
+    ],
+    "description": "header field tag in snake format"
+  },
+  "header filed tag in camel format": {
+    "prefix": "envc",
+    "body": [
+      "`header:\"${VIM:luaeval('require(\"tsnippets.go\").field_camel()')}\"`"
+    ],
+    "description": "header field tag in snake format"
+  },
+  "csv filed tag in raw format": {
+    "prefix": "csv",
+    "body": [
+      "`csv:\"${VIM:luaeval('require(\"tsnippets.go\").field()')}\"`"
+    ],
+    "description": "csv field tag in snake format"
+  },
+  "csv filed tag in snake format": {
+    "prefix": "csvs",
+    "body": [
+      "`csv:\"${VIM:luaeval('require(\"tsnippets.go\").field_snake()')}\"`"
+    ],
+    "description": "csv field tag in snake format"
+  },
+  "csv filed tag in camel format": {
+    "prefix": "csvc",
+    "body": [
+      "`csv:\"${VIM:luaeval('require(\"tsnippets.go\").field_camel()')}\"`"
+    ],
+    "description": "csv field tag in snake format"
+  },
+  "gorm filed tag in raw format": {
+    "prefix": "gorm",
+    "body": [
+      "`gorm:\"${VIM:luaeval('require(\"tsnippets.go\").field()')}\"`"
+    ],
+    "description": "gorm field tag in snake format"
+  },
+  "gorm filed tag in snake format": {
+    "prefix": "gorms",
+    "body": [
+      "`gorm:\"${VIM:luaeval('require(\"tsnippets.go\").field_snake()')}\"`"
+    ],
+    "description": "gorm field tag in snake format"
+  },
+  "gorm filed tag in camel format": {
+    "prefix": "gormc",
+    "body": [
+      "`gorm:\"${VIM:luaeval('require(\"tsnippets.go\").field_camel()')}\"`"
+    ],
+    "description": "gorm field tag in snake format"
+  },
+  "for move slice element": {
+    "prefix": "formove",
+    "body": [
+      "${1:index} := 0",
+      "for i := 0; i < len(${2:slice}); i++ {",
+      "\tif ${3:true} {",
+      "\t\t$2[index] = $2[i]",
+      "\t\tindex++",
+      "\t}",
+      "}",
+      "$2 = $2[:$1]"
+    ],
+    "description": "for loop to remove element not match condition"
+  },
+  "define normalized error": {
+    "prefix": "dnerr",
+    "body": [
+      "${1:Err} = errors.Normalize(",
+      "\t\"$2\",",
+      "\terrors.RFCCodeText(\"CDC:$1\"),",
+      ")"
+    ]
+  }
 }
