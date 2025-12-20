@@ -1,9 +1,8 @@
-local str = require('tsnippets.str')
+local str = require("tsnippets.str")
 
 local function field()
-    local lnum = vim.fn.line('.')
+    local lnum = vim.fn.line(".")
     local content = vim.fn.getline(lnum)
-    print(content)
     return content:gsub("%s*(%w*).*", "%1")
 end
 
